@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Autoloader.php" server="ftp.petroecol.com.br/public_html/" local="132712840926896203" remote="132536844000000000" Dst="0" />
+<file name="Canvas.php" server="ftp.petroecol.com.br/public_html/" local="132712840927474655" remote="132536844000000000" Dst="0" />
+<file name="CanvasFactory.php" server="ftp.petroecol.com.br/public_html/" local="132712840927733960" remote="132536844000000000" Dst="0" />
+<file name="Cellmap.php" server="ftp.petroecol.com.br/public_html/" local="132712840928330362" remote="132536844000000000" Dst="0" />
+<file name="Dompdf.php" server="ftp.petroecol.com.br/public_html/" local="132712840930007081" remote="132536844000000000" Dst="0" />
+<file name="Exception.php" server="ftp.petroecol.com.br/public_html/" local="132712840930585634" remote="132536844000000000" Dst="0" />
+<file name="FontMetrics.php" server="ftp.petroecol.com.br/public_html/" local="132712840930864791" remote="132536844000000000" Dst="0" />
+<file name="Frame.php" server="ftp.petroecol.com.br/public_html/" local="132712840933557578" remote="132536844000000000" Dst="0" />
+<file name="Helpers.php" server="ftp.petroecol.com.br/public_html/" local="132712840942910915" remote="132536844000000000" Dst="0" />
+<file name="JavascriptEmbedder.php" server="ftp.petroecol.com.br/public_html/" local="132712840945162529" remote="132536844000000000" Dst="0" />
+<file name="LineBox.php" server="ftp.petroecol.com.br/public_html/" local="132712840945581441" remote="132536844000000000" Dst="0" />
+<file name="Options.php" server="ftp.petroecol.com.br/public_html/" local="132712840945831115" remote="132536844000000000" Dst="0" />
+<file name="PhpEvaluator.php" server="ftp.petroecol.com.br/public_html/" local="132712840945970446" remote="132536844000000000" Dst="0" />
+<file name="Renderer.php" server="ftp.petroecol.com.br/public_html/" local="132712840952742499" remote="132536844000000000" Dst="0" />
+</dwsync>

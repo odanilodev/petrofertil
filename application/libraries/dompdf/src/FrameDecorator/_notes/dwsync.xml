@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AbstractFrameDecorator.php" server="ftp.petroecol.com.br/public_html/" local="132712840934436242" remote="132536844000000000" Dst="0" />
+<file name="Block.php" server="ftp.petroecol.com.br/public_html/" local="132712840935781778" remote="132536844000000000" Dst="0" />
+<file name="Image.php" server="ftp.petroecol.com.br/public_html/" local="132712840934895359" remote="132536844000000000" Dst="0" />
+<file name="Inline.php" server="ftp.petroecol.com.br/public_html/" local="132712840935073932" remote="132536844000000000" Dst="0" />
+<file name="ListBullet.php" server="ftp.petroecol.com.br/public_html/" local="132712840935642418" remote="132536844000000000" Dst="0" />
+<file name="ListBulletImage.php" server="ftp.petroecol.com.br/public_html/" local="132712840935712274" remote="132536844000000000" Dst="0" />
+<file name="NullFrameDecorator.php" server="ftp.petroecol.com.br/public_html/" local="132712840936340754" remote="132536844000000000" Dst="0" />
+<file name="Table.php" server="ftp.petroecol.com.br/public_html/" local="132712840936684156" remote="132536844000000000" Dst="0" />
+<file name="Page.php" server="ftp.petroecol.com.br/public_html/" local="132712840936544515" remote="132536844000000000" Dst="0" />
+<file name="TableCell.php" server="ftp.petroecol.com.br/public_html/" local="132712840937399516" remote="132536844000000000" Dst="0" />
+<file name="TableRow.php" server="ftp.petroecol.com.br/public_html/" local="132712840937928290" remote="132536844000000000" Dst="0" />
+<file name="TableRowGroup.php" server="ftp.petroecol.com.br/public_html/" local="132712840937818592" remote="132536844000000000" Dst="0" />
+<file name="Text.php" server="ftp.petroecol.com.br/public_html/" local="132712840938282469" remote="132536844000000000" Dst="0" />
+</dwsync>

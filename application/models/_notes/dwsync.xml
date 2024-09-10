@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="index.html" server="ftp.petroecol.com.br/public_html/" local="132671375025640508" remote="132489324000000000" Dst="0" />
+<file name="Email_model.php" server="ftp.petroecol.com.br/public_html/" local="132646028258398900" remote="132646027800000000" Dst="0" />
+<file name="Login_model.php" server="ftp.petroecol.com.br/public_html/" local="132671374962786484" remote="132494508000000000" Dst="0" />
+<file name="Veiculos_model.php" server="ftp.petroecol.com.br/public_html/" local="132714323810603650" remote="132714323400000000" Dst="0" />
+<file name="Oficinas_model.php" server="ftp.petroecol.com.br/public_html/" local="132671374964340871" remote="132509196000000000" Dst="0" />
+<file name="Manutencao_model.php" server="ftp.petroecol.com.br/public_html/" local="132748215416294889" remote="132748215000000000" Dst="0" />
+<file name="Lembretes_model.php" server="ftp.petroecol.com.br/public_html/" local="132671374961872713" remote="132514380000000000" Dst="0" />
+<file name="Clientesp_model.php" server="ftp.petroecol.com.br/public_html/" local="132712841014765569" remote="132529932000000000" Dst="0" />
+<file name="Destinacao_model.php" server="ftp.petroecol.com.br/public_html/" local="132761847584603890" remote="132761847000000000" Dst="0" />
+<file name="Fornecedores_model.php" server="ftp.petroecol.com.br/public_html/" local="132592462099744344" remote="132592461600000000" Dst="0" />
+<file name="Motoristasp_model.php" server="ftp.petroecol.com.br/public_html/" local="132714502534546287" remote="132714502200000000" Dst="0" />
+<file name="Combustivel_model.php" server="ftp.petroecol.com.br/public_html/" local="132731606819553754" remote="132731606400000000" Dst="0" />
+<file name="Funcionarios_model.php" server="ftp.petroecol.com.br/public_html/" local="132617532656602142" remote="132617532600000000" Dst="0" />
+<file name="Epi_model.php" server="ftp.petroecol.com.br/public_html/" local="132627344968810662" remote="132627345000000000" Dst="0" />
+<file name="Destinacoes_model.php" server="ftp.petroecol.com.br/public_html/" local="132646058561703158" remote="132646058400000000" Dst="0" />
+<file name="Produtos_model.php" server="ftp.petroecol.com.br/public_html/" local="132622103946307997" remote="132622103400000000" Dst="0" />
+<file name="Ordem_model.php" server="ftp.petroecol.com.br/public_html/" local="132809449654816730" remote="132809449200000000" Dst="0" />
+<file name="F_login_model.php" server="ftp.petroecol.com.br/public_html/" local="132677349995527677" remote="132677349600000000" Dst="0" />
+<file name="F_afericao_model.php" server="ftp.petroecol.com.br/public_html/" local="132724872987029330" remote="132724872600000000" Dst="0" />
+<file name="F_estoque_model.php" server="ftp.petroecol.com.br/public_html/" local="132750823284106757" remote="132750823200000000" Dst="0" />
+<file name="F_clientes_model.php" server="ftp.petroecol.com.br/public_html/" local="132690404120497220" remote="132690403800000000" Dst="0" />
+<file name="F_fornecedores_model.php" server="ftp.petroecol.com.br/public_html/" local="132691149872505980" remote="132691149600000000" Dst="0" />
+<file name="F_destinacao_model.php" server="ftp.petroecol.com.br/public_html/" local="132731819449940098" remote="132731819400000000" Dst="0" />
+<file name="F_quebra_model.php" server="ftp.petroecol.com.br/public_html/" local="132761828480829952" remote="132761828400000000" Dst="0" />
+<file name="F_fluxo_model.php" server="ftp.petroecol.com.br/public_html/" local="132779355570625927" remote="132779355000000000" Dst="0" />
+<file name="F_caixa_model.php" server="ftp.petroecol.com.br/public_html/" local="132780817858624984" remote="132780817800000000" Dst="0" />
+<file name="F_contas_model.php" server="ftp.petroecol.com.br/public_html/" local="132732699493540827" remote="132732699000000000" Dst="0" />
+<file name="F_contas_receber_model.php" server="ftp.petroecol.com.br/public_html/" local="132732700158840811" remote="132732699600000000" Dst="0" />
+<file name="F_log_model.php" server="ftp.petroecol.com.br/public_html/" local="132720741913669020" remote="132720741600000000" Dst="0" />
+<file name="F_pesagem_model.php" server="ftp.petroecol.com.br/public_html/" local="132749146392604371" remote="132749146200000000" Dst="0" />
+<file name="F_clientes_reciclagem_model.php" server="ftp.petroecol.com.br/public_html/" local="132791671100201610" remote="132791670600000000" Dst="0" />
+<file name="F_grupos_coleta_model.php" server="ftp.petroecol.com.br/public_html/" local="132775022076346685" remote="132775021800000000" Dst="0" />
+<file name="F_romaneio_model.php" server="ftp.petroecol.com.br/public_html/" local="132805031030967631" remote="132805030800000000" Dst="0" />
+<file name="F_visita_model.php" server="ftp.petroecol.com.br/public_html/" local="132806124616665263" remote="132806124600000000" Dst="0" />
+<file name="F_visita_reciclagem_model.php" server="ftp.petroecol.com.br/public_html/" local="132809596309977770" remote="132809596200000000" Dst="0" />
+<file name="F_coleta_model.php" server="ftp.petroecol.com.br/public_html/" local="132829369480687866" remote="132829369200000000" Dst="0" />
+<file name="Certificado_model.php" server="ftp.petroecol.com.br/public_html/" local="132866434823768542" remote="132866434800000000" Dst="0" />
+</dwsync>
