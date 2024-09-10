@@ -4,16 +4,16 @@ services:
   web:
     build: .
     volumes:
-    - ./:/var/www/html
-    - "./conf/php.ini:/usr/local/etc/php/php.ini"
+      - ./:/var/www/html
+      - "./conf/php.ini:/usr/local/etc/php/php.ini"
     ports:
-    - 80:80
+      - 80:80
 
   db:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes:
-    - ./mysql/:/var/lib/mysql
+      - ./mysql/:/var/lib/mysql
     image: mysql:5.6.51
     ports:
-    - 3306:3306
+      - 3307:3306
