@@ -153,14 +153,10 @@ class P_manutencao extends CI_Controller
 	}
 
 
-	public function cadastra_manutencao()
+	public function cadastrar_manutencao()
 	{
 		// Carregando os modelos necessários
-		$this->load->model('F_contas_model');
-		$this->load->model('Manutencao_model');
-
-		// Recebendo o último ID de F_contas_model
-		$ultimo_id = $this->F_contas_model->recebe_ultimo_id();
+		$this->load->model('P_manutencao_Model');
 
 		// Validando e obtendo dados do POST
 		$servicos = $this->input->post('servico');
@@ -173,7 +169,6 @@ class P_manutencao extends CI_Controller
 			'servico' => json_encode($servicos),
 			'desconto' => $desconto,
 			'valor' => json_encode($valor),
-			'id_conta' => $ultimo_id['id'],
 			'codigo' => $this->input->post('codigo'),
 			'placa' => $this->input->post('placa'),
 			'oficina' => $this->input->post('oficina'),
@@ -184,44 +179,10 @@ class P_manutencao extends CI_Controller
 			'observacao' => $this->input->post('observacao')
 		];
 
-		// Calculando valor total da conta
-		$valor_conta = array_sum($valor) - $desconto;
-
-		// Preparando dados comuns para inserção de conta
-		$data = [
-			'vencimento' => $this->input->post('data_saida'),
-			'data_emissao' => $this->input->post('data'),
-			'valor' => $valor_conta,
-			'despesa' => $this->input->post('setor'),
-			'status' => 0,
-			'recebido' => $this->input->post('oficina'),
-			'categoria' => 0,
-			'observacao' => $this->input->post('placa') . ' > ' . $this->input->post('observacao'),
-			'id_macro' => 5,
-			'id_micro' => 37
-		];
-
-		// Inserindo contas
-		$valor_parcela = $this->input->post('valor_parcela');
-		$quantidade_parcela = $this->input->post('quantidade_parcela');
-
-		if ($valor_parcela > 0) {
-			for ($contador = 0; $contador < $quantidade_parcela; $contador++) {
-				$data['valor'] = ($contador == 0) ? $valor_parcela : $valor_conta;
-				if ($contador > 0) {
-					$data['vencimento'] = date("Y-m-d", strtotime("+1 month", strtotime($data['vencimento'])));
-				}
-				$this->F_contas_model->inserir_conta($data);
-			}
-		} else {
-			$this->F_contas_model->inserir_conta($data);
-		}
-
 		// Inserindo manutenção
-		$placa = $this->input->post('placa'); // Verifique se esta variável é necessária
-		$this->Manutencao_model->inserir_manutencao($dados, $placa);
+		$this->P_manutencao_Model->inserir_manutencao($dados);
+		redirect('P_manutencao');
 	}
-
 
 	public function atualiza_manutencao()
 	{

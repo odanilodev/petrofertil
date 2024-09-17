@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class P_manutencao_Model extends CI_Model
 {
 
-	public function inserir_manutencao($dados, $placa)
+	public function inserir_manutencao($dados)
 	{
 
 		$this->db->set($dados);

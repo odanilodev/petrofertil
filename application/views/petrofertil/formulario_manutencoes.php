@@ -74,7 +74,7 @@
                                         <select name="placa" class="form-control show-tick">
                                             <option>Selecione</option>
                                             <?php foreach ($veiculos as $v) { ?>
-                                                <option value="<?php $v['placa'] ?>"><?= $v['modelo'] ?></option>
+                                                <option value="<?= $v['placa'] ?>"><?= $v['modelo'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -84,7 +84,7 @@
                                         <select name="oficina" class="form-control show-tick">
                                             <option>Selecione</option>
                                             <?php foreach ($oficinas as $o) { ?>
-                                                <option value="<?php $o['nome'] ?>"><?= $o['nome'] ?></option>
+                                                <option value="<?= $o['nome'] ?>"><?= $o['nome'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -111,7 +111,7 @@
                                             <div class="novo-campo-group">
                                                 <div class="row novo-campo">
                                                     <input type="text" name="servico[]" placeholder="Digite o Serviço"
-                                                        class="form-control col-md-6 valor">
+                                                        class="form-control col-md-6">
                                                     <input placeholder="Digite o valor do serviço" type="text" value=""
                                                         name="valor[]" class="form-control col-md-4 valor">
                                                 </div>
@@ -119,7 +119,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <label>Desconto</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -130,7 +130,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <label>Observação</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -139,7 +139,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-4">
                                         <label>Quilometragem</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -148,7 +148,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-4">
                                         <label>Data de entrada</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -157,7 +157,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-4">
                                         <label>Data de saída</label>
                                         <div class="form-group">
                                             <div class="form-line">

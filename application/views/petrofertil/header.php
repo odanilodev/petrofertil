@@ -234,6 +234,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             </a>
                         </li>
 
+                        <li class="header">SETOR DE MANUTENÇÃO</li>
+
                         <li>
                             <a href="<?= site_url('P_manutencao') ?>">
                                 <i class="material-icons">person</i>
