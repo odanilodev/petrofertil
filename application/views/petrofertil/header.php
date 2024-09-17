@@ -180,7 +180,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <?php if ($usuario == 'juninho@petrofertil.com.br' or $usuario == 'portaria') { ?>
+                    <?php if ($usuario == 'juninho@petrofertil.com.br' or $usuario == 'portaria' or $usuario == 'manutencao@petrofertil.com.br') { ?>
                         <img src="<?= base_url('uploads/funcionarios_petrofertil/foto_perfil/men_profile.png') ?>"
                             width="48" height="48" alt="User" />
                     <?php } ?>
@@ -223,6 +223,39 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
             <div class="menu">
                 <ul class="list">
+
+                    <?php if ($usuario == 'manutencao@petrofertil.com.br') { ?>
+                        <li class="header">CADASTRO PETROFERTIL</li>
+
+                        <li>
+                            <a href="<?= site_url('P_motoristas') ?>">
+                                <i class="material-icons">person</i>
+                                <span>Motoristas</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_manutencao') ?>">
+                                <i class="material-icons">person</i>
+                                <span>Manutenções de Veículos</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_veiculos_empresa') ?>">
+                                <i class="material-icons">directions_bus</i>
+                                <span>Veículos da empresa</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_oficinas') ?>">
+                                <i class="material-icons">directions_bus</i>
+                                <span>Oficinas</span>
+                            </a>
+                        </li>
+
+                    <? } ?>
 
                     <?php if ($usuario == 'portaria') { ?>
                         <li class="header">CADASTRO PETROFERTIL</li>

@@ -65,27 +65,26 @@ class Petrofertil extends CI_Controller
 
 			if ($login == 'juninho@petrofertil.com.br') {
 				redirect('petrofertil/inicio');
-
 			}
 			if ($login == 'alaide@petrofertil.com.br') {
 				redirect('P_clientes');
-
 			}
 
 			if ($login == 'heloisa.inoue@petrofertil.com.br') {
 				redirect('P_clientes_petrofertil');
-
 			}
 
 
 			if ($login == 'adrielly@petrofertil.com.br') {
 				redirect('P_clientes_petrofertil');
-
 			}
 
 			if ($login == 'portaria') {
 				redirect('P_pesagem');
+			}
 
+			if ($login == 'manutencao@petrofertil.com.br') {
+				redirect('P_manutencao');
 			}
 
 		} else {
