@@ -251,6 +251,13 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                         </li>
 
                         <li>
+                            <a href="<?= site_url('P_ordem_servico') ?>">
+                                <i class="material-icons">person</i>
+                                <span>Ordens de serviço</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="<?= site_url('P_oficinas') ?>">
                                 <i class="material-icons">directions_bus</i>
                                 <span>Oficinas</span>
