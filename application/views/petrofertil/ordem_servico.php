@@ -13,7 +13,7 @@
         <div class="row">
 
             <div class="col-md-4">
-                <img class="img-fluid" style="height: 100px" src="<?= base_url('assets/img/logopetro.png') ?>">
+                <img class="img-fluid" style="height: 30px" src="<?= base_url('assets/img/logopetro.png') ?>">
             </div>
 
 
