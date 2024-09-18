@@ -20,13 +20,11 @@ $nome_usuario = $this->session->userdata('nome_usuario');
             </div>
 
 
-            <?php if ($usuario == 'fernanda@petroecol.com.br') { ?>
-                <div class="col-md-9" style="margin-bottom: 12px; margin-top: -8px" align="right">
+            <div class="col-md-9" style="margin-bottom: 12px; margin-top: -8px" align="right">
 
-                    <a style="margin-left: 5px" href="<?= base_url('F_fornecedores/cadastrar_fornecedor') ?>"><span
-                            type="button" class="btn bg-green waves-effect">CADASTRO</span></a>
-                </div>
-            <? } ?>
+                <a style="margin-left: 5px" href="<?= base_url('P_ordem_servico/formulario_ordem_veiculos') ?>"><span
+                        type="button" class="btn bg-green waves-effect">CADASTRO</span></a>
+            </div>
 
         </div>
 

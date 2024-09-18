@@ -77,7 +77,6 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                         <th>Placa</th>
                                         <th>Modelo</th>
 
-                                        <th>Ver Manutenções</th>
                                         <th>Editar</th>
 
                                         <th>Deletar</th>
@@ -88,9 +87,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                         <tr align="center">
                                             <td><?= $veiculo['placa'] ?></td>
                                             <td><?= $veiculo['modelo'] ?></td>
-                                            <td align="center"><a data-toggle="modal" data-target="#deletar_conta"
-                                                    data-pegaid="<?= $c['id'] ?>"><i class="material-icons">delete</i></a>
-                                            </td>
+
                                             <td align="center">
                                                 <a href="P_veiculos_empresa/formulario_veiculos/<?= $veiculo['id'] ?>">
                                                     <i class="material-icons">edit</i>
