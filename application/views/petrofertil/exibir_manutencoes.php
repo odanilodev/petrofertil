@@ -3,15 +3,24 @@
 $status = $this->session->userdata('usuario');
 
 if ($status != "logado") {
-
     redirect('financeiro/verifica_login');
 }
 
 $usuario = $this->session->userdata('login');
-
 $nome_usuario = $this->session->userdata('nome_usuario');
 
+// Calcular o gasto total e o número de manutenções
+$gasto_total = 0;
+$numero_manutencoes = count($manutencoes);
+
+foreach ($manutencoes as $m) {
+    $val_array = json_decode($m['valor'], true);
+    $desconto = isset($m['desconto']) ? $m['desconto'] : 0;
+    $total = array_sum($val_array) - $desconto;
+    $gasto_total += $total;
+}
 ?>
+
 
 <style>
     #ModalPagar .modal-dialog {
@@ -68,9 +77,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                         <i class="material-icons">monetization_on</i>
                     </div>
                     <div class="content">
-                        <div class="text">Gasto total em manutenções
-                        </div>
-                        <div class="number">R$<?= number_format("$saldo", 2, ",", "."); ?></div>
+                        <div class="text">Gasto total em manutenções</div>
+                        <div class="number">R$<?= number_format($gasto_total, 2, ",", "."); ?></div>
                     </div>
                 </div>
             </div>
@@ -78,12 +86,11 @@ $nome_usuario = $this->session->userdata('nome_usuario');
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="info-box bg-blue-grey hover-zoom-effect">
                     <div class="icon">
-                        <i class="material-icons">monetization_on</i>
+                        <i class="material-icons">build</i>
                     </div>
                     <div class="content">
-                        <div class="text">Total de manutenções realizadas
-                        </div>
-                        <div class="number">R$<?= number_format("$previsao_caixa", 2, ",", "."); ?></div>
+                        <div class="text">Total de manutenções realizadas</div>
+                        <div class="number"><?= $numero_manutencoes; ?></div>
                     </div>
                 </div>
             </div>
@@ -141,7 +148,6 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                             <th>Ordem</th>
                                             <th>Valor</th>
                                             <th>Ver Mais</th>
-                                            <th>Deletar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -163,15 +169,19 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                                 <td><?= $m['oficina'] ?></td>
                                                 <td><?= $m['reclamacao'] ?></td>
                                                 <td><a
-                                                        href="<?= site_url('Ordem_servico/rever_ordem/' . $m['codigo']) ?>"><?= $m['codigo'] ?></a>
+                                                        href="<?= site_url('P_ordem_servico/rever_ordem/' . $m['codigo']) ?>"><?= $m['codigo'] ?></a>
                                                 </td>
                                                 <td>R$<?= number_format($total, 2, ',', '.'); ?></td>
-                                                <td><a
-                                                        href="<?= base_url('manutencoes/ver_manutencao') . '/' . $m['id'] ?>"><i
-                                                            class="fas fa-eye"></i></a></td>
-                                                <td><a
-                                                        href="<?= base_url('manutencoes/deleta_manutencao') . '/' . $m['id'] ?>"><i
-                                                            class="fas fa-trash-alt"></i></a></td>
+
+                                                <td align="center"><a
+                                                        href="<?= site_url('P_manutencao/ver_manutencao/') . $m['id'] ?>"><i
+                                                            class="material-icons"><i
+                                                                class="material-icons">download</i></i></a>
+                                                </td>
+
+
+
+
                                             </tr>
                                             <?php $contador++;
                                         } ?>
@@ -209,246 +219,3 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
         </div>
 </section>
-
-<script type="text/javascript">
-    var bancos = <?php echo json_encode($bancos); ?>;
-    var cheques = <?php echo json_encode($cheques); ?>;
-
-</script>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-
-<script>
-
-    $(document).ready(function () {
-
-        var count = 1;
-        $(document).on('click', '.btn-duplica-campos', function () {
-
-            let selectBanco = $('.div-select-banco').html();
-            let selectPagamento = $('.div-select-pagamento').html();
-            let inputValor = $('.div-input-valor').html();
-            let selectCheque = $('.div-cheque').html();
-
-            let inputQtdParcela = $('.input-quantidade-parcela').html();
-            let inputParcela = $('.input-parcela').html();
-
-
-            let campos = `
-                <div class="campos-duplicados row">
-                    <div class="col-md-4 campo-${count} campo select-pagamento-${count}">${selectPagamento}</div>
-                    <div class="col-md-3 campo-${count} campo input-quantidade-parcela-${count}" style="display:none">${inputQtdParcela}</div>
-                    <div class="col-md-3 campo-${count} campo input-parcela-${count}" style="display:none">${inputParcela}</div>
-                    <div class="col-md-4 campo-${count} campo select-banco-${count}">${selectBanco}</div>
-                    <div class="col-md-4 campo-${count} campo select-cheque-${count}" style="display:none">${selectCheque}</div>
-                    <div class="col-md-3 campo-${count} campo input-valor-${count}">${inputValor}</div>
-
-                    <div class="col-md-auto">
-                        <button type="button" class="btn btn-danger remove-payment-method  btn-remover">X</button>
-                    </div>
-                </div>
-
-            `;
-
-            $('.elementos-duplicados').append(campos);
-
-            $('.select-banco-' + count + ' select').attr('name', 'conta_banco_' + count);
-            $('.select-pagamento-' + count + ' select').attr('name', 'forma_pagamento_' + count);
-            $('.input-valor-' + count + ' input').attr('name', 'valor_' + count);
-
-            $('.select-pagamento-' + count + ' select').on('change', function () {
-                exibeInputCheque($(this));
-            });
-
-
-            count++;
-
-        });
-
-        function exibeInputCheque(itemSelecionado) {
-            var countAtual = itemSelecionado.closest('.campos-duplicados').index() + 1;
-
-            if (itemSelecionado.val() == "cheque") {
-                $('.select-banco-' + countAtual).css('display', 'none');
-                $('.input-valor-' + countAtual).css('display', 'none');
-                $('.select-cheque-' + countAtual).css('display', 'block');
-            } else if (itemSelecionado.val() == "parcelado") {
-
-                $('.select-banco-' + countAtual).css('display', 'none');
-                $('.input-valor-' + countAtual).css('display', 'none');
-                $('.input-parcela-' + countAtual).css('display', 'block');
-                $('.input-quantidade-parcela-' + countAtual).css('display', 'block');
-
-            } else {
-                $('.select-banco-' + countAtual).css('display', 'block');
-                $('.input-valor-' + countAtual).css('display', 'block');
-                $('.select-cheque-' + countAtual).css('display', 'none');
-                $('.input-parcela-' + countAtual).css('display', 'none');
-                $('.input-quantidade-parcela-' + countAtual).css('display', 'none');
-            }
-        }
-
-        $(document).on('change', '.select-pagamento-0 select', function () {
-            exibeInputCheque($(this));
-        });
-
-        $(document).on('click', '.btn-envia-recebimento', function () {
-
-            let idClicado = $('.id-clicado-val').val();
-
-            let formasPagamento = [];
-
-            // formas de recebimento
-            for (let i = 0; i < count; i++) {
-
-                let formaPagamento = {
-                    forma: $('.select-pagamento-' + i + ' select').val(),
-                    banco: $('.select-banco-' + i + ' select').val(),
-                    valor: $('input[name="valor_' + i + '"]').val(),
-                    cheque: $('.select-cheque-' + i + ' select').val(),
-                    valorParcela: $('.input-parcela-' + i + ' input').val(),
-                    qtdParcela: $('.input-quantidade-parcela-' + i + ' input').val(),
-
-                };
-
-                formasPagamento.push(formaPagamento);
-            }
-
-            enviaPagamento(formasPagamento, idClicado);
-        })
-
-        function enviaPagamento(formaPagamento, idClicado) {
-
-            var baseUrl = $('.base-url').val();
-
-            var data_fluxo = $('#data_fluxo').val();
-
-
-            $.ajax({
-                type: 'post',
-                url: baseUrl + 'P_contas_pagar/atualiza_status',
-                data: {
-                    formaPagamento: formaPagamento,
-                    data_fluxo: data_fluxo,
-                    idConta: idClicado
-                }, success: function (data) {
-                    // Recarregar a página após o sucesso da atualização
-                    location.reload();
-                }
-
-            })
-        }
-
-        $(document).on('click', '.btn-remover', function () {
-
-            // pega a posicao do array que foi removido, soma 1 por causa dos campos fixos
-            var posicaoRemovida = $(this).closest('.campos-duplicados').index() + 1;
-
-            $(this).closest('.campos-duplicados').remove();
-
-            $('.campos-duplicados').find('.campo').each(function (index) {
-                // Atualiza os names dos inputs e selects dentro desta div
-                $(this).find('input, select').each(function () {
-                    var nameVelho = $(this).attr('name');
-                    var nameNovo = nameVelho.replace(new RegExp('_\\d+'), '_' + posicaoRemovida);
-                    $(this).attr('name', nameNovo);
-                });
-
-
-            });
-
-
-            $('.campos-duplicados').each(function (index) {
-
-                // atualiza os names dos inputs
-                $(this).find('input, select').each(function () {
-
-                    var nameVelho = $(this).attr('name');
-
-                    var nameNovo = nameVelho.replace(new RegExp('_\\d+'), '_' + index);
-
-                    $(this).attr('name', nameNovo);
-                });
-            });
-
-            // remove um do contador pra voltar somar dnv
-            count--;
-
-            // atualiza a posicao do array
-            valoresCheques.splice(posicaoRemovida, 1);
-
-        });
-
-    })
-
-    $(document).on('click', '.abre-modal-pagar', function () {
-
-        let idClicado = $(this).data('cli-id');
-
-        $('.id-clicado-val').val(idClicado);
-    })
-
-
-
-
-    document.getElementById('add-payment-method').addEventListener('click', addPaymentMethod);
-
-
-    function generateBankOptions() {
-        var optionsHTML = '<option value="">Selecione o Banco</option>';
-        bancos.forEach(function (banco) {
-            optionsHTML += `<option value="${banco.id}">${banco.descricao}</option>`;
-        });
-        return optionsHTML;
-    }
-
-
-    function addPaymentMethod() {
-        var paymentMethodsDiv = document.getElementById('payment-methods');
-        var newPaymentMethod = document.createElement('div');
-        newPaymentMethod.classList.add('row', 'payment-method');
-        newPaymentMethod.innerHTML = `
-        <div class="col-md-4">
-            <select name="forma_pagamento[]" class="form-control payment-method-select">
-                <option value="dinheiro">Dinheiro</option>
-                <option value="pix">Pix</option>
-                <option value="transferencia bancaria">Transferência Bancária</option>
-                <option value="cheque">Cheque</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <select name="conta_banco[]" class="form-control account-select">
-                ${generateBankOptions()}
-            </select>
-        </div>
-        <div class="col-md-3">
-            <input type="text" name="valor[]" placeholder="Digite o valor" class="form-control valor">
-        </div>
-        <div class="col-md-auto">
-            <button type="button" class="btn btn-danger remove-payment-method">X</button>
-        </div>
-    `;
-        paymentMethodsDiv.appendChild(newPaymentMethod);
-
-        // Adiciona um segundo select para cheques se a forma de pagamento escolhida for "cheque"
-        var selects = newPaymentMethod.querySelectorAll('.payment-method-select');
-        selects.forEach(function (select) {
-            select.addEventListener('change', function () {
-                if (select.value === 'cheque') {
-                    addChequeSelect(newPaymentMethod);
-                } else {
-                    removeChequeSelect(newPaymentMethod);
-                }
-            });
-        });
-    }
-
-    // comecando
-
-
-
-
-
-
-</script>

@@ -136,7 +136,7 @@ class P_ordem_servico extends CI_Controller
 		$this->pdf->loadHtml($html);
 		$this->pdf->render();
 		// Output the generated PDF (1 = download and 0 = preview)
-		$this->pdf->stream("ordem_servico.pdf", array("Attachment" => 1));
+		$this->pdf->stream("ordem_servico.pdf", array("Attachment" => 0));
 	}
 
 

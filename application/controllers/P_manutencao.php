@@ -20,16 +20,16 @@ class P_manutencao extends CI_Controller
 	public function filtra_manutencao_geral()
 	{
 
-		$this->load->model('Manutencao_model');
+		$this->load->model('P_manutencao_model');
 
 		$data_inicial = $this->input->post('data_inicial');
 		$data_final = $this->input->post('data_final');
 
-		$data['manutencoes'] = $this->Manutencao_model->filtra_manutencao_geral($data_inicial, $data_final);
+		$data['manutencoes'] = $this->P_manutencao_model->filtra_manutencao_geral($data_inicial, $data_final);
 
-		$this->load->view('admin/header', $data);
-		$this->load->view('admin/exibir_manutencoes');
-		$this->load->view('admin/footer');
+		$this->load->view('petrofertil/header', $data);
+		$this->load->view('petrofertil/exibir_manutencoes');
+		$this->load->view('petrofertil/footer');
 
 	}
 
@@ -40,7 +40,7 @@ class P_manutencao extends CI_Controller
 		$placa = $this->uri->segment(3);
 
 
-		$this->load->model('Manutencao_model');
+		$this->load->model('P_manutencao_model');
 
 		$data['placa'] = $placa;
 
@@ -50,7 +50,7 @@ class P_manutencao extends CI_Controller
 		$data_final = $this->input->post('data_final');
 
 
-		$data['manutencao'] = $this->Manutencao_model->filtra_manutencao($placa, $data_inicial, $data_final);
+		$data['manutencao'] = $this->P_manutencao_model->filtra_manutencao($placa, $data_inicial, $data_final);
 
 		$this->load->view('admin/header', $data);
 		$this->load->view('admin/detalhe_veiculo');
@@ -58,53 +58,25 @@ class P_manutencao extends CI_Controller
 
 
 	}
-
-
-	public function detalhe_veiculo()
-	{
-
-		$this->load->model('Manutencao_model');
-
-		$this->load->model('Ordem_model');
-
-
-		$placa = $this->uri->segment(3);
-
-		$data['manutencao'] = $this->Manutencao_model->recebe_detalhe($placa);
-
-		$data['certificados'] = $this->Ordem_model->recebe_ordem_placa($placa);
-
-
-		$data['placa'] = $placa;
-
-
-
-		$this->load->view('admin/header', $data);
-		$this->load->view('admin/detalhe_veiculo');
-		$this->load->view('admin/footer');
-	}
-
 
 	public function ver_manutencao()
 	{
 
-		$this->load->model('Manutencao_model');
+		$this->load->model('P_manutencao_model');
 
-		$this->load->model('Oficinas_model');
+		$this->load->model('P_oficinas_model');
 
 		$id = $this->uri->segment(3);
 
-		$data['manutencao'] = $this->Manutencao_model->recebe_manutencao($id);
-
+		$data['manutencao'] = $this->P_manutencao_model->recebe_manutencao($id);
 
 		$oficina = $data['manutencao']['oficina'];
 
-		$data['oficina'] = $this->Oficinas_model->localiza_oficina($oficina);
+		$data['oficina'] = $this->P_oficinas_model->recebe_oficina_nome($oficina);
 
-
-		$this->load->view('admin/header', $data);
-		$this->load->view('admin/ver_mais');
-		$this->load->view('admin/footer');
+		$this->load->view('petrofertil/header', $data);
+		$this->load->view('petrofertil/ver_mais_manutencao');
+		$this->load->view('petrofertil/footer', $data);
 	}
 
 
