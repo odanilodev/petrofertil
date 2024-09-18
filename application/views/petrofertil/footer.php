@@ -249,6 +249,18 @@
 
     })
 
+    $('#deletar_veiculo_empresa').on('shown.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget) // Botão que acionou o modal
+
+        var id_veiculo = button.data('pegaid') // peguei o data que coloquei la 
+
+        $('.inp').val(id_veiculo); // mandei dentro de um imput que criei dentro do modal
+
+        $('.deleta').attr('href', '<?= site_url('P_veiculos_empresa/deleta_veiculo/') ?>' + id_veiculo);
+
+    })
+
     $('#exampleModal10').on('shown.bs.modal', function (event) {
 
         var button = $(event.relatedTarget) // Botão que acionou o modal

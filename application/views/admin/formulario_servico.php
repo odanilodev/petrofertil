@@ -12,7 +12,7 @@
                     <div class="page-header">
 
                         <div class="pb-2">
-                            <a href="<?= site_url('Ordem_servico_predial/formulario_ordem_predial/').$placa ?>"><button
+                            <a href="<?= site_url('Ordem_servico_predial/formulario_ordem_predial/') . $placa ?>"><button
                                     type="button" class="btn btn-secondary float-right">Voltar</button>
                         </div></a>
 
@@ -51,9 +51,9 @@
                                 <label for="inputEmail">Motorista</label>
                                 <select name="motorista" class="form-control col-md-5">
                                     <option value="0">Nenhum Motorista</option>
-                                    <?php foreach($motoristas as $m){ ?>
+                                    <?php foreach ($motoristas as $m) { ?>
 
-                                    <option value="<?= $m['nome'] ?>"><?= $m['nome'] ?></option>
+                                        <option value="<?= $m['nome'] ?>"><?= $m['nome'] ?></option>
 
                                     <?php } ?>
                                 </select></br>
@@ -72,8 +72,8 @@
                                 <label for="inputEmail">Oficina</label>
                                 <select name="oficina" class="form-control col-md-5">
                                     <option>Selecione</option>
-                                    <?php foreach($oficinas as $o){ ?>
-                                    <option value="<?= $o['nome'] ?>"><?= $o['nome'] ?></option>
+                                    <?php foreach ($oficinas as $o) { ?>
+                                        <option value="<?= $o['nome'] ?>"><?= $o['nome'] ?></option>
                                     <?php } ?>
                                 </select></br>
 
@@ -100,12 +100,12 @@
     </div>
 
     <script>
-    // Obtenha o elemento de entrada de data pelo ID
-    var dataOrdemInput = document.getElementById("data_ordem");
+        // Obtenha o elemento de entrada de data pelo ID
+        var dataOrdemInput = document.getElementById("data_ordem");
 
-    // Obtenha a data atual no formato "AAAA-MM-DD"
-    var dataAtual = new Date().toISOString().slice(0, 10);
+        // Obtenha a data atual no formato "AAAA-MM-DD"
+        var dataAtual = new Date().toISOString().slice(0, 10);
 
-    // Defina o valor do campo de entrada de data como a data atual
-    dataOrdemInput.value = dataAtual;
+        // Defina o valor do campo de entrada de data como a data atual
+        dataOrdemInput.value = dataAtual;
     </script>
