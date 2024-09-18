@@ -98,7 +98,7 @@ foreach ($manutencoes as $m) {
 
             <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-12">
                 <form class="" enctype="multipart/form-data"
-                    action="<?= site_url('P_contas_pagar/filtra_contas_pagar/') ?>" method="post">
+                    action="<?= site_url('P_manutencao/filtra_manutencao_geral/') ?>" method="post">
 
                     <div class="col-md-3">
 
