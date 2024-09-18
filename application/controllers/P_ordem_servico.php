@@ -19,7 +19,6 @@ class P_ordem_servico extends CI_Controller
 
 		$data['ordens'] = $this->P_ordem_model->recebe_ordens();
 
-
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/ver_ordens');
 		$this->load->view('petrofertil/footer');
@@ -104,28 +103,19 @@ class P_ordem_servico extends CI_Controller
 	public function rever_ordem()
 	{
 
-		$this->load->model('Veiculos_model');
 
-		$this->load->model('Ordem_model');
+		$this->load->model('P_ordem_model');
+		$this->load->model('P_veiculos_empresa_model');
 
 		$id = $this->uri->segment(3);
 
-		$ordem = $this->Ordem_model->recebe_ordem_codigo($id);
-
-		if ($id == 0) {
-
-			redirect('manutencoes');
-		}
-
+		$ordem = $this->P_ordem_model->recebe_ordem_codigo($id);
 
 		$placa = $ordem['placa'];
 
-		$data['veiculo'] = $this->Veiculos_model->recebe_veiculo_placa($placa);
-
-
+		$data['veiculo'] = $this->P_veiculos_empresa_model->recebe_veiculo_placa($placa);
 
 		$data['motorista'] = $ordem['motorista'];
-
 
 		$data['data_reclamacao'] = $ordem['data_reclamacao'];
 
@@ -139,7 +129,7 @@ class P_ordem_servico extends CI_Controller
 		$data['codigo'] = $ordem['codigo'];
 
 
-		$this->load->view('admin/ordem_servico', $data);
+		$this->load->view('petrofertil/ordem_servico', $data);
 		$html = $this->output->get_output();
 		// Load pdf library
 		$this->load->library('pdf');

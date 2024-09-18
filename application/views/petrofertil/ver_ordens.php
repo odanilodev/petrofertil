@@ -44,41 +44,36 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
                                     <tr>
-                                        <th>Nome</th>
-                                        <th>Cidade</th>
-                                        <th>Nome do Contato</th>
-                                        <th>Contato</th>
-
-                                        <th>Editar</th>
-                                        <th>Excluir</th>
+                                        <th>Data Reclamação</th>
+                                        <th>Placa</th>
+                                        <th>Oficina</th>
+                                        <th>Reclamação</th>
+                                        <th>Rever</th>
 
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Nome</th>
-                                        <th>Cidade</th>
-                                        <th>Nome do Contato</th>
-                                        <th>Contato</th>
-                                        <th>Editar</th>
-                                        <th>Excluir</th>
+                                        <th>Data Reclamação</th>
+                                        <th>Placa</th>
+                                        <th>Oficina</th>
+                                        <th>Reclamação</th>
+                                        <th>Rever</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <?php foreach ($ordens as $m) { ?>
+                                            <td><?= date("d/m/Y", strtotime($m['data_reclamacao'])); ?></td>
+                                            <td><?= $m['placa'] ?></td>
+                                            <td><?= $m['oficina'] ?></td>
+                                            <td><?= $m['reclamacao'] ?></td>
+                                            <td><a
+                                                    href="<?= site_url('P_ordem_servico/rever_ordem/' . $m['id']) ?>"><?= $m['codigo'] ?></a>
+                                            </td>
 
 
-                                        <td align="center"><a href=""><i class=" material-icons"><i
-                                                        class="material-icons">mode_edit</i></i></a></td>
-
-
-                                        <td align="center"><a data-toggle="modal" data-target="#exampleModal3"
-                                                data-pegaid=""><i class="material-icons">delete</i></a>
-                                        </td>
+                                        <?php } ?>
 
                                     </tr>
 

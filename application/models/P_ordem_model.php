@@ -56,7 +56,7 @@ class P_ordem_model extends CI_Model
 	public function recebe_ordem_codigo($id)
 	{
 
-		$this->db->where('codigo', $id);
+		$this->db->where('id', $id);
 		$query = $this->db->get('p_ordem_servico');
 		return $query->row_array();
 	}
