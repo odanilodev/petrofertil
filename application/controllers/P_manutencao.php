@@ -217,15 +217,13 @@ class P_manutencao extends CI_Controller
 	public function deleta_manutencao()
 	{
 		$this->load->model('F_contas_model');
-		$this->load->model('Manutencao_model');
+		$this->load->model('P_manutencao_model');
 
 		$id = $this->uri->segment(3);
 
-		$manutencao = $this->Manutencao_model->recebe_manutencao($id);
+		$this->P_manutencao_model->deleta_manutencao($id);
 
-		$this->F_contas_model->deleta_conta($manutencao['id_conta']);
-
-		$this->Manutencao_model->deleta_manutencao($id);
+		redirect('P_manutencao');
 
 	}
 
