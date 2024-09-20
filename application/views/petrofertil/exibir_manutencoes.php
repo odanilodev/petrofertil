@@ -148,6 +148,8 @@ foreach ($manutencoes as $m) {
                                             <th>Ordem</th>
                                             <th>Valor</th>
                                             <th>Ver Mais</th>
+                                            <th>Deletar</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -177,6 +179,13 @@ foreach ($manutencoes as $m) {
                                                         href="<?= site_url('P_manutencao/ver_manutencao/') . $m['id'] ?>"><i
                                                             class="material-icons"><i
                                                                 class="material-icons">download</i></i></a>
+                                                </td>
+
+                                                <td align="center"><a
+                                                        href="<?= site_url('P_manutencao/deleta_manutencao/') . $m['id'] ?>"><i
+                                                            class="material-icons">
+                                                            <ete class="material-icons">delete
+                                                        </i></i></a>
                                                 </td>
 
 
