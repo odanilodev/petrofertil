@@ -128,7 +128,7 @@ class P_manutencao extends CI_Controller
 	public function cadastrar_manutencao()
 	{
 		// Carregando os modelos necessários
-		$this->load->model('P_manutencao_Model');
+		$this->load->model('P_manutencao_model');
 
 		// Validando e obtendo dados do POST
 		$servicos = $this->input->post('servico');
