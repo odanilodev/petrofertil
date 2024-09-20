@@ -152,7 +152,7 @@ class P_manutencao extends CI_Controller
 		];
 
 		// Inserindo manutenção
-		$this->P_manutencao_Model->inserir_manutencao($dados);
+		$this->P_manutencao_model->inserir_manutencao($dados);
 		redirect('P_manutencao');
 	}
 
