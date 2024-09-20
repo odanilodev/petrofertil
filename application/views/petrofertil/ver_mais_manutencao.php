@@ -98,12 +98,7 @@ $contador = count($serv_array);
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="page-header d-flex justify-content-between align-items-center">
-                    <h2 class="pageheader-title mb-0">Serviço Detalhado</h2>
-                    <a href="<?= site_url('manutencoes/detalhe_veiculo/') . $manutencao['placa'] ?>">
-                        <button type="button" class="btn btn-success">Voltar</button>
-                    </a>
-                </div>
+
 
                 <div class="card mt-3">
                     <div class="card-header">
