@@ -180,7 +180,7 @@
 
 
                             <div class="col-sm-4">
-                                <label>Valor por KM</label>
+                                <label class="label-valor-tipo-frete">Valor por KM</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input id="valor-tipo-frete" type="text" name='valor_km' value=""
@@ -363,6 +363,14 @@
 
     <script>
 
+        function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
+
+            const toneladas = quantidadeRecebida / 1000;
+            const totalFrete = toneladas * valorPorTonelada;
+
+            return totalFrete;
+        }
+
         $(document).ready(function () {
             function carregarProdutosParaCampo(container) {
                 var id_cliente = $('#selectCliente').val();
@@ -376,6 +384,14 @@
                         container.find('.produto-select').html(data.option_produto);
                         container.find('.vendedor-select').html(data.vendedor);
                         $('.data_pagamento').val(data.data_pagamento);
+
+                        if ($('.frete-select').val() == 'Valor por Tonelada') {
+                            $('.label-valor-tipo-frete').html('Valor por Tonelada');
+
+                            $('#valor-tipo-frete').val(data.valor_por_tonelada);
+                        } else {
+                            $('.label-valor-tipo-frete').html('Valor por KM');
+                        }
 
                     }
                 });
@@ -479,7 +495,13 @@
 
                 if (selectTipoFrete != 'Valor por Km rodado') {
 
-                    totalFrete += valorTipoFrete * quantidade;
+                    if ($('.frete-select').val() == "Valor por Tonelada") {
+                        totalFrete += calcularFretePorTonelada(quantidade, valorTipoFrete);
+                    } else {
+
+                        totalFrete += valorTipoFrete * quantidade;
+                    }
+
                 }
 
                 totalMultiplicacao += valor * quantidade;

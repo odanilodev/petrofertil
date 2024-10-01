@@ -94,6 +94,8 @@ class P_clientes_petrofertil extends CI_Controller
 		$comissao = json_decode($cliente['comissao'], true);
 		$medida_produto = json_decode($cliente['medida_produto'], true);
 		$valorTipoFrete = $cliente['valor_frete'];
+		$valorPorTonelada = $cliente['valor_por_tonelada'];
+
 
 		$option = '';
 		$posicao = 0; // Inicializa a posição aqui
@@ -108,7 +110,6 @@ class P_clientes_petrofertil extends CI_Controller
 		$option_vendedor = "<option class='info-produto' value='" . $cliente['vendedor'] . "'>" . $cliente['vendedor'] . "</option>";
 
 		$option_frete = "<option class='info-produto' value='" . $cliente['tipo_frete'] . "'>" . $cliente['tipo_frete'] . "</option>";
-
 
 		// Supondo que $cliente['prazo_pagamento'] contém o número de dias a serem adicionados à data atual
 		$prazo_pagamento = $cliente['prazo_pagamento']; // Exemplo: 30 dias
@@ -125,7 +126,8 @@ class P_clientes_petrofertil extends CI_Controller
 			'vendedor' => $option_vendedor,
 			'option_frete' => $option_frete,
 			'valor_tipo_frete' => $valorTipoFrete,
-			'data_pagamento' => $data_pagamento
+			'data_pagamento' => $data_pagamento,
+			'valor_por_tonelada' => $valorPorTonelada
 
 		);
 
@@ -156,8 +158,10 @@ class P_clientes_petrofertil extends CI_Controller
 		$dados['prazo_pagamento'] = $this->input->post('prazo_pagamento');
 		$dados['valor_frete'] = $this->input->post('valor_frete');
 		$dados['tipo_frete'] = $this->input->post('tipo_frete');
+		$dados['valor_por_tonelada'] = $this->input->post('valor_por_tonelada');
 		$dados['observacao'] = $this->input->post('observacao');
 		$dados['distancia'] = $this->input->post('distancia');
+
 
 
 		$dados['produto'] = json_encode($this->input->post('produto'));
