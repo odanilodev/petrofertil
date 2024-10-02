@@ -162,7 +162,13 @@ class P_clientes_petrofertil extends CI_Controller
 		$dados['observacao'] = $this->input->post('observacao');
 		$dados['distancia'] = $this->input->post('distancia');
 
+		if ($dados['tipo_frete'] != 'Valor por Tonelada') {
+			$dados['valor_por_tonelada'] == '';
+		}
 
+		if ($dados['tipo_frete'] != 'Valor por KG') {
+			$dados['valor_frete'] == '';
+		}
 
 		$dados['produto'] = json_encode($this->input->post('produto'));
 		$dados['valor_produto'] = json_encode($this->input->post('valor_produto'));

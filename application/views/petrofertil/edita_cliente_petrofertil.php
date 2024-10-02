@@ -169,16 +169,6 @@
 								</div>
 
 								<div class="col-sm-4">
-									<label>Valor Frete</label>
-									<div class="form-group">
-										<div class="form-line">
-											<input type="text" name='valor_frete' value="<?= $cliente['valor_frete'] ?>"
-												class="form-control valor" placeholder="Digite o valor médio de frete">
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-4">
 									<label>Vendedor:</label>
 									<select name="vendedor" class="form-control show-tick">
 										<option>Selecione</option>
@@ -277,6 +267,49 @@
 									</div>
 								</div>
 
+								<div class="header col-md-12">
+									<h2>Informações de frete</h2>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Tipo de Frete</label>
+									<select name="tipo_frete" id="tipoFrete" class="form-control show-tick"
+										onchange="toggleFreteFields()">
+										<option value="">Selecione</option>
+										<option value="Valor por KG" <?= $cliente['tipo_frete'] == 'Valor por KG' ? 'selected' : '' ?>>Valor por KG</option>
+										<option value="Valor por Km rodado" <?= $cliente['tipo_frete'] == 'Valor por Km rodado' ? 'selected' : '' ?>>Valor por Km rodado</option>
+										<option value="Valor por Tonelada" <?= $cliente['tipo_frete'] == 'Valor por Tonelada' ? 'selected' : '' ?>>Valor por Tonelada</option>
+									</select>
+								</div>
+
+								<!-- Campo de valor frete por KM ou KG -->
+								<div class="col-sm-2" id="valorFreteWrapper">
+									<label>Valor Frete por KM ou Kg</label>
+									<div class="form-group">
+										<div class="form-line">
+											<input type="text" id="valorFrete" name="valor_frete"
+												value="<?= $cliente['valor_frete'] ?>" class="form-control valor"
+												placeholder="Digite o valor médio de frete">
+										</div>
+									</div>
+								</div>
+
+								<!-- Campo de valor por Tonelada (inicialmente escondido) -->
+								<div class="col-sm-2" id="valorPorToneladaWrapper" style="display: none;">
+									<label>Valor por Tonelada</label>
+									<div class="form-group">
+										<div class="form-line">
+											<select id="valorPorTonelada" name="valor_por_tonelada"
+												class="form-control">
+												<option value="">Selecione o valor por tonelada</option>
+												<option value="70" <?= $cliente['valor_por_tonelada'] == 70 ? 'selected' : '' ?>>R$70,00 por tonelada</option>
+												<option value="100" <?= $cliente['valor_por_tonelada'] == 100 ? 'selected' : '' ?>>R$100,00 por tonelada</option>
+												<option value="120" <?= $cliente['valor_por_tonelada'] == 120 ? 'selected' : '' ?>>R$120,00 por tonelada</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
 
 								<div class="col-sm-12">
 									<button type="submit" class="btn btn-primary">Salvar</button>
@@ -309,6 +342,32 @@
 
 
 <script>
+
+	// Função para exibir os campos corretos com base no tipo de frete selecionado
+	function toggleFreteFields() {
+		const tipoFrete = document.getElementById('tipoFrete').value;
+		const valorFreteWrapper = document.getElementById('valorFreteWrapper');
+		const valorFreteInput = document.getElementById('valorFrete');
+		const valorPorToneladaWrapper = document.getElementById('valorPorToneladaWrapper');
+		const valorPorToneladaSelect = document.getElementById('valorPorTonelada');
+
+		// Mostrar/esconder campos baseados no tipo de frete
+		if (tipoFrete === 'Valor por Tonelada') {
+			valorPorToneladaWrapper.style.display = 'block';
+			valorFreteWrapper.style.display = 'none'; // Esconder campo de "Valor por KM ou Kg"
+			valorFreteInput.value = ''; // Zerar o valor do campo escondido
+		} else {
+			valorPorToneladaWrapper.style.display = 'none';
+			valorPorToneladaSelect.value = ''; // Zerar o valor do campo escondido
+			valorFreteWrapper.style.display = 'block'; // Mostrar campo de "Valor por KM ou Kg"
+		}
+	}
+
+	// Função para preencher os campos ao carregar a página
+	window.onload = function () {
+		toggleFreteFields(); // Chama a função para exibir o campo correto com base no tipo de frete carregado
+	};
+
 	function addProductEntry() {
 		const productSection = document.getElementById('product-section');
 		const productEntry = document.createElement('div');
@@ -319,7 +378,7 @@
 				<select name="produto[]" class="form-control" onchange="loadMateriaPrimaOptions(this)">
 					<option value="" disabled selected>Selecione o produto</option>
 					<?php foreach ($produtos as $produto): ?>
-																																																									<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
+																																																																							<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
