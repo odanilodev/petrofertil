@@ -136,63 +136,90 @@
 									</div>
 								</div>
 
-								<div class="col-sm-4">
-									<label>Forma de pagamento:</label>
-									<select name="forma_pagamento" class="form-control show-tick">
-										<option>Selecione</option>
-										<option <?= $cliente['forma_pagamento'] == 'Pix' ? 'selected' : '' ?> value="Pix">
-											Pix</option>
-										<option <?= $cliente['forma_pagamento'] == 'Cartão' ? 'selected' : '' ?>
-											value="Cartão">Cartão</option>
-										<option <?= $cliente['forma_pagamento'] == 'Boleto' ? 'selected' : '' ?>
-											value="Boleto">Boleto</option>
-										<option <?= $cliente['forma_pagamento'] == 'Cheque' ? 'selected' : '' ?>
-											value="Cheque">Cheque</option>
-									</select>
-								</div>
-
-								<div class="col-sm-4">
-									<label>Prazo de pagamento (em dias)</label>
-									<select name="prazo_pagamento" class="form-control show-tick">
-										<option>Selecione</option>
-										<option <?= $cliente['prazo_pagamento'] == '7' ? 'selected' : '' ?> value="7">7
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '15' ? 'selected' : '' ?> value="15">15
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '30' ? 'selected' : '' ?> value="30">30
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '45' ? 'selected' : '' ?> value="45">45
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '60' ? 'selected' : '' ?> value="60">60
-										</option>
-									</select>
-								</div>
 
 								<div class="col-sm-4">
 									<label>Vendedor:</label>
-									<select name="vendedor" class="form-control show-tick">
-										<option>Selecione</option>
-										<?php foreach ($vendedores as $v) { ?>
-											<option <?= $cliente['vendedor'] == $v['nome'] ? 'selected' : '' ?>
-												value="<?= $v['nome'] ?>">
-												<?= $v['nome'] ?>
-											</option>
-										<?php } ?>
-									</select>
+									<div class="form-group">
+										<div class="form-line">
+											<select name="vendedor" class="form-control show-tick">
+												<option>Selecione</option>
+												<?php foreach ($vendedores as $v) { ?>
+													<option <?= $cliente['vendedor'] == $v['nome'] ? 'selected' : '' ?>
+														value="<?= $v['nome'] ?>">
+														<?= $v['nome'] ?>
+													</option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
 								</div>
 
 								<div class="col-sm-4">
 									<label>Transportador:</label>
-									<select name="transportador" class="form-control show-tick">
-										<option>Selecione</option>
-										<option <?= $cliente['transportador'] == 'Próprio' ? 'selected' : '' ?>
-											value="Próprio">Próprio</option>
-										<option <?= $cliente['transportador'] == 'Terceiro' ? 'selected' : '' ?>
-											value="Terceiro">Terceiro</option>
-										<option <?= $cliente['transportador'] == 'Ambos' ? 'selected' : '' ?>
-											value="Ambos">Ambos</option>
-									</select>
+									<div class="form-group">
+										<div class="form-line">
+											<select name="transportador" class="form-control show-tick">
+												<option>Selecione</option>
+												<option <?= $cliente['transportador'] == 'Próprio' ? 'selected' : '' ?>
+													value="Próprio">Próprio</option>
+												<option <?= $cliente['transportador'] == 'Terceiro' ? 'selected' : '' ?>
+													value="Terceiro">Terceiro</option>
+												<option <?= $cliente['transportador'] == 'Ambos' ? 'selected' : '' ?>
+													value="Ambos">Ambos</option>
+											</select>
+										</div>
+									</div>
 								</div>
+
+
+								<div class="col-sm-4">
+									<label>Prazo de pagamento (em dias)</label>
+									<div class="form-group">
+										<div class="form-line">
+											<select name="prazo_pagamento" class="form-control show-tick">
+												<option>Selecione</option>
+												<option <?= $cliente['prazo_pagamento'] == '7' ? 'selected' : '' ?>
+													value="7">7
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '15' ? 'selected' : '' ?>
+													value="15">15
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '30' ? 'selected' : '' ?>
+													value="30">30
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '45' ? 'selected' : '' ?>
+													value="45">45
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '60' ? 'selected' : '' ?>
+													value="60">60
+												</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-sm-4">
+									<div class="form-group">
+										<div class="form-line">
+											<label>Forma de pagamento:</label>
+											<select name="forma_pagamento" class="form-control show-tick">
+												<option>Selecione</option>
+												<option <?= $cliente['forma_pagamento'] == 'Pix' ? 'selected' : '' ?>
+													value="Pix">
+													Pix</option>
+												<option <?= $cliente['forma_pagamento'] == 'Cartão' ? 'selected' : '' ?>
+													value="Cartão">Cartão</option>
+												<option <?= $cliente['forma_pagamento'] == 'Boleto' ? 'selected' : '' ?>
+													value="Boleto">Boleto</option>
+												<option <?= $cliente['forma_pagamento'] == 'Cheque' ? 'selected' : '' ?>
+													value="Cheque">Cheque</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+
 
 								<div class="col-sm-12">
 									<label>Produtos e Valores</label>
@@ -216,7 +243,8 @@
 													<div class="col-sm-2">
 														<select name="materia_prima[]"
 															class="form-control materia-prima-select" required>
-															<option disabled value="">Selecione a matéria-prima</option>
+															<option disabled value="">Selecione a matéria-prima
+															</option>
 															<!-- Exibir as matérias-primas associadas ao produto, se houver -->
 															<?php if (!empty($materia_prima[$index])): ?>
 
@@ -378,7 +406,7 @@
 				<select name="produto[]" class="form-control" onchange="loadMateriaPrimaOptions(this)">
 					<option value="" disabled selected>Selecione o produto</option>
 					<?php foreach ($produtos as $produto): ?>
-																																																																							<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
+																																																																																								<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
