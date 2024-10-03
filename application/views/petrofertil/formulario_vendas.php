@@ -367,7 +367,6 @@
 
             const toneladas = quantidadeRecebida / 1000;
             const totalFrete = toneladas * valorPorTonelada;
-
             return totalFrete;
         }
 
@@ -484,6 +483,7 @@
             var totalMultiplicacao = 0;
             var totalFrete = 0;
 
+            let quantidadeTotal = 0;
             // passa pela div dos produtos pra somar entre eles
             $('.div-campos').each(function () {
 
@@ -492,6 +492,8 @@
 
                 let quantidade_ = $(this).find('.input-multiplicar');
                 let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
+
+                quantidadeTotal += quantidade;
 
                 if (selectTipoFrete != 'Valor por Km rodado') {
 
@@ -505,7 +507,6 @@
                 }
 
                 totalMultiplicacao += valor * quantidade;
-
 
             })
 
@@ -523,6 +524,12 @@
 
                 totalFrete = totalFrete + valorAdicional;
 
+            }
+
+            if (quantidadeTotal > 14000) {
+
+                let diferencaQuantidade = quantidadeTotal - 14000;
+                totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
             }
 
             function setValueAndMask(value, totalFrete) {
