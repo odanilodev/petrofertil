@@ -255,7 +255,7 @@
 									<label>Tipo de Frete</label>
 									<select name="tipo_frete" id="tipoFrete" class="form-control show-tick">
 										<option>Selecione</option>
-										<option value="Valor por KG">Valor por KG</option>
+										<!-- <option value="Valor por KG">Valor por KG</option> -->
 										<option value="Valor por Km rodado">Valor por Km rodado</option>
 										<option value="Valor por Tonelada">Valor por Tonelada</option>
 									</select>
