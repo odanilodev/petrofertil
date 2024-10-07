@@ -304,7 +304,6 @@
 									<select name="tipo_frete" id="tipoFrete" class="form-control show-tick"
 										onchange="toggleFreteFields()">
 										<option value="">Selecione</option>
-										<option value="Valor por KG" <?= $cliente['tipo_frete'] == 'Valor por KG' ? 'selected' : '' ?>>Valor por KG</option>
 										<option value="Valor por Km rodado" <?= $cliente['tipo_frete'] == 'Valor por Km rodado' ? 'selected' : '' ?>>Valor por Km rodado</option>
 										<option value="Valor por Tonelada" <?= $cliente['tipo_frete'] == 'Valor por Tonelada' ? 'selected' : '' ?>>Valor por Tonelada</option>
 									</select>
@@ -406,7 +405,7 @@
 				<select name="produto[]" class="form-control" onchange="loadMateriaPrimaOptions(this)">
 					<option value="" disabled selected>Selecione o produto</option>
 					<?php foreach ($produtos as $produto): ?>
-																																																																																								<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
+																																																																																											<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
