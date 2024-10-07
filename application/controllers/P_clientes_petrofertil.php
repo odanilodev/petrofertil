@@ -127,7 +127,9 @@ class P_clientes_petrofertil extends CI_Controller
 			'option_frete' => $option_frete,
 			'valor_tipo_frete' => $valorTipoFrete,
 			'data_pagamento' => $data_pagamento,
-			'valor_por_tonelada' => $valorPorTonelada
+			'valor_por_tonelada' => $valorPorTonelada,
+			'distancia' => $cliente['distancia']
+
 
 		);
 

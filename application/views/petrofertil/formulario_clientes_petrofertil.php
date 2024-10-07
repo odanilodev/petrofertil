@@ -267,7 +267,7 @@
 										<div class="form-line">
 											<input type="text" id="valorFrete" name='valor_frete'
 												value="<?= $cliente['valor_frete'] ?>" class="form-control valor"
-												placeholder="Digite o valor médio de frete">
+												placeholder="Valor médio de frete">
 										</div>
 									</div>
 								</div>
@@ -288,6 +288,15 @@
 									</div>
 								</div>
 
+								<div class="col-sm-2">
+									<label>Distancia do Cliente (KM)</label>
+									<div class="form-group">
+										<div class="form-line">
+											<input type="number" name='distancia' value="<?= $cliente['distancia'] ?>"
+												class="form-control" placeholder="Distancia do cliente">
+										</div>
+									</div>
+								</div>
 
 								<div class="col-sm-12">
 									<button type="submit" class="btn btn-primary">Cadastrar</button>
