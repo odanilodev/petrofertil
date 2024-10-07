@@ -193,7 +193,8 @@
                                 <label>Km total rodado</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="number" name='valor_km' value="" class="form-control km-rodado"
+                                        <input type="number" name='valor_km' value=""
+                                            class="form-control km-rodado distancia-cliente"
                                             placeholder="Digite o valor por KM rodado">
                                     </div>
                                 </div>
@@ -299,7 +300,6 @@
                                 </div>
                             </div>
 
-
                             <div class="col-sm-12">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                                 <div class='lala'><!-- js --></div>
@@ -390,6 +390,10 @@
                             $('#valor-tipo-frete').val(data.valor_por_tonelada);
                         } else {
                             $('.label-valor-tipo-frete').html('Valor por KM');
+
+                            $('.distancia-cliente').val(data.distancia);
+                            calcularTotal();
+
                         }
 
                     }

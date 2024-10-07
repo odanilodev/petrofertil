@@ -337,6 +337,16 @@
 									</div>
 								</div>
 
+								<div class="col-sm-2">
+									<label>Distancia do Cliente (KM)</label>
+									<div class="form-group">
+										<div class="form-line">
+											<input type="number" name='distancia' value="<?= $cliente['distancia'] ?>"
+												class="form-control" placeholder="Distancia do cliente">
+										</div>
+									</div>
+								</div>
+
 
 								<div class="col-sm-12">
 									<button type="submit" class="btn btn-primary">Salvar</button>
@@ -405,7 +415,7 @@
 				<select name="produto[]" class="form-control" onchange="loadMateriaPrimaOptions(this)">
 					<option value="" disabled selected>Selecione o produto</option>
 					<?php foreach ($produtos as $produto): ?>
-																																																																																											<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
+																																																																																																	<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
