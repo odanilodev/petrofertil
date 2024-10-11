@@ -257,25 +257,14 @@
 
                     <div class="body">
                         <div class="row clearfix">
-
                             <div class="col-sm-4">
                                 <label>Status do pagamento *</label>
-                                <select required name="status_pagamento" required class="form-control">
+                                <select required name="status_pagamento" id="status_pagamento" class="form-control">
                                     <option>Selecione</option>
-                                    <option selected value="em aberto">Em aberto</option>
-                                    <!-- <option value="pago">Pago</option> -->
+                                    <option value="em aberto">Em aberto</option>
+                                    <option value="pago">Pago</option>
                                 </select>
                             </div>
-
-                            <!--<div class="col-sm-4">
-                                        <label>Conta Relacionada *</label>
-                                        <select required name="conta_relacionada" required class="form-control">
-                                            <option>Selecione</option>
-                                            <?php foreach ($contas as $c) { ?>
-                                            <option value="<?= $c['id'] ?>"><?= $c['descricao'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div> -->
 
                             <div class="col-sm-4">
                                 <label>Valor Total da Venda *</label>
@@ -292,133 +281,189 @@
                                 <div required class="form-group">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="date" name='prazo_pagamento'
-                                                value="<?= isset($vendedor['prazo_pagamento']) ? $vendedor['prazo_pagamento'] : '' ?>"
+                                            <input type="date" name='prazo_pagamento' value=""
                                                 class="form-control data_pagamento" placeholder="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- Campo para valor de pagamento -->
+                            <div class="col-sm-4">
+                                <label>Valor Pago *</label>
+                                <input type="text" name="valor_pago" class="form-control"
+                                    placeholder="Digite o valor pago">
+                            </div>
+
+                            <!-- Campos adicionais ao selecionar "Pago" -->
+                            <div id="pagamento_campos" style="display:none;">
+                                <div class="col-sm-4">
+                                    <label>Forma de pagamento *</label>
+                                    <select id="forma_pagamento" class="form-control" name="forma_pagamento">
+                                        <option value="dinheiro">Dinheiro</option>
+                                        <option value="cheque">Cheque</option>
+                                        <option value="deposito">Depósito</option>
+                                    </select>
+                                </div>
+
+                                <div id="forma_pagamento_extras" style="display:none;">
+                                    <!-- Campos extras para o cheque -->
+                                    <div class="col-sm-4" id="cheque_extras" style="display:none;">
+                                        <label>Numero do cheque *</label>
+                                        <input type="text" name="nome_cheque" class="form-control"
+                                            placeholder="Nome do cheque">
+
+                                        <label>Valor do cheque *</label>
+                                        <input type="text" name="valor_cheque" class="form-control"
+                                            placeholder="Valor do cheque">
+
+                                        <label>Data de vencimento do cheque *</label>
+                                        <input type="date" name="data_vencimento_cheque" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="col-sm-12">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
-                                <div class='lala'><!-- js --></div>
                             </div>
                         </div>
                     </div>
-                    </form>
                 </div>
 
 
-            </div>
-        </div>
-        <!-- #END# Input -->
-    </div>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                <script>
+                    $(document).ready(function () {
+                        // Detecta mudança no campo de status de pagamento
+                        $('#status_pagamento').change(function () {
+                            var status = $(this).val();
+                            if (status === 'pago') {
+                                $('#pagamento_campos').show(); // Exibe campos de forma de pagamento
+                                $('#forma_pagamento_extras').show(); // Esconde os extras também
+                            } else {
+                                $('#pagamento_campos').hide(); // Esconde os campos caso não seja "pago"
+                                $('#forma_pagamento_extras').hide(); // Esconde os extras também
+                            }
+                        });
+
+                        // Detecta mudança na forma de pagamento
+                        $('#forma_pagamento').change(function () {
+                            var forma = $(this).val();
+                            if (forma === 'cheque') {
+                                $('#cheque_extras').show(); // Exibe campos extras para cheque
+                            } else {
+                                $('#cheque_extras').hide(); // Esconde campos extras para cheque
+                            }
+
+                            $('#forma_pagamento_extras').show(); // Exibe o campo de valor pago para todas as formas de pagamento
+                        });
+                    });
+                </script>
+
+                <script>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
+                    $('#selectCliente').change(function () {
+                        var id_cliente = $(this).val();
+                        $.ajax({
+                            type: "POST",
+                            url: '<?= base_url("P_clientes_petrofertil/recebe_cliente") ?>',
+                            data: {
+                                id_cliente: id_cliente
+                            },
+                            success: function (data) {
+                                $('.produto-select').html(data.option_produto);
+                                $('.materia-select').html(data.materia_prima);
+                                $('.vendedor-select').html(data.vendedor);
+                                $('.frete-select').html(data.option_frete);
+                                $('#valor-tipo-frete').val(data.valor_tipo_frete);
 
+                            }
+                        });
+                    });
 
+                    $('#selectTransportador').change(function () {
+                        var nome_transportador = $(this).val();
+                        $.ajax({
+                            type: "POST",
+                            url: '<?= base_url("P_motoristas/recebe_motoristas_transportador_veiculos") ?>',
+                            data: {
+                                nome_transportador: nome_transportador
+                            },
+                            success: function (data) {
+                                $('.motorista-select').html(data.option_motorista);
+                                $('.veiculo-select').html(data.option_veiculo);
 
-        $('#selectCliente').change(function () {
-            var id_cliente = $(this).val();
-            $.ajax({
-                type: "POST",
-                url: '<?= base_url("P_clientes_petrofertil/recebe_cliente") ?>',
-                data: {
-                    id_cliente: id_cliente
-                },
-                success: function (data) {
-                    $('.produto-select').html(data.option_produto);
-                    $('.materia-select').html(data.materia_prima);
-                    $('.vendedor-select').html(data.vendedor);
-                    $('.frete-select').html(data.option_frete);
-                    $('#valor-tipo-frete').val(data.valor_tipo_frete);
+                            }
+                        });
+                    });
 
-                }
-            });
-        });
+                </script>
 
-        $('#selectTransportador').change(function () {
-            var nome_transportador = $(this).val();
-            $.ajax({
-                type: "POST",
-                url: '<?= base_url("P_motoristas/recebe_motoristas_transportador_veiculos") ?>',
-                data: {
-                    nome_transportador: nome_transportador
-                },
-                success: function (data) {
-                    $('.motorista-select').html(data.option_motorista);
-                    $('.veiculo-select').html(data.option_veiculo);
+                <!-- Seu HTML existente permanece inalterado -->
 
-                }
-            });
-        });
+                <script>
 
-    </script>
+                    function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
 
-    <!-- Seu HTML existente permanece inalterado -->
+                        const toneladas = quantidadeRecebida / 1000;
+                        const totalFrete = toneladas * valorPorTonelada;
+                        return totalFrete;
+                    }
 
-    <script>
+                    $(document).ready(function () {
+                        function carregarProdutosParaCampo(container) {
+                            var id_cliente = $('#selectCliente').val();
+                            $.ajax({
+                                type: "POST",
+                                url: '<?= base_url("P_clientes_petrofertil/recebe_cliente") ?>',
+                                data: {
+                                    id_cliente: id_cliente
+                                },
+                                success: function (data) {
+                                    container.find('.produto-select').html(data.option_produto);
+                                    container.find('.vendedor-select').html(data.vendedor);
+                                    $('.data_pagamento').val(data.data_pagamento);
 
-        function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
+                                    if ($('.frete-select').val() == 'Valor por Tonelada') {
+                                        $('.label-valor-tipo-frete').html('Valor por Tonelada');
 
-            const toneladas = quantidadeRecebida / 1000;
-            const totalFrete = toneladas * valorPorTonelada;
-            return totalFrete;
-        }
+                                        $('#valor-tipo-frete').val(data.valor_por_tonelada);
+                                    } else {
+                                        $('.label-valor-tipo-frete').html('Valor por KM');
 
-        $(document).ready(function () {
-            function carregarProdutosParaCampo(container) {
-                var id_cliente = $('#selectCliente').val();
-                $.ajax({
-                    type: "POST",
-                    url: '<?= base_url("P_clientes_petrofertil/recebe_cliente") ?>',
-                    data: {
-                        id_cliente: id_cliente
-                    },
-                    success: function (data) {
-                        container.find('.produto-select').html(data.option_produto);
-                        container.find('.vendedor-select').html(data.vendedor);
-                        $('.data_pagamento').val(data.data_pagamento);
+                                        $('.distancia-cliente').val(data.distancia);
+                                        calcularTotal();
 
-                        if ($('.frete-select').val() == 'Valor por Tonelada') {
-                            $('.label-valor-tipo-frete').html('Valor por Tonelada');
+                                    }
 
-                            $('#valor-tipo-frete').val(data.valor_por_tonelada);
-                        } else {
-                            $('.label-valor-tipo-frete').html('Valor por KM');
-
-                            $('.distancia-cliente').val(data.distancia);
-                            calcularTotal();
-
+                                }
+                            });
                         }
 
-                    }
-                });
-            }
 
+                        $(document).on('change', '.produto-select', function () {
 
-            $(document).on('change', '.produto-select', function () {
+                            var container = $(this).closest('.product-entry');
+                            var valor = container.find('.produto-select option:selected').attr('valorProduto');
+                            var comissao = container.find('.produto-select option:selected').attr('comissaoProduto');
+                            var medida = container.find('.produto-select option:selected').attr('medidaProduto');
 
-                var container = $(this).closest('.product-entry');
-                var valor = container.find('.produto-select option:selected').attr('valorProduto');
-                var comissao = container.find('.produto-select option:selected').attr('comissaoProduto');
-                var medida = container.find('.produto-select option:selected').attr('medidaProduto');
+                            container.find('.input-valor').val(valor);
+                            container.find('.input-comissao').val(comissao);
+                            container.find('.input-medida').val(medida);
+                        });
 
-                container.find('.input-valor').val(valor);
-                container.find('.input-comissao').val(comissao);
-                container.find('.input-medida').val(medida);
-            });
+                        $(document).on('click', '.btn-remove', function () {
+                            $(this).closest('.product-entry').remove();
+                        });
 
-            $(document).on('click', '.btn-remove', function () {
-                $(this).closest('.product-entry').remove();
-            });
-
-            $('#btnAdicionarProduto').on('click', function () {
-                var novoProdutoHTML = `
+                        $('#btnAdicionarProduto').on('click', function () {
+                            var novoProdutoHTML = `
                 <div class="product-entry">
                     <div class="row div-campos">
                         <div class="col-sm-3">
@@ -450,100 +495,100 @@
                 </div>
             `;
 
-                $('#product-section').append(novoProdutoHTML);
+                            $('#product-section').append(novoProdutoHTML);
 
-                var novoContainer = $('#product-section').children().last();
-                carregarProdutosParaCampo(novoContainer);
-            });
+                            var novoContainer = $('#product-section').children().last();
+                            carregarProdutosParaCampo(novoContainer);
+                        });
 
-            $(document).on('click', '.btn-remove', function () {
-                $(this).closest('.product-entry').remove();
-                $(this).closest('.product-entry').find('.input-multiplicar').val('');
-                $(this).closest('.product-entry').find('.input-somar').val('');
+                        $(document).on('click', '.btn-remove', function () {
+                            $(this).closest('.product-entry').remove();
+                            $(this).closest('.product-entry').find('.input-multiplicar').val('');
+                            $(this).closest('.product-entry').find('.input-somar').val('');
 
-                calcularTotal();
-            });
-
-
-
-            $('#selectCliente').change(function () {
-                carregarProdutosParaCampo($('#product-section'));
-            });
-        });
+                            calcularTotal();
+                        });
 
 
-        // soma o valor total dos produtos
-        $(document).on('keyup', '.input-somar, .input-multiplicar, .valor-frete, .valor-adicional, #valor-tipo-frete, .km-rodado', function () {
-            calcularTotal();
-        });
 
-        function calcularTotal() {
+                        $('#selectCliente').change(function () {
+                            carregarProdutosParaCampo($('#product-section'));
+                        });
+                    });
 
-            let valorAdicional = parseFloat($('.valor-adicional').val()) || 0;
-            let valorTipoFrete = $('#valor-tipo-frete').val();
 
-            let selectTipoFrete = $('.frete-select').val();
+                    // soma o valor total dos produtos
+                    $(document).on('keyup', '.input-somar, .input-multiplicar, .valor-frete, .valor-adicional, #valor-tipo-frete, .km-rodado', function () {
+                        calcularTotal();
+                    });
 
-            var totalMultiplicacao = 0;
-            var totalFrete = 0;
+                    function calcularTotal() {
 
-            let quantidadeTotal = 0;
-            // passa pela div dos produtos pra somar entre eles
-            $('.div-campos').each(function () {
+                        let valorAdicional = parseFloat($('.valor-adicional').val()) || 0;
+                        let valorTipoFrete = $('#valor-tipo-frete').val();
 
-                let valor_ = $(this).find('.input-somar');
-                let valor = parseFloat(valor_.val()) || 0;
+                        let selectTipoFrete = $('.frete-select').val();
 
-                let quantidade_ = $(this).find('.input-multiplicar');
-                let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
+                        var totalMultiplicacao = 0;
+                        var totalFrete = 0;
 
-                quantidadeTotal += quantidade;
+                        let quantidadeTotal = 0;
+                        // passa pela div dos produtos pra somar entre eles
+                        $('.div-campos').each(function () {
 
-                if (selectTipoFrete != 'Valor por Km rodado') {
+                            let valor_ = $(this).find('.input-somar');
+                            let valor = parseFloat(valor_.val()) || 0;
 
-                    if ($('.frete-select').val() == "Valor por Tonelada") {
-                        totalFrete += calcularFretePorTonelada(quantidade, valorTipoFrete);
-                    } else {
+                            let quantidade_ = $(this).find('.input-multiplicar');
+                            let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
 
-                        totalFrete += valorTipoFrete * quantidade;
+                            quantidadeTotal += quantidade;
+
+                            if (selectTipoFrete != 'Valor por Km rodado') {
+
+                                if ($('.frete-select').val() == "Valor por Tonelada") {
+                                    totalFrete += calcularFretePorTonelada(quantidade, valorTipoFrete);
+                                } else {
+
+                                    totalFrete += valorTipoFrete * quantidade;
+                                }
+
+                            }
+
+                            totalMultiplicacao += valor * quantidade;
+
+                        })
+
+                        var totalSoma = 0;
+
+                        let total = totalMultiplicacao + totalSoma;
+
+                        if (selectTipoFrete != 'Valor por Km rodado') {
+
+                            totalFrete = totalFrete + valorAdicional;
+
+                        } else {
+
+                            totalFrete = valorTipoFrete * $('.km-rodado').val();
+
+                            totalFrete = totalFrete + valorAdicional;
+
+                        }
+
+                        if (quantidadeTotal > 14000) {
+
+                            let diferencaQuantidade = quantidadeTotal - 14000;
+                            totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
+                        }
+
+                        function setValueAndMask(value, totalFrete) {
+                            $('.total-venda').val(value.toFixed(2));
+                            $('.total-venda').trigger('input');
+                            $('.valor-frete').val(totalFrete * 100);
+                            $('.valor-frete').trigger('input');
+                        }
+
+                        setValueAndMask(total, totalFrete);
+
                     }
-
-                }
-
-                totalMultiplicacao += valor * quantidade;
-
-            })
-
-            var totalSoma = 0;
-
-            let total = totalMultiplicacao + totalSoma;
-
-            if (selectTipoFrete != 'Valor por Km rodado') {
-
-                totalFrete = totalFrete + valorAdicional;
-
-            } else {
-
-                totalFrete = valorTipoFrete * $('.km-rodado').val();
-
-                totalFrete = totalFrete + valorAdicional;
-
-            }
-
-            if (quantidadeTotal > 14000) {
-
-                let diferencaQuantidade = quantidadeTotal - 14000;
-                totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
-            }
-
-            function setValueAndMask(value, totalFrete) {
-                $('.total-venda').val(value.toFixed(2));
-                $('.total-venda').trigger('input');
-                $('.valor-frete').val(totalFrete * 100);
-                $('.valor-frete').trigger('input');
-            }
-
-            setValueAndMask(total, totalFrete);
-
-        }
-    </script>
+                </script>

@@ -289,15 +289,13 @@ class P_vendas extends CI_Controller
 
 			if ($dados['forma_pagamento'] == 'cheque') {
 
-				$cheque['numero'] = '';
-				$cheque['data_compensasao'] = $dados['prazo_pagamento'];
+				$cheque['numero'] = $this->input->POST('nome_cheque');
+				$cheque['data_compensasao'] = $this->input->POST('data_vencimento_cheque');
 				$cheque['recebido'] = $dados['cliente'];
-				$cheque['valor'] = $dados['valor_total_venda'];
-				$cheque['referente'] = 'Venda para ' . $dados['cliente'];
-				$cheque['conta'] = $dados['conta_relacionada'];
+				$cheque['valor'] = $this->input->POST('valor_cheque');
+				$cheque['referente'] = 'Venda ticket ' . $dados['ticket'];
 				$cheque['status'] = "A compensar";
 				$cheque['observacao'] = $dados['informacoes_pagamento'];
-
 
 				$this->P_cheques_model->inserir_cheque($cheque);
 
@@ -348,7 +346,9 @@ class P_vendas extends CI_Controller
 		$dados['quantidade'] = json_encode($this->input->post('quantidade'));
 		$dados['codigo_venda'] = $codigo_venda;
 
+
 		$this->P_vendas_model->insere_venda($dados);
+
 		redirect('P_vendas');
 
 
