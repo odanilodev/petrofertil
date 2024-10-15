@@ -317,6 +317,8 @@ class P_vendas extends CI_Controller
 			foreach ($valoresCheques as $cheque) {
 				$dataCheque['recebido'] = $dados['cliente'];
 				$dataCheque['titular'] = $cheque['titular'];
+				$dataCheque['numero'] = $cheque['numero'];
+
 				$dataCheque['data_compensasao'] = $cheque['vencimento_cheque'];
 				$dataCheque['valor'] = $cheque['valor'];
 				$dataCheque['status'] = "A compensar";

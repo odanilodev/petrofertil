@@ -286,12 +286,12 @@
                                 </div>
                             </div>
 
-                            <!-- Campo para valor de pagamento -->
+                            <!-- Campo para valor de pagamento 
                             <div class="col-sm-4">
                                 <label>Valor Pago *</label>
                                 <input type="text" name="valor_pago" class="form-control"
                                     placeholder="Digite o valor pago">
-                            </div>
+                            </div>-->
 
                             <div class="col-sm-12">
                                 <button type="button" class="btn btn-primary btn-finalizar-venda">Cadastrar</button>
