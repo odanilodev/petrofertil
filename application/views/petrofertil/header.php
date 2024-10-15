@@ -358,6 +358,53 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
                     <?php if ($usuario == 'heloisa.inoue@petrofertil.com.br' or $usuario == 'adrielly@petrofertil.com.br') { ?>
 
+
+                        <li class="header">COMERCIAL</li>
+
+                        <li>
+                            <a href="<?= site_url('P_vendas') ?>">
+                                <i class="material-icons">attach_money</i>
+                                <span>Vendas</span>
+                            </a>
+                        </li>
+
+                        <li class="header">FINANCEIRO</li>
+
+                        <li>
+                            <a href="<?= site_url('P_faturamento') ?>">
+                                <i class="material-icons">pie_chart</i>
+                                <span>Livro Caixa</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_caixa') ?>">
+                                <i class="material-icons">monetization_on</i>
+                                <span>Caixa</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_contas_pagar/inicio') ?>">
+                                <i class="material-icons">date_range</i>
+                                <span>Contas a Pagar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_contas_receber/inicio') ?>">
+                                <i class="material-icons">payment</i>
+                                <span>Contas a Receber</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_cheques') ?>">
+                                <i class="material-icons">payment</i>
+                                <span>Cheques a compensar</span>
+                            </a>
+                        </li>
+
                         <li class="header">CADASTRO PETROFERTIL</li>
 
 
@@ -420,14 +467,6 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             </a>
                         </li>
 
-                        <li class="header">COMERCIAL</li>
-
-                        <li>
-                            <a href="<?= site_url('P_vendas') ?>">
-                                <i class="material-icons">attach_money</i>
-                                <span>Vendas</span>
-                            </a>
-                        </li>
 
                         <?php if ($usuario == 'adrielly@petrofertil.com.br') { ?>
 
@@ -439,43 +478,6 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             </li>
 
                         <?php } ?>
-
-                        <li class="header">FINANCEIRO</li>
-
-                        <li>
-                            <a href="<?= site_url('P_faturamento') ?>">
-                                <i class="material-icons">pie_chart</i>
-                                <span>Livro Caixa</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<?= site_url('P_caixa') ?>">
-                                <i class="material-icons">monetization_on</i>
-                                <span>Caixa</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<?= site_url('P_contas_pagar/inicio') ?>">
-                                <i class="material-icons">date_range</i>
-                                <span>Contas a Pagar</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<?= site_url('P_contas_receber/inicio') ?>">
-                                <i class="material-icons">payment</i>
-                                <span>Contas a Receber</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<?= site_url('P_cheques') ?>">
-                                <i class="material-icons">payment</i>
-                                <span>Cheques a compensar</span>
-                            </a>
-                        </li>
 
 
                     <?php } ?>
