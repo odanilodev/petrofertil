@@ -597,10 +597,16 @@
                     <script>
 
                         function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
-                            const toneladas = quantidadeRecebida / 1000;
+                            // Substituindo o ponto por nada (para remover o separador de milhar) e a vírgula por ponto (separador decimal)
+                            const quantidadeFormatada = quantidadeRecebida.toString().replace(/\./g, '').replace(',', '.');
+
+                            // Convertendo a string formatada para um número flutuante
+                            const toneladas = quantidadeFormatada / 1000;
+
+                            // Calculando o frete total
                             const totalFrete = toneladas * valorPorTonelada;
 
-                            // Arredondando para o número inteiro mais próximo, como 11,70 para 12 e 11,20 para 11
+                            // Retornando o valor sem arredondar (ajustar arredondamento se necessário)
                             return Math.round(totalFrete);
                         }
 
@@ -765,11 +771,11 @@
 
                             }
 
-                            if (quantidadeTotal > 14000) {
+                            // if (quantidadeTotal > 14000) {
 
-                                let diferencaQuantidade = quantidadeTotal - 14000;
-                                totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
-                            }
+                            //let diferencaQuantidade = quantidadeTotal - 14000;
+                            // totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
+                            // }
 
                             function setValueAndMask(value, totalFrete) {
                                 $('.total-venda').val(value.toFixed(2));
