@@ -377,7 +377,6 @@ class P_vendas extends CI_Controller
 
 		$codigo_venda = $this->uri->segment(4);
 
-
 		$this->P_contas_pagar_model->deleta_conta_vinculo($codigo_venda);
 		$this->P_contas_receber_model->deleta_conta_vinculo($codigo_venda);
 

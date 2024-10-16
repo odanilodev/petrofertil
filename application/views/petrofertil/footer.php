@@ -249,6 +249,17 @@
 
     })
 
+    $('#deletar_venda').on('shown.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget) // Botão que acionou o modal
+
+        var id_conta = button.data('pegaid') // peguei o data que coloquei la 
+        var cod = button.data('pegacod') // peguei o data que coloquei la 
+
+        $('.deleta').attr('href', '<?= site_url('P_vendas/deleta_venda/') ?>' + id_conta + '/' + cod);
+
+    })
+
     $('#deletar_veiculo_empresa').on('shown.bs.modal', function (event) {
 
         var button = $(event.relatedTarget) // Botão que acionou o modal
