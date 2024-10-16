@@ -172,10 +172,13 @@
 
                             <div class="col-sm-4">
                                 <label>Tipo de cobrança de frete (Cadastrada no cliente)</label>
-                                <select name="tipo_frete" class="form-control frete frete-select">
-                                    <option>Selecione o tipo de frete</option>
+                                <select name="tipo_frete" class="form-control frete frete-select" id="tipoFrete">
+                                    <option value="">Selecione o tipo de frete</option>
+                                    <option value="retirada">Frete retirada</option>
+                                    <!-- Outras opções de frete -->
                                 </select>
                             </div>
+
 
 
                             <div class="col-sm-4">
@@ -376,6 +379,24 @@
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
                     <script>
+                        document.getElementById('tipoFrete').addEventListener('change', function () {
+                            var freteTipo = this.value;
+                            var camposFrete = document.querySelectorAll('.valor, .km-rodado, .valor-adicional, .distancia-cliente');
+
+                            if (freteTipo === 'retirada') {
+                                // Limpar e desabilitar todos os campos relacionados a frete
+                                camposFrete.forEach(function (campo) {
+                                    campo.value = '';
+                                    campo.disabled = true;
+                                });
+                            } else {
+                                // Habilitar os campos novamente
+                                camposFrete.forEach(function (campo) {
+                                    campo.disabled = false;
+                                });
+                            }
+                        });
+
 
                         $(document).ready(function () {
 
