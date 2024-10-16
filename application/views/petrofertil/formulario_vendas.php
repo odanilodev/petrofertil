@@ -597,11 +597,13 @@
                     <script>
 
                         function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
-
                             const toneladas = quantidadeRecebida / 1000;
                             const totalFrete = toneladas * valorPorTonelada;
-                            return totalFrete;
+
+                            // Arredondando para o número inteiro mais próximo, como 11,70 para 12 e 11,20 para 11
+                            return Math.round(totalFrete);
                         }
+
 
                         $(document).ready(function () {
                             function carregarProdutosParaCampo(container) {
