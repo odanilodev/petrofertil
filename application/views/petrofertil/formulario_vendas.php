@@ -203,7 +203,7 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <label>Adicional</label>
+                                <label>Desconto</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" name='adicional' value=""
@@ -214,7 +214,7 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <label>Motivo adicional</label>
+                                <label>Motivo desconto</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" name='motivo_adicional' value="" class="form-control"
@@ -761,13 +761,13 @@
 
                             if (selectTipoFrete != 'Valor por Km rodado') {
 
-                                totalFrete = totalFrete + valorAdicional;
+                                totalFrete = totalFrete - valorAdicional;
 
                             } else {
 
                                 totalFrete = valorTipoFrete * $('.km-rodado').val();
 
-                                totalFrete = totalFrete + valorAdicional;
+                                totalFrete = totalFrete - valorAdicional;
 
                             }
 
