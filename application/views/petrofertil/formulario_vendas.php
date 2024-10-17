@@ -606,9 +606,14 @@
                             // Calculando o frete total
                             const totalFrete = toneladas * valorPorTonelada;
 
-                            // Retornando o valor sem arredondar (ajustar arredondamento se necessário)
-                            return Math.round(totalFrete);
+                            // Arredondando para o inteiro mais próximo, mas apenas se o valor decimal for maior que 0.50
+                            const parteInteira = Math.floor(totalFrete);  // Obtém a parte inteira
+                            const parteDecimal = totalFrete - parteInteira;  // Calcula a parte decimal
+
+                            // Arredonda para cima apenas se a parte decimal for maior que 0.50
+                            return (parteDecimal > 0.50) ? parteInteira + 1 : parteInteira;
                         }
+
 
 
                         $(document).ready(function () {
