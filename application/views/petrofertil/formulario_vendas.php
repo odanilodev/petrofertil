@@ -767,15 +767,17 @@
 
                                 totalFrete = valorTipoFrete * $('.km-rodado').val();
 
+
+                                if (quantidadeTotal > 14000) {
+
+                                    let diferencaQuantidade = quantidadeTotal - 14000;
+                                    totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
+                                }
+
                                 totalFrete = totalFrete - valorAdicional;
 
                             }
 
-                            // if (quantidadeTotal > 14000) {
-
-                            //let diferencaQuantidade = quantidadeTotal - 14000;
-                            // totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
-                            // }
 
                             function setValueAndMask(value, totalFrete) {
                                 $('.total-venda').val(value.toFixed(2));
