@@ -138,7 +138,7 @@
                                                 <div class="col-sm-4">
                                                     <label>Subtotal</label>
                                                     <input required disable type="text" name="subtotal_produto[]"
-                                                        class="form-control input-subtotal form-line"
+                                                        class="form-control input-subtotal valor form-line"
                                                         placeholder="Subtotal">
                                                 </div>
 
@@ -706,7 +706,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Subtotal</label>
-                                            <input disable required type="text" name="subtotal_produto[]" class="form-control input-subtotal form-line" placeholder="Subtotal">
+                                            <input disable required type="text" name="subtotal_produto[]" class="form-control valor input-subtotal form-line" placeholder="Subtotal">
                                         </div>
                                         <div class="col-sm-2" style="float: right"></br>
                                             <button type="button" class="btn btn-grey btn-remove">Remover Produto</button>
@@ -774,7 +774,7 @@
                                 let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
 
                                 let subtotal = valor * quantidade;
-                                $(this).find('.input-subtotal').val(subtotal);
+                                $(this).find('.input-subtotal').val(subtotal.toFixed(2));
 
                                 quantidadeTotal += subtotal;
 
