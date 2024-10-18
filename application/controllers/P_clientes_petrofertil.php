@@ -109,7 +109,7 @@ class P_clientes_petrofertil extends CI_Controller
 
 		$option_vendedor = "<option class='info-produto' value='" . $cliente['vendedor'] . "'>" . $cliente['vendedor'] . "</option>";
 
-		$option_frete = "<option class='info-produto' value='" . $cliente['tipo_frete'] . "'>" . $cliente['tipo_frete'] . "</option>";
+		$option_frete = "<option selected class='info-produto' value='" . $cliente['tipo_frete'] . "'>" . $cliente['tipo_frete'] . "</option>";
 		$option_frete .= "<option class='info-produto' value='retirada'>Frete retirada</option>";
 
 		// Supondo que $cliente['prazo_pagamento'] contém o número de dias a serem adicionados à data atual
