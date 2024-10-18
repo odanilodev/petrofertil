@@ -99,7 +99,7 @@
                                         <div class="product-entry">
                                             <div class="row div-campos">
 
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <label>Produtos e Materia Prima *</label>
 
                                                     <select required name="produto[]"
@@ -108,34 +108,42 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-4">
                                                     <label>Quantidade *</label>
                                                     <input required type="text" name="quantidade[]"
                                                         class="form-control quantidade mask-quilo input-multiplicar"
                                                         placeholder="Digite a quantidade">
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-4">
                                                     <label>Valor *</label>
                                                     <input required type="text" name="valor_produto[]"
                                                         class="form-control input-valor  form-line input-somar"
                                                         placeholder="Digite o valor do produto">
                                                 </div>
 
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-4">
                                                     <label>Comissão *</label>
                                                     <input required type="text" name="comissao[]"
                                                         class="form-control input-comissao form-line"
                                                         placeholder="Digite a comissão">
                                                 </div>
 
-                                                <div class="col-sm-1">
+                                                <div class="col-sm-4">
                                                     <label>Medida *</label>
                                                     <input required disable type="text" name="medida_produto[]"
                                                         class="form-control input-medida form-line"
                                                         placeholder="Medida">
                                                 </div>
 
-                                                <div class="col-sm-2"></br>
+                                                <div class="col-sm-4">
+                                                    <label>Subtotal</label>
+                                                    <input required disable type="text" name="subtotal_produto[]"
+                                                        class="form-control input-subtotal form-line"
+                                                        placeholder="Subtotal">
+                                                </div>
+
+
+                                                <div class="col-sm-2" style="float: right"></br>
                                                     <button type="button" class="btn btn-primary"
                                                         id="btnAdicionarProduto">Adicionar Produto</button>
                                                 </div>
@@ -620,20 +628,32 @@
                                     data: {
                                         id_cliente: id_cliente
                                     },
+                                    beforeSend: function () {
+                                        $('.label-valor-tipo-frete').html('');
+
+                                    },
                                     success: function (data) {
                                         container.find('.produto-select').html(data.option_produto);
                                         container.find('.vendedor-select').html(data.vendedor);
                                         $('.data_pagamento').val(data.data_pagamento);
 
-                                        if ($('.frete-select').val() == 'Valor por Tonelada') {
+                                        let labelTonelada = "<option selected class='info-produto' value='Valor por Tonelada'>Valor por Tonelada</option><option class='info-produto' value='retirada'>Frete retirada</option>";
+
+                                        let labelKg = "<option selected class='info-produto' value='Valor por KG'>Valor por KG</option><option class='info-produto' value='retirada'>Frete retirada</option>";
+
+                                        if (data.option_frete == labelTonelada) {
                                             $('.label-valor-tipo-frete').html('Valor por Tonelada');
 
                                             $('#valor-tipo-frete').val(data.valor_por_tonelada);
-                                        } else {
-                                            $('.label-valor-tipo-frete').html('Valor por KM');
+
+                                        } else if (data.option_frete == labelKg) {
+                                            $('.label-valor-tipo-frete').html('Valor por KG');
 
                                             $('.distancia-cliente').val(data.distancia);
                                             calcularTotal();
+
+                                        } else {
+                                            $('.label-valor-tipo-frete').html('Valor por KM');
 
                                         }
 
@@ -660,36 +680,40 @@
 
                             $('#btnAdicionarProduto').on('click', function () {
                                 var novoProdutoHTML = `
-                <div class="product-entry">
-                    <div class="row div-campos">
-                        <div class="col-sm-3">
-                            <label>Produtos e Matéria Prima</label>
-                            <select name="produto[]" class="form-control produto produto-select">
-                                <option>Selecione o produto</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-2">
-                            <label>Quantidade</label>
-                            <input type="text" required name="quantidade[]"  class="form-control quantidade input-multiplicar mask-quilo" placeholder="Digite a quantidade">
-                        </div>
-                        <div class="col-sm-2">
-                            <label>Valor</label>
-                            <input type="text" required name="valor_produto[]" class="form-control input-valor form-line input-somar" placeholder="Digite o valor do produto">
-                        </div>
-                        <div class="col-sm-2">
-                            <label>Comissão</label>
-                            <input type="text" required name="comissao[]" class="form-control input-comissao form-line" placeholder="Digite a comissão">
-                        </div>
-                        <div class="col-sm-1">
-                            <label>Medida</label>
-                            <input disable required type="text" name="medida_produto[]" class="form-control input-medida form-line" placeholder="Medida">
-                        </div>
-                        <div class="col-sm-2"></br>
-                            <button type="button" class="btn btn-grey btn-remove">Remover Produto</button>
-                        </div>
-                    </div>
-                </div>
-            `;
+                                <div class="product-entry">
+                                    <div class="row div-campos">
+                                        <div class="col-sm-4">
+                                            <label>Produtos e Matéria Prima</label>
+                                            <select name="produto[]" class="form-control produto produto-select">
+                                                <option>Selecione o produto</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Quantidade</label>
+                                            <input type="text" required name="quantidade[]"  class="form-control quantidade input-multiplicar mask-quilo" placeholder="Digite a quantidade">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Valor</label>
+                                            <input type="text" required name="valor_produto[]" class="form-control input-valor form-line input-somar" placeholder="Digite o valor do produto">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Comissão</label>
+                                            <input type="text" required name="comissao[]" class="form-control input-comissao form-line" placeholder="Digite a comissão">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Medida</label>
+                                            <input disable required type="text" name="medida_produto[]" class="form-control input-medida form-line" placeholder="Medida">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Subtotal</label>
+                                            <input disable required type="text" name="subtotal_produto[]" class="form-control input-subtotal form-line" placeholder="Subtotal">
+                                        </div>
+                                        <div class="col-sm-2" style="float: right"></br>
+                                            <button type="button" class="btn btn-grey btn-remove">Remover Produto</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
 
                                 $('#product-section').append(novoProdutoHTML);
 
@@ -718,6 +742,17 @@
                             calcularTotal();
                         });
 
+                        $(document).on('input', '.input-subtotal', function () {
+
+                            let novoTotal = 0;
+
+                            $('.input-subtotal').each(function () {
+                                novoTotal += $(this).val() ? parseFloat($(this).val()) : 0;
+                            })
+
+                            $('.total-venda').val(novoTotal.toFixed(2));
+                        });
+
                         function calcularTotal() {
 
                             let valorAdicional = parseFloat($('.valor-adicional').val()) || 0;
@@ -738,7 +773,10 @@
                                 let quantidade_ = $(this).find('.input-multiplicar');
                                 let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
 
-                                quantidadeTotal += quantidade;
+                                let subtotal = valor * quantidade;
+                                $(this).find('.input-subtotal').val(subtotal);
+
+                                quantidadeTotal += subtotal;
 
                                 if (selectTipoFrete != 'Valor por Km rodado') {
 
