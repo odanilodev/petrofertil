@@ -45,6 +45,16 @@ class P_vendas_model extends CI_Model {
               return $query->row_array();
        }
 
+       public function recebeDadosProdutosVenda($idVenda) 
+       {
+              $this->db->select('V.produto, V.valor_produto, V.comissao, V.quantidade, V.informacoes_pagamento, V.prazo_pagamento, V.adicional, V.motivo_adicional, V.valor_total_venda, V.km_total, V.valor_km, V.valor_frete, V.status_pagamento, C.medida_produto, C.materia_prima, C.valor_por_tonelada');
+              $this->db->from('p_vendas as V');
+              $this->db->join('p_clientes_petrofertil as C', 'V.cliente = C.id', 'left');
+              $this->db->where('V.id', $idVenda);  
+              $query = $this->db->get();
+              return $query->row_array();
+       }
+
        public function recebe_venda_codigo($codigo){
            
 	       $this->db->where('codigo_venda', $codigo);  

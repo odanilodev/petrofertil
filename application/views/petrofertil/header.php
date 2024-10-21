@@ -63,6 +63,9 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
 <body class="theme-red">
 
+    <input type="hidden" class="base-url" value="<?= base_url()?>">
+    <input type="hidden" class="segment-3" value="<?= $this->uri->segment(3)?>">
+
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">

@@ -20,10 +20,10 @@
                                 <div class="col-sm-3">
                                     <label>Cliente *</label>
                                     <select name="cliente" required class="form-control cliente-select"
-                                        id="selectCliente">
+                                        id="selectCliente" onchange="changeCliente()">
                                         <option>Selecione</option>
                                         <?php foreach ($clientes as $index => $c) { ?>
-                                            <option value="<?= $c['id'] ?>"
+                                            <option <?= isset($venda['cliente']) && $venda['cliente'] == $c['id'] ? "selected" : "" ?> value="<?= $c['id'] ?>"
                                                 data-produto="<?= isset($c['produto']) ? htmlspecialchars(json_encode($c['produto'])) : '' ?>">
                                                 <?= $c['nome_fantasia'] ?>
                                             </option>
@@ -41,10 +41,10 @@
                                 <div class="col-sm-3">
                                     <label>Transportador *</label>
                                     <select name="transportador" required class="form-control transportador-select"
-                                        id="selectTransportador">
+                                        id="selectTransportador" onchange="changeTransportador()">
                                         <option>Selecione</option>
                                         <?php foreach ($transportadores as $transportador) { ?>
-                                            <option value="<?= $transportador['nome'] ?>"><?= $transportador['nome'] ?>
+                                            <option <?= isset($venda['transportador']) && $venda['transportador'] == $transportador['nome'] ? "selected" : "" ?> value="<?= $transportador['nome'] ?>"><?= $transportador['nome'] ?>
                                             </option>
                                         <?php } ?>
                                     </select>
@@ -61,7 +61,7 @@
                                     <label>Data da Venda *</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input required type="date" name='data_venda' value="" class="form-control"
+                                            <input required type="date" name='data_venda' value="<?= isset($venda['data_venda']) ? $venda['data_venda'] : "" ?>" class="form-control"
                                                 placeholder="Digite a data da venda">
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name='ticket'
-                                                value="<?= isset($vendedor['ticket']) ? $vendedor['ticket'] : '' ?>"
+                                                value="<?= isset($venda['ticket']) ? $venda['ticket'] : '' ?>"
                                                 class="form-control" placeholder="Digite o ticket">
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                                 <div class="col-sm-4">
                                                     <label>Valor *</label>
                                                     <input required type="text" name="valor_produto[]"
-                                                        class="form-control input-valor  form-line input-somar"
+                                                        class="valor form-control input-valor  form-line input-somar"
                                                         placeholder="Digite o valor do produto">
                                                 </div>
 
@@ -157,7 +157,7 @@
                                     <label>Observação</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name='informacoes_pagamento' class="form-control"
+                                            <textarea name='informacoes_pagamento' class="form-control informacoes_pagamento"
                                                 placeholder="Digite aqui uma observação"></textarea>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@
                                 <label>Motivo desconto</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" name='motivo_adicional' value="" class="form-control"
+                                        <input type="text" name='motivo_adicional' value="" class="form-control motivo-adicional"
                                             placeholder="Digite o motivo do valor adicionado">
                                     </div>
                                 </div>
@@ -387,29 +387,29 @@
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
                     <script>
-                        document.getElementById('tipoFrete').addEventListener('change', function () {
+                        document.getElementById('tipoFrete').addEventListener('change', function() {
                             var freteTipo = this.value;
                             var camposFrete = document.querySelectorAll('.valor, .km-rodado, .valor-adicional, .distancia-cliente');
 
                             if (freteTipo === 'retirada') {
                                 // Limpar e desabilitar todos os campos relacionados a frete
-                                camposFrete.forEach(function (campo) {
+                                camposFrete.forEach(function(campo) {
                                     campo.value = '';
                                     campo.disabled = true;
                                 });
                             } else {
                                 // Habilitar os campos novamente
-                                camposFrete.forEach(function (campo) {
+                                camposFrete.forEach(function(campo) {
                                     campo.disabled = false;
                                 });
                             }
                         });
 
 
-                        $(document).ready(function () {
+                        $(document).ready(function() {
 
                             // Quando a opção "Pago" for selecionada, abre o modal
-                            $('select[name="status_pagamento"]').change(function () {
+                            $('select[name="status_pagamento"]').change(function() {
                                 if ($(this).val() === 'pago') {
                                     $('#ModalReceber').modal('show');
                                 }
@@ -419,7 +419,7 @@
                             let contadorCheque = 0;
 
                             // Adiciona nova forma de pagamento
-                            $('#add-forma-recebimento').click(function () {
+                            $('#add-forma-recebimento').click(function() {
                                 let optionsContaRecebida = $('.select-conta-recebida').html();
 
                                 $('.titulo-pagamento').removeClass('hidden'); // Exibe o título de formas de pagamento
@@ -453,7 +453,7 @@
                             });
 
                             // Adiciona um novo cheque
-                            $('#add-cheque').click(function () {
+                            $('#add-cheque').click(function() {
                                 $('.titulo-cheque').removeClass('hidden'); // Exibe o título de cheques
 
                                 let chequeDiv = `
@@ -479,19 +479,19 @@
                             });
 
                             // Remove uma forma de pagamento
-                            $(document).on('click', '.remove-forma-recebimento', function () {
+                            $(document).on('click', '.remove-forma-recebimento', function() {
                                 $(this).closest('.formas-campos').remove();
                                 contadorPagamento--;
                             });
 
                             // Remove um cheque
-                            $(document).on('click', '.remove-cheque', function () {
+                            $(document).on('click', '.remove-cheque', function() {
                                 $(this).closest('.cheque-campos').remove();
                                 contadorCheque--;
                             });
 
                             // Ao clicar em enviar
-                            $(document).on('click', '.btn-finalizar-venda', function () {
+                            $(document).on('click', '.btn-finalizar-venda', function() {
 
                                 let dadosForm = $('#form-vendas').serialize();
 
@@ -548,7 +548,7 @@
                                     dadosForm: dadosForm,
                                     dataRecebimento: dataRecebimento
                                 },
-                                success: function (data) {
+                                success: function(data) {
 
                                     window.location.href = `${baseUrl}P_vendas`;
 
@@ -556,22 +556,33 @@
                             });
 
                         }
-
-
                     </script>
 
 
                     <script>
+                        $(function() {
+                            let segment3 = $('.segment-3').val();
 
-                        $('#selectCliente').change(function () {
-                            var id_cliente = $(this).val();
+                            if (segment3) {
+
+                                changeCliente();
+                                changeTransportador();
+                                exibeProdutosVenda();
+
+                            }
+                        })
+
+                        function changeCliente() {
+
+                            let id_cliente = $('#selectCliente').val();
+
                             $.ajax({
                                 type: "POST",
                                 url: '<?= base_url("P_clientes_petrofertil/recebe_cliente") ?>',
                                 data: {
                                     id_cliente: id_cliente
                                 },
-                                success: function (data) {
+                                success: function(data) {
                                     $('.produto-select').html(data.option_produto);
                                     $('.materia-select').html(data.materia_prima);
                                     $('.vendedor-select').html(data.vendedor);
@@ -580,30 +591,132 @@
 
                                 }
                             });
-                        });
+                        }
 
-                        $('#selectTransportador').change(function () {
-                            var nome_transportador = $(this).val();
+                        function changeTransportador() {
+                            var nome_transportador = $('#selectTransportador').val();
                             $.ajax({
                                 type: "POST",
                                 url: '<?= base_url("P_motoristas/recebe_motoristas_transportador_veiculos") ?>',
                                 data: {
                                     nome_transportador: nome_transportador
                                 },
-                                success: function (data) {
+                                success: function(data) {
                                     $('.motorista-select').html(data.option_motorista);
                                     $('.veiculo-select').html(data.option_veiculo);
 
                                 }
                             });
-                        });
+                        }
 
+                        function exibeProdutosVenda() {
+
+                            let baseUrl = $('.base-url').val();
+                            let segment3 = $('.segment-3').val();
+
+                            $.ajax({
+                                type: "post",
+                                url: `${baseUrl}P_vendas/recebeDadosProdutosVenda`,
+                                data: {
+                                    idVenda: segment3,
+                                },
+                                beforeSend: function() {
+
+                                },
+                                success: function(response) {
+
+                                    // dados produtos
+                                    let produtos = JSON.parse(response.dadosVenda.produto);
+                                    let quantidades = JSON.parse(response.dadosVenda.quantidade);
+                                    let valores = JSON.parse(response.dadosVenda.valor_produto);
+                                    let medidasProdutos = JSON.parse(response.dadosVenda.medida_produto);
+                                    let comissoes = JSON.parse(response.dadosVenda.comissao);
+                                    let materiasPrimas = JSON.parse(response.dadosVenda.materia_prima);
+
+                                    let produtoHtml = "";
+
+                                    for (let i = 0; i < produtos.length; i++) {
+
+                                        let valor = parseFloat(valores[i]) || 0;
+                                        let quantidade = parseFloat(quantidades[i]) || 0;
+                                        let subtotal = valor * quantidade;
+
+                                        produtoHtml += `
+                                            <div class="product-entry">
+                                                <div class="row div-campos">
+                                                    <div class="col-sm-4">
+                                                        <label>Produtos e Matéria Prima</label>
+                                                        <select name="produto[]" class="form-control produto produto-select">
+                                                            <option>Selecione o produto</option>
+                                                            <option selected value="${produtos[i]}">${produtos[i]}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label>Quantidade</label>
+                                                        <input type="text" required name="quantidade[]" class="form-control quantidade input-multiplicar mask-quilo" placeholder="Digite a quantidade" value="${quantidades[i]}">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label>Valor</label>
+                                                        <input type="text" required name="valor_produto[]" class="valor form-control input-valor form-line input-somar" placeholder="Digite o valor do produto" value="${valores[i]}">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label>Comissão</label>
+                                                        <input value="${comissoes[i]}" type="text" required name="comissao[]" class="form-control input-comissao form-line" placeholder="Digite a comissão">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label>Medida</label>
+                                                        <input value="${medidasProdutos[i]}" disable required type="text" name="medida_produto[]" class="form-control input-medida form-line" placeholder="Medida">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label>Subtotal</label>
+                                                        <input value="${subtotal.toFixed(2)}" disable required type="text" name="subtotal_produto[]" class="form-control valor input-subtotal form-line" placeholder="Subtotal">
+                                                    </div>
+                                                    
+                                                    <div class="col-sm-2" style="float: right"></br>
+                                                        ${i == produtos.length - 1 ? 
+                                                            `<button type="button" class="btn btn-primary" id="btnAdicionarProduto">Adicionar Produto</button>` : 
+                                                            `<button type="button" class="btn btn-grey btn-remove">Remover Produto</button>`}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `;
+                                    }
+
+                                    $('#product-section').html(produtoHtml);
+
+
+                                    // informações da venda
+
+                                    let observacao = response.dadosVenda.informacoes_pagamento;
+                                    $('.informacoes_pagamento').val(observacao);
+
+                                    let valorTotalVenda = parseFloat(response.dadosVenda.valor_total_venda);
+                                    $('.total-venda').val(valorTotalVenda.toFixed(2));
+
+                                    let kmTotalRodado = parseFloat(response.dadosVenda.km_total);
+                                    $('.km-rodado').val(kmTotalRodado);
+
+                                    let valorTotalFrete = parseFloat(response.dadosVenda.valor_frete);
+                                    $('.valor-frete').val(valorTotalFrete.toFixed(2));
+
+                                    let desconto = parseFloat(response.dadosVenda.adicional);
+                                    $('.valor-adicional').val(desconto.toFixed(2));
+
+                                    $('.motivo-adicional').val(response.dadosVenda.motivo_adicional);
+
+                                    $('#status_pagamento').val(response.dadosVenda.status_pagamento);
+
+                                    $('.data_pagamento').val(response.dadosVenda.prazo_pagamento);
+                                    
+
+                                }
+                            });
+                        }
                     </script>
 
                     <!-- Seu HTML existente permanece inalterado -->
 
                     <script>
-
                         function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
                             // Substituindo o ponto por nada (para remover o separador de milhar) e a vírgula por ponto (separador decimal)
                             const quantidadeFormatada = quantidadeRecebida.toString().replace(/\./g, '').replace(',', '.');
@@ -619,7 +732,7 @@
                         }
 
 
-                        $(document).ready(function () {
+                        $(document).ready(function() {
                             function carregarProdutosParaCampo(container) {
                                 var id_cliente = $('#selectCliente').val();
                                 $.ajax({
@@ -628,11 +741,11 @@
                                     data: {
                                         id_cliente: id_cliente
                                     },
-                                    beforeSend: function () {
+                                    beforeSend: function() {
                                         $('.label-valor-tipo-frete').html('');
 
                                     },
-                                    success: function (data) {
+                                    success: function(data) {
                                         container.find('.produto-select').html(data.option_produto);
                                         container.find('.vendedor-select').html(data.vendedor);
                                         $('.data_pagamento').val(data.data_pagamento);
@@ -662,7 +775,7 @@
                             }
 
 
-                            $(document).on('change', '.produto-select', function () {
+                            $(document).on('change', '.produto-select', function() {
 
                                 var container = $(this).closest('.product-entry');
                                 var valor = container.find('.produto-select option:selected').attr('valorProduto');
@@ -674,11 +787,13 @@
                                 container.find('.input-medida').val(medida);
                             });
 
-                            $(document).on('click', '.btn-remove', function () {
+                            $(document).on('click', '.btn-remove', function() {
                                 $(this).closest('.product-entry').remove();
                             });
 
-                            $('#btnAdicionarProduto').on('click', function () {
+
+                            $(document).on('click', '#btnAdicionarProduto', function() {
+
                                 var novoProdutoHTML = `
                                 <div class="product-entry">
                                     <div class="row div-campos">
@@ -721,7 +836,7 @@
                                 carregarProdutosParaCampo(novoContainer);
                             });
 
-                            $(document).on('click', '.btn-remove', function () {
+                            $(document).on('click', '.btn-remove', function() {
                                 $(this).closest('.product-entry').remove();
                                 $(this).closest('.product-entry').find('.input-multiplicar').val('');
                                 $(this).closest('.product-entry').find('.input-somar').val('');
@@ -731,22 +846,22 @@
 
 
 
-                            $('#selectCliente').change(function () {
+                            $('#selectCliente').change(function() {
                                 carregarProdutosParaCampo($('#product-section'));
                             });
                         });
 
 
                         // soma o valor total dos produtos
-                        $(document).on('keyup', '.input-somar, .input-multiplicar, .valor-frete, .valor-adicional, #valor-tipo-frete, .km-rodado', function () {
+                        $(document).on('keyup', '.input-somar, .input-multiplicar, .valor-frete, .valor-adicional, #valor-tipo-frete, .km-rodado', function() {
                             calcularTotal();
                         });
 
-                        $(document).on('input', '.input-subtotal', function () {
+                        $(document).on('input', '.input-subtotal', function() {
 
                             let novoTotal = 0;
 
-                            $('.input-subtotal').each(function () {
+                            $('.input-subtotal').each(function() {
                                 novoTotal += $(this).val() ? parseFloat($(this).val()) : 0;
                             })
 
@@ -765,7 +880,7 @@
 
                             let quantidadeTotal = 0;
                             // passa pela div dos produtos pra somar entre eles
-                            $('.div-campos').each(function () {
+                            $('.div-campos').each(function() {
 
                                 let valor_ = $(this).find('.input-somar');
                                 let valor = parseFloat(valor_.val()) || 0;

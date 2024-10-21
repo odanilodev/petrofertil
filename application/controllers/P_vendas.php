@@ -103,6 +103,15 @@ class P_vendas extends CI_Controller
 		$this->load->model('P_produtos_model');
 		$this->load->model('P_transportadores_model');
 
+		$id_venda = $this->uri->segment(3);
+
+		$data['venda'] = $this->P_vendas_model->recebe_venda($id_venda);
+
+		// echo '<pre>';
+		// print_r($data['venda']);
+		// exit;
+		
+
 
 		$data['contas'] = $this->P_contas_model->recebe_contas();
 		$data['clientes'] = $this->Clientes_petrofertil_model->recebe_clientes();
@@ -115,6 +124,20 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/formulario_vendas');
 		$this->load->view('petrofertil/footer');
+
+	}
+
+	public function recebeDadosProdutosVenda() 
+	{
+		$idVenda = $this->input->post('idVenda');
+
+		$dadosProdutosVenda = $this->P_vendas_model->recebeDadosProdutosVenda($idVenda);		
+	
+		$response = array(
+			'dadosVenda' => $dadosProdutosVenda
+		);
+
+		return $this->output->set_content_type('application/json')->set_output(json_encode($response));
 
 	}
 
