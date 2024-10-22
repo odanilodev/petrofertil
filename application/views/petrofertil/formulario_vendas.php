@@ -14,6 +14,8 @@
 
                         <input type='hidden' name='id' value='<?= isset($vendedor['id']) ? $vendedor['id'] : '' ?>'>
 
+                        <input type="hidden" class="codigo-venda">
+
                         <div class="body">
                             <div class="row clearfix">
 
@@ -539,6 +541,10 @@
                             let dataRecebimento = $('.data-fluxo').val();
                             let baseUrl = '<?= base_url() ?>';
 
+                            let idConta = $('.segment-3').val();
+
+                            let codigoVenda = $('.codigo-venda').val();
+
                             $.ajax({
                                 type: "POST",
                                 url: '<?= base_url("P_vendas/cadastra_venda") ?>',
@@ -546,7 +552,9 @@
                                     valoresFormaPagamento: valoresFormaPagamento,
                                     valoresCheques: valoresCheques,
                                     dadosForm: dadosForm,
-                                    dataRecebimento: dataRecebimento
+                                    dataRecebimento: dataRecebimento,
+                                    idConta: idConta,
+                                    codigoVenda: codigoVenda
                                 },
                                 success: function(data) {
 
@@ -616,7 +624,7 @@
 
                             $.ajax({
                                 type: "post",
-                                url: `${baseUrl}P_vendas/recebeDadosProdutosVenda`,
+                                url: `${baseUrl}P_vendas/recebeDadosVenda`,
                                 data: {
                                     idVenda: segment3,
                                 },
@@ -633,6 +641,8 @@
                                     let comissoes = JSON.parse(response.dadosVenda.comissao);
                                     let materiasPrimas = JSON.parse(response.dadosVenda.materia_prima);
 
+                                    $('.codigo-venda').val(response.dadosVenda.codigo_venda);
+
                                     let produtoHtml = "";
 
                                     for (let i = 0; i < produtos.length; i++) {
@@ -647,7 +657,7 @@
                                                     <div class="col-sm-4">
                                                         <label>Produtos e Matéria Prima</label>
                                                         <select name="produto[]" class="form-control produto produto-select">
-                                                            <option>Selecione o produto</option>
+                                                            <option disabled>Selecione o produto</option>
                                                             <option selected value="${produtos[i]}">${produtos[i]}</option>
                                                         </select>
                                                     </div>
@@ -714,7 +724,6 @@
                         }
                     </script>
 
-                    <!-- Seu HTML existente permanece inalterado -->
 
                     <script>
                         function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
