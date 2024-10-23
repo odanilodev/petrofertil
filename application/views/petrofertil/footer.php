@@ -63,14 +63,6 @@
 <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
 
 
-
-<script>
-
-    $('.cliente-select').change(function () {
-        alert('teste'),
-})
-</script>
-
 <script>
     //https://api.jquery.com/click/
     $("#add-campo").click(function () {

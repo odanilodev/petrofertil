@@ -32,7 +32,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/vendas_petrofertil');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function filtra_vendas()
@@ -61,7 +60,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/vendas_petrofertil');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 
@@ -91,7 +89,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/vendas_petrofertil');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function formulario_vendas()
@@ -102,6 +99,15 @@ class P_vendas extends CI_Controller
 		$this->load->model('P_motoristas_model');
 		$this->load->model('P_produtos_model');
 		$this->load->model('P_transportadores_model');
+
+		$id_venda = $this->uri->segment(3);
+
+		$data['venda'] = $this->P_vendas_model->recebe_venda($id_venda);
+
+		// echo '<pre>';
+		// print_r($data['venda']);
+		// exit;
+
 
 
 		$data['contas'] = $this->P_contas_model->recebe_contas();
@@ -115,7 +121,19 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/formulario_vendas');
 		$this->load->view('petrofertil/footer');
+	}
 
+	public function recebeDadosVenda()
+	{
+		$idVenda = $this->input->post('idVenda');
+
+		$dadosVenda = $this->P_vendas_model->recebeDadosVenda($idVenda);
+
+		$response = array(
+			'dadosVenda' => $dadosVenda
+		);
+
+		return $this->output->set_content_type('application/json')->set_output(json_encode($response));
 	}
 
 
@@ -138,7 +156,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/ver_venda');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function ver_venda_codigo()
@@ -160,7 +177,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/ver_venda');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function edita_venda()
@@ -190,7 +206,8 @@ class P_vendas extends CI_Controller
 		$dataRecebimento = $this->input->post('dataRecebimento');
 		$valoresCheques = $this->input->post('valoresCheques');
 
-		$id = $this->input->post('id');
+		$idConta = $this->input->post('idConta');
+		$codigoVendaEdit = $this->input->post('codigoVenda'); // quando estiver editando
 
 		parse_str($_POST['dadosForm'], $dadosForm);
 
@@ -240,10 +257,13 @@ class P_vendas extends CI_Controller
 			$conta_pagar['observacao'] = 'Pagamento de frete ->' . $dados['transportador'];
 			$conta_pagar['quantidade_parcela'] = '1/1';
 
-			$conta_pagar['codigo_venda'] = $codigo_venda;
+			$conta_pagar['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
+
+			if ($codigoVendaEdit) {
+				$this->P_contas_pagar_model->deleta_conta_vinculo($codigoVendaEdit);
+			}
 
 			$this->P_contas_pagar_model->inserir_conta($conta_pagar);
-
 		}
 
 
@@ -276,18 +296,15 @@ class P_vendas extends CI_Controller
 				$conta_pagar['observacao'] = 'Pagamento de comissão para sob venda';
 				$conta_pagar['quantidade_parcela'] = '1/1';
 
-				$conta_pagar['codigo_venda'] = $codigo_venda;
+				$conta_pagar['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
 
 				$this->P_contas_pagar_model->inserir_conta($conta_pagar);
-
-
 			}
 
 
 			$this->P_vendas_produtos_model->insere_venda($venda);
 
 			$contador++;
-
 		}
 
 
@@ -311,7 +328,6 @@ class P_vendas extends CI_Controller
 				$this->P_contas_model->atualiza_conta($dados_banco, $banco['id']);
 
 				$this->P_fluxo_model->inserir_entrada_fluxo($data);
-
 			}
 
 			foreach ($valoresCheques as $cheque) {
@@ -324,11 +340,7 @@ class P_vendas extends CI_Controller
 				$dataCheque['status'] = "A compensar";
 
 				$this->P_cheques_model->inserir_cheque($dataCheque);
-
 			}
-
-
-
 		} else {
 
 			$receber['vencimento'] = $dados['prazo_pagamento'];
@@ -339,7 +351,6 @@ class P_vendas extends CI_Controller
 			if ($dados['vendedor'] != '' && $dados['vendedor'] != '*Sem Vendedor*') {
 
 				$receber['recebido_de'] = $venda['vendedor'];
-
 			} else {
 				$receber['recebido_de'] = '*Sem Vendedor*';
 			}
@@ -348,23 +359,32 @@ class P_vendas extends CI_Controller
 			$receber['status'] = 0;
 			$receber['observacao'] = $dados['informacoes_pagamento'];
 
-			$receber['codigo_venda'] = $codigo_venda;
+			$receber['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
 
-			$this->P_contas_receber_model->inserir_conta($receber);
-
+			if ($codigoVendaEdit) {
+				$this->P_contas_receber_model->atualiza_conta_vinculo($codigoVendaEdit, $receber);
+			} else {
+				$this->P_contas_receber_model->inserir_conta($receber);
+			}
 		}
 
-		$dados['produto'] = json_encode($this->input->post('produto'));
-		$dados['valor_produto'] = json_encode($this->input->post('valor_produto'));
-		$dados['comissao'] = json_encode($this->input->post('comissao'));
-		$dados['quantidade'] = json_encode($this->input->post('quantidade'));
-		$dados['codigo_venda'] = $codigo_venda;
+		// att para cadastrar
+		$dados['produto'] = json_encode($dados['produto']); 
+		$dados['valor_produto'] = json_encode($dados['valor_produto']);
+		$dados['comissao'] = json_encode($dados['comissao']);
+		$dados['quantidade'] = json_encode($dados['quantidade']);
+		$dados['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
 
+		if ($idConta) {
 
-		$this->P_vendas_model->insere_venda($dados);
+			$this->P_vendas_model->atualiza_venda($dados, $idConta);
+		} else {
+
+			$this->P_vendas_model->insere_venda($dados);
+		}
+
 
 		return true;
-
 	}
 
 	public function deleta_venda()

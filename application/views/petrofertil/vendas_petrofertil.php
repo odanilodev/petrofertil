@@ -154,7 +154,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                                             class="material-icons">assignment_returned</i></i></a>
                                             </td>
                                             <td align="center"><a
-                                                    href="<?= site_url('P_vendedores_petrofertil/edita_vendedor/') . $v['id'] ?>"><i
+                                                    href="<?= site_url('P_vendas/formulario_vendas/') . $v['id'] ?>"><i
                                                         class="material-icons"><i class="material-icons">edit</i></i></a>
                                             </td>
 
