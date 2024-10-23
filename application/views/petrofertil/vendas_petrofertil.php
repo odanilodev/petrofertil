@@ -154,12 +154,14 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                                             class="material-icons">assignment_returned</i></i></a>
                                             </td>
                                             <td align="center"><a
-                                                    href="<?= site_url('P_vendedores_petrofertil/edita_vendedor/') . $v['id'] ?>"><i
+                                                    href="<?= site_url('P_vendas/formulario_vendas/') . $v['id'] ?>"><i
                                                         class="material-icons"><i class="material-icons">edit</i></i></a>
                                             </td>
-                                            <td align="center"><a
-                                                    href="<?= site_url('P_vendas/deleta_venda/') . $v['id'] . '/' . $v['codigo_venda'] ?>"><i
-                                                        class="material-icons"><i class="material-icons">delete</i></i></a>
+
+                                            <td align="center"><a data-toggle="modal" data-target="#deletar_venda"
+                                                    data-pegaid="<?= $v['id'] ?>"
+                                                    data-pegacod="<? -$v['codigo_venda'] ?>"><i
+                                                        class="material-icons">delete</i></a>
                                             </td>
 
                                         </tr>
@@ -175,22 +177,23 @@ $nome_usuario = $this->session->userdata('nome_usuario');
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="deletar_venda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Deletar Aferição?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Deseja excluir essa venda?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        Tem certeza que deseja excluir esse cliente permanentemente?
+                        Tem certeza que deseja excluir essa venda?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                        <a class="deleta" href="#"><button type="button" class="btn btn-danger"> Deletar</button></a>
+                        <a class="deleta" href="#"><button type="button" class="btn btn-danger">
+                                Deletar</button></a>
                     </div>
                 </div>
             </div>

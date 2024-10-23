@@ -25,6 +25,12 @@ class P_contas_receber_model extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->update('p_contas_receber', $dados);
 	}
+	
+	public function atualiza_conta_vinculo($codigo_venda, $dados)
+	{
+		$this->db->where('codigo_venda', $codigo_venda);
+		$this->db->update('p_contas_receber', $dados);
+	}
 
 	public function recebe_contas()
 	{

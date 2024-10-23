@@ -63,14 +63,6 @@
 <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
 
 
-
-<script>
-
-    $('.cliente-select').change(function () {
-        alert('teste'),
-})
-</script>
-
 <script>
     //https://api.jquery.com/click/
     $("#add-campo").click(function () {
@@ -246,6 +238,17 @@
         $('.inp').val(id_conta); // mandei dentro de um imput que criei dentro do modal
 
         $('.deleta').attr('href', '<?= site_url('P_contas_pagar/deleta_conta/') ?>' + id_conta);
+
+    })
+
+    $('#deletar_venda').on('shown.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget) // Botão que acionou o modal
+
+        var id_conta = button.data('pegaid') // peguei o data que coloquei la 
+        var cod = button.data('pegacod') // peguei o data que coloquei la 
+
+        $('.deleta').attr('href', '<?= site_url('P_vendas/deleta_venda/') ?>' + id_conta + '/' + cod);
 
     })
 

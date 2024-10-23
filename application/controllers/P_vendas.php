@@ -32,7 +32,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/vendas_petrofertil');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function filtra_vendas()
@@ -61,7 +60,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/vendas_petrofertil');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 
@@ -91,7 +89,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/vendas_petrofertil');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function formulario_vendas()
@@ -102,6 +99,15 @@ class P_vendas extends CI_Controller
 		$this->load->model('P_motoristas_model');
 		$this->load->model('P_produtos_model');
 		$this->load->model('P_transportadores_model');
+
+		$id_venda = $this->uri->segment(3);
+
+		$data['venda'] = $this->P_vendas_model->recebe_venda($id_venda);
+
+		// echo '<pre>';
+		// print_r($data['venda']);
+		// exit;
+
 
 
 		$data['contas'] = $this->P_contas_model->recebe_contas();
@@ -115,7 +121,19 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/formulario_vendas');
 		$this->load->view('petrofertil/footer');
+	}
 
+	public function recebeDadosVenda()
+	{
+		$idVenda = $this->input->post('idVenda');
+
+		$dadosVenda = $this->P_vendas_model->recebeDadosVenda($idVenda);
+
+		$response = array(
+			'dadosVenda' => $dadosVenda
+		);
+
+		return $this->output->set_content_type('application/json')->set_output(json_encode($response));
 	}
 
 
@@ -138,7 +156,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/ver_venda');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function ver_venda_codigo()
@@ -160,7 +177,6 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/ver_venda');
 		$this->load->view('petrofertil/footer');
-
 	}
 
 	public function edita_venda()
@@ -184,36 +200,45 @@ class P_vendas extends CI_Controller
 		$this->load->model('P_contas_receber_model');
 		$this->load->model('P_contas_pagar_model');
 		$this->load->model('P_vendas_produtos_model');
+		$this->load->model('P_contas_model');
 
-		$id = $this->input->post('id');
+		$formasPagamentosModal = $this->input->post('valoresFormaPagamento');
+		$dataRecebimento = $this->input->post('dataRecebimento');
+		$valoresCheques = $this->input->post('valoresCheques');
 
-		$dados['data_venda'] = $this->input->post('data_venda');
-		$dados['ticket'] = $this->input->post('ticket');
-		$dados['cliente'] = $this->input->post('cliente');
-		$dados['vendedor'] = $this->input->post('vendedor');
-		$dados['preco_kg'] = $this->input->post('preco_kg');
-		$dados['prazo_pagamento'] = $this->input->post('prazo_pagamento');
-		$dados['forma_pagamento'] = $this->input->post('forma_pagamento');
-		$dados['status_pagamento'] = $this->input->post('status_pagamento');
-		$dados['valor_frete'] = $this->input->post('valor_frete');
-		$dados['valor_comissao'] = $this->input->post('valor_comissao');
-		$dados['frete'] = $this->input->post('frete');
-		$dados['motorista'] = $this->input->post('motorista');
-		$dados['placa'] = $this->input->post('placa');
-		$dados['transportador'] = $this->input->post('transportador');
-		$dados['produto'] = $this->input->post('produto');
-		$dados['valor_produto'] = $this->input->post('valor_produto');
-		$dados['comissao'] = $this->input->post('comissao');
-		$dados['quantidade'] = $this->input->post('quantidade');
-		$dados['imposto'] = $this->input->post('imposto');
-		$dados['lucro_bruto'] = $this->input->post('lucro_bruto');
-		$dados['informacoes_pagamento'] = $this->input->post('informacoes_pagamento');
-		$dados['conta_relacionada'] = $this->input->post('conta_relacionada');
-		$dados['adicional'] = $this->input->post('adicional');
-		$dados['motivo_adicional'] = $this->input->post('motivo_adicional');
-		$dados['valor_total_venda'] = $this->input->post('valor_total_venda');
-		$dados['valor_km'] = $this->input->post('valor_km');
-		$dados['km_total'] = $this->input->post('km_total');
+		$idConta = $this->input->post('idConta');
+		$codigoVendaEdit = $this->input->post('codigoVenda'); // quando estiver editando
+
+		parse_str($_POST['dadosForm'], $dadosForm);
+
+		$dados['data_venda'] = $dadosForm['data_venda'];
+		$dados['ticket'] = $dadosForm['ticket'];
+		$dados['cliente'] = $dadosForm['cliente'];
+		$dados['vendedor'] = $dadosForm['vendedor'];
+		$dados['preco_kg'] = $dadosForm['preco_kg'];
+		$dados['prazo_pagamento'] = $dadosForm['prazo_pagamento'];
+		$dados['forma_pagamento'] = $dadosForm['forma_pagamento'];
+		$dados['status_pagamento'] = $dadosForm['status_pagamento'];
+		$dados['valor_frete'] = $dadosForm['valor_frete'];
+		$dados['valor_comissao'] = $dadosForm['valor_comissao'];
+		$dados['frete'] = $dadosForm['frete'];
+		$dados['motorista'] = $dadosForm['motorista'];
+		$dados['placa'] = $dadosForm['placa'];
+		$dados['transportador'] = $dadosForm['transportador'];
+		$dados['produto'] = $dadosForm['produto'];
+		$dados['valor_produto'] = $dadosForm['valor_produto'];
+		$dados['comissao'] = $dadosForm['comissao'];
+		$dados['quantidade'] = $dadosForm['quantidade'];
+		$dados['imposto'] = $dadosForm['imposto'];
+		$dados['lucro_bruto'] = $dadosForm['lucro_bruto'];
+		$dados['informacoes_pagamento'] = $dadosForm['informacoes_pagamento'];
+		$dados['conta_relacionada'] = $dadosForm['conta_relacionada'];
+		$dados['adicional'] = $dadosForm['adicional'];
+		$dados['motivo_adicional'] = $dadosForm['motivo_adicional'];
+		$dados['valor_total_venda'] = $dadosForm['valor_total_venda'];
+		$dados['valor_km'] = $dadosForm['valor_km'];
+		$dados['km_total'] = $dadosForm['km_total'];
+
 
 		$prefixo = 'VENDA_'; // Prefixo para garantir unicidade
 
@@ -232,10 +257,13 @@ class P_vendas extends CI_Controller
 			$conta_pagar['observacao'] = 'Pagamento de frete ->' . $dados['transportador'];
 			$conta_pagar['quantidade_parcela'] = '1/1';
 
-			$conta_pagar['codigo_venda'] = $codigo_venda;
+			$conta_pagar['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
+
+			if ($codigoVendaEdit) {
+				$this->P_contas_pagar_model->deleta_conta_vinculo($codigoVendaEdit);
+			}
 
 			$this->P_contas_pagar_model->inserir_conta($conta_pagar);
-
 		}
 
 
@@ -268,55 +296,51 @@ class P_vendas extends CI_Controller
 				$conta_pagar['observacao'] = 'Pagamento de comissão para sob venda';
 				$conta_pagar['quantidade_parcela'] = '1/1';
 
-				$conta_pagar['codigo_venda'] = $codigo_venda;
-
+				$conta_pagar['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
 
 				$this->P_contas_pagar_model->inserir_conta($conta_pagar);
-
-
 			}
 
 
 			$this->P_vendas_produtos_model->insere_venda($venda);
 
 			$contador++;
-
 		}
 
 
 
 		if ($dados['status_pagamento'] == 'pago') {
 
-			if ($dados['forma_pagamento'] == 'cheque') {
+			foreach ($formasPagamentosModal as $pagamentos) {
 
-				$cheque['numero'] = '';
-				$cheque['data_compensasao'] = $dados['prazo_pagamento'];
-				$cheque['recebido'] = $dados['cliente'];
-				$cheque['valor'] = $dados['valor_total_venda'];
-				$cheque['referente'] = 'Venda para ' . $dados['cliente'];
-				$cheque['conta'] = $dados['conta_relacionada'];
-				$cheque['status'] = "A compensar";
-				$cheque['observacao'] = $dados['informacoes_pagamento'];
-
-
-				$this->P_cheques_model->inserir_cheque($cheque);
-
-			}
-
-			if ($dados['forma_pagamento'] != 'cheque') {
-
-				$data['conta'] = $dados['conta_relacionada'];
-				$data['valor'] = $dados['valor_total_venda'];
+				$data['conta'] = $pagamentos['conta'];
+				$data['valor'] = $pagamentos['valor'];
 				$data['despesa'] = 'Entrada';
-				$data['observacao'] = $dados['total'];
 				$data['id_relacao'] = 0;
-				$data['data_registro'] = $dados['data_venda'];
+				$data['data_registro'] = $dataRecebimento;
 				$data['pago_recebido'] = $dados['cliente'];
 
-				$this->P_fluxo_model->inserir_entrada_fluxo($data);
+				//Busca o banco para verificar saldo
+				$banco = $this->P_contas_model->recebe_conta($pagamentos['conta']);
 
+				//Atualiza o saldo da conta
+				$dados_banco['saldo'] = $banco['saldo'] + $data['valor'];
+				$this->P_contas_model->atualiza_conta($dados_banco, $banco['id']);
+
+				$this->P_fluxo_model->inserir_entrada_fluxo($data);
 			}
 
+			foreach ($valoresCheques as $cheque) {
+				$dataCheque['recebido'] = $dados['cliente'];
+				$dataCheque['titular'] = $cheque['titular'];
+				$dataCheque['numero'] = $cheque['numero'];
+
+				$dataCheque['data_compensasao'] = $cheque['vencimento_cheque'];
+				$dataCheque['valor'] = $cheque['valor'];
+				$dataCheque['status'] = "A compensar";
+
+				$this->P_cheques_model->inserir_cheque($dataCheque);
+			}
 		} else {
 
 			$receber['vencimento'] = $dados['prazo_pagamento'];
@@ -327,7 +351,6 @@ class P_vendas extends CI_Controller
 			if ($dados['vendedor'] != '' && $dados['vendedor'] != '*Sem Vendedor*') {
 
 				$receber['recebido_de'] = $venda['vendedor'];
-
 			} else {
 				$receber['recebido_de'] = '*Sem Vendedor*';
 			}
@@ -336,22 +359,32 @@ class P_vendas extends CI_Controller
 			$receber['status'] = 0;
 			$receber['observacao'] = $dados['informacoes_pagamento'];
 
-			$receber['codigo_venda'] = $codigo_venda;
+			$receber['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
 
-			$this->P_contas_receber_model->inserir_conta($receber);
-
+			if ($codigoVendaEdit) {
+				$this->P_contas_receber_model->atualiza_conta_vinculo($codigoVendaEdit, $receber);
+			} else {
+				$this->P_contas_receber_model->inserir_conta($receber);
+			}
 		}
 
-		$dados['produto'] = json_encode($this->input->post('produto'));
-		$dados['valor_produto'] = json_encode($this->input->post('valor_produto'));
-		$dados['comissao'] = json_encode($this->input->post('comissao'));
-		$dados['quantidade'] = json_encode($this->input->post('quantidade'));
-		$dados['codigo_venda'] = $codigo_venda;
+		// att para cadastrar
+		$dados['produto'] = json_encode($dados['produto']); 
+		$dados['valor_produto'] = json_encode($dados['valor_produto']);
+		$dados['comissao'] = json_encode($dados['comissao']);
+		$dados['quantidade'] = json_encode($dados['quantidade']);
+		$dados['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
 
-		$this->P_vendas_model->insere_venda($dados);
-		redirect('P_vendas');
+		if ($idConta) {
+
+			$this->P_vendas_model->atualiza_venda($dados, $idConta);
+		} else {
+
+			$this->P_vendas_model->insere_venda($dados);
+		}
 
 
+		return true;
 	}
 
 	public function deleta_venda()
@@ -363,7 +396,6 @@ class P_vendas extends CI_Controller
 		$id = $this->uri->segment(3);
 
 		$codigo_venda = $this->uri->segment(4);
-
 
 		$this->P_contas_pagar_model->deleta_conta_vinculo($codigo_venda);
 		$this->P_contas_receber_model->deleta_conta_vinculo($codigo_venda);

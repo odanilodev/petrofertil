@@ -167,37 +167,6 @@
 								</div>
 
 
-								<div class="col-sm-4">
-									<label>Tipo de Frete</label>
-									<select name="tipo_frete" class="form-control show-tick">
-										<option>Selecione</option>
-										<option value="Valor por KG">Valor por KG</option>
-										<option value="Valor por Km rodado">Valor por Km rodado</option>
-
-									</select>
-								</div>
-
-								<div class="col-sm-2">
-									<label>Valor Frete por KM ou Kg</label>
-									<div class="form-group">
-										<div class="form-line">
-											<input type="text" name='valor_frete' value="<?= $cliente['valor_frete'] ?>"
-												class="form-control valor" placeholder="Digite o valor médio de frete">
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-2">
-									<label>Distancia</label>
-									<div class="form-group">
-										<div class="form-line">
-											<input type="text" name='distancia' value="<?= $cliente['distancia'] ?>"
-												class="form-control"
-												placeholder="Distancia usada para calculo do frete">
-										</div>
-									</div>
-								</div>
-
 
 								<div class="col-sm-4">
 									<label>Vendedor:</label>
@@ -278,6 +247,56 @@
 									</div>
 								</div>
 
+								<div class="header col-md-12">
+									<h2>Informações de frete</h2>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Tipo de Frete</label>
+									<select name="tipo_frete" id="tipoFrete" class="form-control show-tick">
+										<option>Selecione</option>
+										<!-- <option value="Valor por KG">Valor por KG</option> -->
+										<option value="Valor por Km rodado">Valor por Km rodado</option>
+										<option value="Valor por Tonelada">Valor por Tonelada</option>
+									</select>
+								</div>
+
+								<div class="col-sm-2 ">
+									<label>Valor Frete por KM ou Kg</label>
+									<div class="form-group">
+										<div class="form-line">
+											<input type="text" id="valorFrete" name='valor_frete'
+												value="<?= $cliente['valor_frete'] ?>" class="form-control valor"
+												placeholder="Valor médio de frete">
+										</div>
+									</div>
+								</div>
+
+								<!-- Campo para selecionar o valor por tonelada (inicialmente escondido) -->
+								<div class="col-sm-2" id="valorPorToneladaWrapper" style="display: none;">
+									<label>Valor por Tonelada</label>
+									<div class="form-group">
+										<div class="form-line">
+											<select id="valorPorTonelada" name="valor_por_tonelada"
+												class="form-control">
+												<option value="">Selecione o valor por tonelada</option>
+												<option value="70">R$70,00 por tonelada</option>
+												<option value="100">R$100,00 por tonelada</option>
+												<option value="120">R$120,00 por tonelada</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-2">
+									<label>Distancia do Cliente (KM)</label>
+									<div class="form-group">
+										<div class="form-line">
+											<input type="number" name='distancia' value="<?= $cliente['distancia'] ?>"
+												class="form-control" placeholder="Distancia do cliente">
+										</div>
+									</div>
+								</div>
 
 								<div class="col-sm-12">
 									<button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -294,6 +313,7 @@
 	</div>
 </section>
 
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
@@ -301,11 +321,34 @@
 
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <?php
 // Mova a conversão de $produtos para JSON para fora da tag script
 $produtosJson = json_encode($produtos);
 ?>
+
+
+<script>
+	$('#tipoFrete').on('change', function () {
+		var selectedFrete = $(this).val();
+
+		if (selectedFrete === 'Valor por Tonelada') {
+			// Exibe o campo de seleção para valor por tonelada e oculta o valor por km/kg
+			$('#valorPorToneladaWrapper').show();
+			$('#valorFrete').closest('.col-sm-2').hide(); // Oculta todo o bloco do label e input
+			$('#valorFrete').val(''); // Limpa o valor de frete anterior
+		} else {
+			// Exibe o campo valor por kg/km e oculta o valor por tonelada
+			$('#valorPorToneladaWrapper').hide();
+			$('#valorFrete').closest('.col-sm-2').show(); // Mostra novamente o bloco do label e input
+			$('#valorFrete').attr('type', 'text'); // Altera o tipo de volta para 'text'
+			$('#valorPorTonelada').val(''); // Limpa a seleção de tonelada anterior
+		}
+	});
+
+
+</script>
 
 <script>
 	// Coloque a variável $produtosJson no início do script

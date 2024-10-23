@@ -136,73 +136,90 @@
 									</div>
 								</div>
 
-								<div class="col-sm-4">
-									<label>Forma de pagamento:</label>
-									<select name="forma_pagamento" class="form-control show-tick">
-										<option>Selecione</option>
-										<option <?= $cliente['forma_pagamento'] == 'Pix' ? 'selected' : '' ?> value="Pix">
-											Pix</option>
-										<option <?= $cliente['forma_pagamento'] == 'Cartão' ? 'selected' : '' ?>
-											value="Cartão">Cartão</option>
-										<option <?= $cliente['forma_pagamento'] == 'Boleto' ? 'selected' : '' ?>
-											value="Boleto">Boleto</option>
-										<option <?= $cliente['forma_pagamento'] == 'Cheque' ? 'selected' : '' ?>
-											value="Cheque">Cheque</option>
-									</select>
-								</div>
 
 								<div class="col-sm-4">
-									<label>Prazo de pagamento (em dias)</label>
-									<select name="prazo_pagamento" class="form-control show-tick">
-										<option>Selecione</option>
-										<option <?= $cliente['prazo_pagamento'] == '7' ? 'selected' : '' ?> value="7">7
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '15' ? 'selected' : '' ?> value="15">15
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '30' ? 'selected' : '' ?> value="30">30
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '45' ? 'selected' : '' ?> value="45">45
-										</option>
-										<option <?= $cliente['prazo_pagamento'] == '60' ? 'selected' : '' ?> value="60">60
-										</option>
-									</select>
-								</div>
-
-								<div class="col-sm-4">
-									<label>Valor Frete</label>
+									<label>Vendedor:</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='valor_frete' value="<?= $cliente['valor_frete'] ?>"
-												class="form-control valor" placeholder="Digite o valor médio de frete">
+											<select name="vendedor" class="form-control show-tick">
+												<option>Selecione</option>
+												<?php foreach ($vendedores as $v) { ?>
+													<option <?= $cliente['vendedor'] == $v['nome'] ? 'selected' : '' ?>
+														value="<?= $v['nome'] ?>">
+														<?= $v['nome'] ?>
+													</option>
+												<?php } ?>
+											</select>
 										</div>
 									</div>
 								</div>
 
 								<div class="col-sm-4">
-									<label>Vendedor:</label>
-									<select name="vendedor" class="form-control show-tick">
-										<option>Selecione</option>
-										<?php foreach ($vendedores as $v) { ?>
-											<option <?= $cliente['vendedor'] == $v['nome'] ? 'selected' : '' ?>
-												value="<?= $v['nome'] ?>">
-												<?= $v['nome'] ?>
-											</option>
-										<?php } ?>
-									</select>
+									<label>Transportador:</label>
+									<div class="form-group">
+										<div class="form-line">
+											<select name="transportador" class="form-control show-tick">
+												<option>Selecione</option>
+												<option <?= $cliente['transportador'] == 'Próprio' ? 'selected' : '' ?>
+													value="Próprio">Próprio</option>
+												<option <?= $cliente['transportador'] == 'Terceiro' ? 'selected' : '' ?>
+													value="Terceiro">Terceiro</option>
+												<option <?= $cliente['transportador'] == 'Ambos' ? 'selected' : '' ?>
+													value="Ambos">Ambos</option>
+											</select>
+										</div>
+									</div>
 								</div>
 
+
 								<div class="col-sm-4">
-									<label>Transportador:</label>
-									<select name="transportador" class="form-control show-tick">
-										<option>Selecione</option>
-										<option <?= $cliente['transportador'] == 'Próprio' ? 'selected' : '' ?>
-											value="Próprio">Próprio</option>
-										<option <?= $cliente['transportador'] == 'Terceiro' ? 'selected' : '' ?>
-											value="Terceiro">Terceiro</option>
-										<option <?= $cliente['transportador'] == 'Ambos' ? 'selected' : '' ?>
-											value="Ambos">Ambos</option>
-									</select>
+									<label>Prazo de pagamento (em dias)</label>
+									<div class="form-group">
+										<div class="form-line">
+											<select name="prazo_pagamento" class="form-control show-tick">
+												<option>Selecione</option>
+												<option <?= $cliente['prazo_pagamento'] == '7' ? 'selected' : '' ?>
+													value="7">7
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '15' ? 'selected' : '' ?>
+													value="15">15
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '30' ? 'selected' : '' ?>
+													value="30">30
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '45' ? 'selected' : '' ?>
+													value="45">45
+												</option>
+												<option <?= $cliente['prazo_pagamento'] == '60' ? 'selected' : '' ?>
+													value="60">60
+												</option>
+											</select>
+										</div>
+									</div>
 								</div>
+
+
+								<div class="col-sm-4">
+									<div class="form-group">
+										<div class="form-line">
+											<label>Forma de pagamento:</label>
+											<select name="forma_pagamento" class="form-control show-tick">
+												<option>Selecione</option>
+												<option <?= $cliente['forma_pagamento'] == 'Pix' ? 'selected' : '' ?>
+													value="Pix">
+													Pix</option>
+												<option <?= $cliente['forma_pagamento'] == 'Cartão' ? 'selected' : '' ?>
+													value="Cartão">Cartão</option>
+												<option <?= $cliente['forma_pagamento'] == 'Boleto' ? 'selected' : '' ?>
+													value="Boleto">Boleto</option>
+												<option <?= $cliente['forma_pagamento'] == 'Cheque' ? 'selected' : '' ?>
+													value="Cheque">Cheque</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+
 
 								<div class="col-sm-12">
 									<label>Produtos e Valores</label>
@@ -226,7 +243,8 @@
 													<div class="col-sm-2">
 														<select name="materia_prima[]"
 															class="form-control materia-prima-select" required>
-															<option disabled value="">Selecione a matéria-prima</option>
+															<option disabled value="">Selecione a matéria-prima
+															</option>
 															<!-- Exibir as matérias-primas associadas ao produto, se houver -->
 															<?php if (!empty($materia_prima[$index])): ?>
 
@@ -277,6 +295,58 @@
 									</div>
 								</div>
 
+								<div class="header col-md-12">
+									<h2>Informações de frete</h2>
+								</div>
+
+								<div class="col-sm-4">
+									<label>Tipo de Frete</label>
+									<select name="tipo_frete" id="tipoFrete" class="form-control show-tick"
+										onchange="toggleFreteFields()">
+										<option value="">Selecione</option>
+										<option value="Valor por Km rodado" <?= $cliente['tipo_frete'] == 'Valor por Km rodado' ? 'selected' : '' ?>>Valor por Km rodado</option>
+										<option value="Valor por Tonelada" <?= $cliente['tipo_frete'] == 'Valor por Tonelada' ? 'selected' : '' ?>>Valor por Tonelada</option>
+									</select>
+								</div>
+
+								<!-- Campo de valor frete por KM ou KG -->
+								<div class="col-sm-2" id="valorFreteWrapper">
+									<label>Valor Frete por KM ou Kg</label>
+									<div class="form-group">
+										<div class="form-line">
+											<input type="text" id="valorFrete" name="valor_frete"
+												value="<?= $cliente['valor_frete'] ?>" class="form-control valor"
+												placeholder="Digite o valor médio de frete">
+										</div>
+									</div>
+								</div>
+
+								<!-- Campo de valor por Tonelada (inicialmente escondido) -->
+								<div class="col-sm-2" id="valorPorToneladaWrapper" style="display: none;">
+									<label>Valor por Tonelada</label>
+									<div class="form-group">
+										<div class="form-line">
+											<select id="valorPorTonelada" name="valor_por_tonelada"
+												class="form-control">
+												<option value="">Selecione o valor por tonelada</option>
+												<option value="70" <?= $cliente['valor_por_tonelada'] == 70 ? 'selected' : '' ?>>R$70,00 por tonelada</option>
+												<option value="100" <?= $cliente['valor_por_tonelada'] == 100 ? 'selected' : '' ?>>R$100,00 por tonelada</option>
+												<option value="120" <?= $cliente['valor_por_tonelada'] == 120 ? 'selected' : '' ?>>R$120,00 por tonelada</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-2">
+									<label>Distancia do Cliente (KM)</label>
+									<div class="form-group">
+										<div class="form-line">
+											<input type="number" name='distancia' value="<?= $cliente['distancia'] ?>"
+												class="form-control" placeholder="Distancia do cliente">
+										</div>
+									</div>
+								</div>
+
 
 								<div class="col-sm-12">
 									<button type="submit" class="btn btn-primary">Salvar</button>
@@ -309,6 +379,32 @@
 
 
 <script>
+
+	// Função para exibir os campos corretos com base no tipo de frete selecionado
+	function toggleFreteFields() {
+		const tipoFrete = document.getElementById('tipoFrete').value;
+		const valorFreteWrapper = document.getElementById('valorFreteWrapper');
+		const valorFreteInput = document.getElementById('valorFrete');
+		const valorPorToneladaWrapper = document.getElementById('valorPorToneladaWrapper');
+		const valorPorToneladaSelect = document.getElementById('valorPorTonelada');
+
+		// Mostrar/esconder campos baseados no tipo de frete
+		if (tipoFrete === 'Valor por Tonelada') {
+			valorPorToneladaWrapper.style.display = 'block';
+			valorFreteWrapper.style.display = 'none'; // Esconder campo de "Valor por KM ou Kg"
+			valorFreteInput.value = ''; // Zerar o valor do campo escondido
+		} else {
+			valorPorToneladaWrapper.style.display = 'none';
+			valorPorToneladaSelect.value = ''; // Zerar o valor do campo escondido
+			valorFreteWrapper.style.display = 'block'; // Mostrar campo de "Valor por KM ou Kg"
+		}
+	}
+
+	// Função para preencher os campos ao carregar a página
+	window.onload = function () {
+		toggleFreteFields(); // Chama a função para exibir o campo correto com base no tipo de frete carregado
+	};
+
 	function addProductEntry() {
 		const productSection = document.getElementById('product-section');
 		const productEntry = document.createElement('div');
@@ -319,7 +415,7 @@
 				<select name="produto[]" class="form-control" onchange="loadMateriaPrimaOptions(this)">
 					<option value="" disabled selected>Selecione o produto</option>
 					<?php foreach ($produtos as $produto): ?>
-																																																									<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
+																																																																																																	<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>

@@ -120,6 +120,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                         <th>Data Compensação</th>
                                         <th>Valor</th>
                                         <th>Recebido por</th>
+                                        <th>Titular</th>
                                         <th>Referente</th>
                                         <th>Conta</th>
                                         <th>Numero Cheque</th>
@@ -141,6 +142,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                             <td><?= $contador ?></td>
                                             <td><?= date('d/m/Y', strtotime($c['data_compensasao'])) ?></td>
                                             <td>R$<?= $c['valor'] ?></td>
+                                            <td><?= $c['titular'] ?></td>
                                             <td><?= $c['recebido'] ?></td>
                                             <td><?= $c['referente'] ?></td>
                                             <td><?= $c['conta'] ?></td>

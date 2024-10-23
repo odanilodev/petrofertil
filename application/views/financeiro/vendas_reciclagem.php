@@ -20,59 +20,63 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 				<h2>VENDAS DA RECICLAGEM</h2>
 			</div>
 
-			<?php if ($usuario == 'fernanda@petroecol.com.br') { ?>
+			<?php if ($usuario == 'fernanda@petroecol.com.br' or $usuario == 'reciclagem@petroecol.com.br') { ?>
 				<div class="col-md-9" style="margin-bottom: 12px; margin-top: -8px" align="right">
 
-					<a style="margin-left: 5px" href="<?= base_url('F_venda_reciclagem/formulario_cadastro') ?>"><span type="button" class="btn bg-green waves-effect">CADASTRO</span></a>
+					<a style="margin-left: 5px" href="<?= base_url('F_venda_reciclagem/formulario_cadastro') ?>"><span
+							type="button" class="btn bg-green waves-effect">CADASTRO</span></a>
 
 				</div>
-			<? }  ?>
+			<? } ?>
 		</div>
 
 		<div class="row">
-            <div class="container-fluid">
-                <form class="col-md-12" enctype="multipart/form-data" action="<?= site_url('F_venda_reciclagem/filtra_vendas_reciclagem/') ?>"method="post">
+			<div class="container-fluid">
+				<form class="col-md-12" enctype="multipart/form-data"
+					action="<?= site_url('F_venda_reciclagem/filtra_vendas_reciclagem/') ?>" method="post">
 
-                    <div class="col-md-2 col-sm-12">
+					<div class="col-md-2 col-sm-12">
 
-                        <div class="form-group ">
-                            <label>De</label>
-                            <input type="date" value="" name="data_inicial" class="form-control">
-                        </div>
+						<div class="form-group ">
+							<label>De</label>
+							<input type="date" value="" name="data_inicial" class="form-control">
+						</div>
 
-                    </div>
+					</div>
 
-                    <div class="col-md-2 col-sm-12">
+					<div class="col-md-2 col-sm-12">
 
-                        <div class="form-group  ">
-                            <label>Até</label> 
-                            <input type="date" value="" name="data_final" class="form-control">
-                        </div>
+						<div class="form-group  ">
+							<label>Até</label>
+							<input type="date" value="" name="data_final" class="form-control">
+						</div>
 
-                    </div>
+					</div>
 
-                    <div class="col-md-2" style="margin-top: -4px">
-                        <p>
-                           <b>Status</b>
-                        </p>
-                            <select required name="status" class="form-control ">
-                                
-                                    <option value="ambas">Ambas</option>
-                                    <option value="pagas">Pago</option>
-                                    <option value="naopagas">Em Aberto</option>
-                                     
-                            </select>
+					<div class="col-md-2" style="margin-top: -4px">
+						<p>
+							<b>Status</b>
+						</p>
+						<select required name="status" class="form-control ">
 
-                    </div>
+							<option value="ambas">Ambas</option>
+							<option value="pagas">Pago</option>
+							<option value="naopagas">Em Aberto</option>
+
+						</select>
+
+					</div>
 
 
 
-                    <button type="submit" style="margin-top: 27px" class="btn btn-primary ml-2 col-sm-6 col-md-3 col-xs-6 ">Filtrar</button>
+					<button type="submit" style="margin-top: 27px"
+						class="btn btn-primary ml-2 col-sm-6 col-md-3 col-xs-6 ">Filtrar</button>
 
-                    <a href="<?= base_url('F_fluxo/inicio/7') ?>"><span style="margin-top: 27px" class="btn btn-success col-md-3 col-sm-6 col-xs-6">Geral</span></a>
-                </form>
-            </div>
-        </div>
+					<a href="<?= base_url('F_fluxo/inicio/7') ?>"><span style="margin-top: 27px"
+							class="btn btn-success col-md-3 col-sm-6 col-xs-6">Geral</span></a>
+				</form>
+			</div>
+		</div>
 
 		<!-- Exportable Table -->
 		<div class="row clearfix">
@@ -133,23 +137,34 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 											<td>R$<?= number_format("$soma_total", 2, ",", "."); ?></td>
 
 
-											<?php if ($v['data_recebimento'] != '') {  ?>
+											<?php if ($v['data_recebimento'] != '') { ?>
 
 
 												<td><?= date('d/m/Y', strtotime($v['data_recebimento'])); ?></td>
 											<?php } else { ?>
 
-												<td><a data-toggle="modal" data-cli-id="<?= $v['id'] ?>" data-cli-com="<?= $v['comprador']  ?>" data-target="#ModalReciclagemVenda" style=" color: <?= $b['status'] == 1 ? 'green' : 'red' ?>" href="<?= base_url('F_venda_reciclagem/recebe_valor/') . $b['id'] ?>"><?= $b['status'] == 0 ? "A Receber" : "Pago" ?></a></td>
+												<td><a data-toggle="modal" data-cli-id="<?= $v['id'] ?>"
+														data-cli-com="<?= $v['comprador'] ?>"
+														data-target="#ModalReciclagemVenda"
+														style=" color: <?= $b['status'] == 1 ? 'green' : 'red' ?>"
+														href="<?= base_url('F_venda_reciclagem/recebe_valor/') . $b['id'] ?>"><?= $b['status'] == 0 ? "A Receber" : "Pago" ?></a>
+												</td>
 
 											<?php } ?>
 
 
-											<td align="center"><a href="<?= base_url('F_venda_reciclagem/visualizar_venda/') . $v['id'] ?>"><i class="material-icons">remove_red_eye</i></a></td>
+											<td align="center"><a
+													href="<?= base_url('F_venda_reciclagem/visualizar_venda/') . $v['id'] ?>"><i
+														class="material-icons">remove_red_eye</i></a></td>
 
 											<?php if ($usuario == 'fernanda@petroecol.com.br') { ?>
-												<td align="center"><a data-toggle="modal" href="<?= base_url('F_venda_reciclagem/editar_venda/') . $v['id'] ?>" style="cursor: pointer;"><i class="material-icons">edit</i></a></td>
-												<td align="center"><a data-toggle="modal" style="cursor: pointer;" data-target="#exampleModalVenda" data-pegaid="<?= $v['id'] ?>"><i class="material-icons">delete</i></a></td>
-											<?php $contador++;
+												<td align="center"><a data-toggle="modal"
+														href="<?= base_url('F_venda_reciclagem/editar_venda/') . $v['id'] ?>"
+														style="cursor: pointer;"><i class="material-icons">edit</i></a></td>
+												<td align="center"><a data-toggle="modal" style="cursor: pointer;"
+														data-target="#exampleModalVenda" data-pegaid="<?= $v['id'] ?>"><i
+															class="material-icons">delete</i></a></td>
+												<?php $contador++;
 											} ?>
 
 										</tr>
@@ -185,7 +200,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 									<label>Data do recebimento:</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="date" name='data_recebimento' value="" class="form-control tt2">
+											<input type="date" name='data_recebimento' value=""
+												class="form-control tt2">
 										</div>
 									</div>
 								</div>
@@ -194,7 +210,9 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 									<label>Valor:</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='valor_recebido' value="" placeholder="Digite o valor recebido da venda" class="valor form-control tt2">
+											<input type="text" name='valor_recebido' value=""
+												placeholder="Digite o valor recebido da venda"
+												class="valor form-control tt2">
 										</div>
 									</div>
 								</div>
@@ -212,7 +230,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 			</div>
 		</div>
 
-		<div class="modal fade" id="exampleModalVenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="exampleModalVenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
