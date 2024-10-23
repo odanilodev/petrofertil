@@ -373,7 +373,7 @@ class P_vendas extends CI_Controller
 		$dados['valor_produto'] = json_encode($dados['valor_produto']);
 		$dados['comissao'] = json_encode($dados['comissao']);
 		$dados['quantidade'] = json_encode($dados['quantidade']);
-		$dados['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda
+		$dados['codigo_venda'] = $codigoVendaEdit ? $codigoVendaEdit : $codigo_venda;
 
 		if ($idConta) {
 
