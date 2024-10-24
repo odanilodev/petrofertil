@@ -108,9 +108,9 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                         <th>#</th>
                                         <th>Data Venda</th>
                                         <th>N° do Ticket</th>
+                                        <th>Nome Fantasia</th>
                                         <th>Valor Total da Venda</th>
                                         <th>Vendedor</th>
-                                        <th>Nome Fantasia</th>
 
                                         <th>Ver</th>
                                         <th>Editar</th>
@@ -122,9 +122,9 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                         <th>#</th>
                                         <th>Data Venda</th>
                                         <th>N° do Ticket</th>
+                                        <th>Nome Fantasia</th>
                                         <th>Valor Total da Venda</th>
                                         <th>Vendedor</th>
-                                        <th>Nome Fantasia</th>
 
                                         <th>Ver</th>
                                         <th>Editar</th>
@@ -140,12 +140,12 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                             <td><?= $contador; ?></td>
                                             <td><?= date('d/m/Y', strtotime($v['data_venda'])) ?></td>
                                             <td><?= $v['ticket'] ?></td>
+                                            <td><?= $v['nome_fantasia'] ?></td>
                                             <td>R$
                                                 <?php $total_venda = $v['valor_total_venda'];
                                                 echo number_format("$total_venda", 2, ",", "."); ?>
                                             </td>
                                             <td><?= $v['vendedor'] ?></td>
-                                            <td><?= $v['nome_fantasia'] ?></td>
 
 
                                             <td align="center"><a
