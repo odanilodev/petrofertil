@@ -41,6 +41,24 @@
                                     </div>
                                 </div>
 
+                                <div class="col-sm-4">
+                                    <label>Documento do Veículo</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" name="documento" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label>Foto do Veículo</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" name="foto_veiculo" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                                 </div>

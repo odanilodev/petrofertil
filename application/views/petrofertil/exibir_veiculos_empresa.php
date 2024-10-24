@@ -85,6 +85,57 @@ $nome_usuario = $this->session->userdata('nome_usuario');
         background-color: #0056b3;
         border-color: #0056b3;
     }
+
+    .vehicle-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .vehicle-card {
+        width: 250px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #fff;
+    }
+
+    .vehicle-card img {
+        max-width: 100%;
+        max-height: 150px;
+        object-fit: contain;
+        /* Garante que a imagem caiba no container */
+    }
+
+    .vehicle-info {
+        margin: 10px 0;
+        flex-grow: 1;
+        /* Faz com que o texto ocupe o espaço restante */
+    }
+
+    .vehicle-actions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .vehicle-actions i {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .vehicle-actions a {
+        color: #333;
+    }
+
+    .vehicle-card:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
 </style>
 
 <input type='hidden' value="<?= base_url() ?>" class="base-url">
@@ -103,15 +154,15 @@ $nome_usuario = $this->session->userdata('nome_usuario');
             </div>
         </div>
 
-        <!-- Grid of Vehicles -->
+        <!-- Grid de Veículos -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="vehicle-grid">
                     <?php foreach ($veiculos as $veiculo) { ?>
                         <div class="vehicle-card">
-                            <!-- Display vehicle image if exists, else show default image -->
-                            <?php if ($veiculo['imagem']) { ?>
-                                <img src="<?= base_url('uploads/veiculos/' . $veiculo['imagem']) ?>" alt="Imagem do Veículo">
+                            <!-- Exibe a imagem do veículo se existir, caso contrário exibe a imagem padrão -->
+                            <?php if (!empty($veiculo['arquivo'])) { ?>
+                                <img src="<?= base_url('uploads/veiculos/' . $veiculo['arquivo']) ?>" alt="Imagem do Veículo">
                             <?php } else { ?>
                                 <img src="<?= base_url('assets/img/petrofertil/caminhao_padrao.png') ?>"
                                     alt="Imagem Padrão de Veículo">
@@ -123,19 +174,31 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             </div>
 
                             <div class="vehicle-actions">
-                                <a href="P_veiculos_empresa/formulario_veiculos/<?= $veiculo['id'] ?>">
+                                <!-- Botão para editar -->
+                                <a href="<?= site_url('P_veiculos_empresa/formulario_veiculos/' . $veiculo['id']) ?>">
                                     <i class="material-icons">edit</i>
                                 </a>
+
+                                <!-- Botão para deletar -->
                                 <a data-toggle="modal" data-target="#deletar_veiculo_empresa"
                                     data-pegaid="<?= $veiculo['id'] ?>">
                                     <i class="material-icons">delete</i>
                                 </a>
+
+                                <!-- Botão de download do documento (se houver documento cadastrado) -->
+                                <?php if (!empty($veiculo['documento'])) { ?>
+                                    <a href="<?= base_url('uploads/documentos_veiculos/' . $veiculo['documento']) ?>" download>
+                                        <i class="material-icons">download</i>
+                                    </a>
+                                <?php } ?>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
+
+
 
         <div class="modal fade" id="deletar_veiculo_empresa" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
