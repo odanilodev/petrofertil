@@ -104,12 +104,6 @@ class P_vendas extends CI_Controller
 
 		$data['venda'] = $this->P_vendas_model->recebe_venda($id_venda);
 
-		// echo '<pre>';
-		// print_r($data['venda']);
-		// exit;
-
-
-
 		$data['contas'] = $this->P_contas_model->recebe_contas();
 		$data['clientes'] = $this->Clientes_petrofertil_model->recebe_clientes();
 		$data['vendedores'] = $this->P_vendedores_petrofertil_model->recebe_vendedores();
@@ -369,7 +363,7 @@ class P_vendas extends CI_Controller
 		}
 
 		// att para cadastrar
-		$dados['produto'] = json_encode($dados['produto']); 
+		$dados['produto'] = json_encode($dados['produto']);
 		$dados['valor_produto'] = json_encode($dados['valor_produto']);
 		$dados['comissao'] = json_encode($dados['comissao']);
 		$dados['quantidade'] = json_encode($dados['quantidade']);
