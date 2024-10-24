@@ -3,13 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class P_veiculos_empresa_model extends CI_Model
 {
-
 	public function inserir_veiculo($dados)
 	{
-
-		$this->db->set($dados);
-		$this->db->insert('p_veiculos_empresa');
-
+		$this->db->insert('p_veiculos_empresa', $dados);
 	}
 
 	public function edita_veiculo($dados, $id)
@@ -18,6 +14,10 @@ class P_veiculos_empresa_model extends CI_Model
 		$this->db->update('p_veiculos_empresa', $dados);
 	}
 
+	public function get_veiculo_by_id($id)
+	{
+		return $this->db->get_where('p_veiculos_empresa', ['id' => $id])->row_array();
+	}
 
 	public function recebe_veiculos()
 	{
