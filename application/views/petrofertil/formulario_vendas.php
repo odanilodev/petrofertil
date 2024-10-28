@@ -445,6 +445,8 @@
                                             <option value="Crédito">Crédito</option>
                                             <option value="Transfêrencia Bancária">Transfêrencia Bancária</option>
                                             <option value="Saldo">Saldo do Vendedor</option>
+                                            <option value="Descontado">Descontado</option>
+
                                         </select>
 
                                         <label>Valor recebido</label>
@@ -775,8 +777,6 @@
 
                                         } else if (data.option_frete == labelKg) {
                                             $('.label-valor-tipo-frete').html('Valor por KG');
-
-
 
                                         } else {
 
