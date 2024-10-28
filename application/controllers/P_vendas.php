@@ -307,15 +307,17 @@ class P_vendas extends CI_Controller
 
 			foreach ($formasPagamentosModal as $pagamentos) {
 
-				$data['conta'] = $pagamentos['conta'];
+				//Busca o banco para verificar saldo
+				$banco = $this->P_contas_model->recebe_conta($pagamentos['conta']);
+
+				$data['conta'] = $banco['descricao'];
 				$data['valor'] = $pagamentos['valor'];
 				$data['despesa'] = 'Entrada';
 				$data['id_relacao'] = 0;
-				$data['data_registro'] = $dataRecebimento;
+				$data['data_fluxo'] = $dataRecebimento;
 				$data['pago_recebido'] = $dados['cliente'];
 
-				//Busca o banco para verificar saldo
-				$banco = $this->P_contas_model->recebe_conta($pagamentos['conta']);
+
 
 				//Atualiza o saldo da conta
 				$dados_banco['saldo'] = $banco['saldo'] + $data['valor'];
