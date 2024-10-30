@@ -283,6 +283,8 @@
 												<option value="70">R$70,00 por tonelada</option>
 												<option value="100">R$100,00 por tonelada</option>
 												<option value="120">R$120,00 por tonelada</option>
+												<option value="130">R$130,00 por tonelada</option>
+
 											</select>
 										</div>
 									</div>
