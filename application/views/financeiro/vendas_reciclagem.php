@@ -101,7 +101,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 										<th>Data Recebimento</th>
 										<th>Ver</th>
 
-										<?php if ($usuario == 'fernanda@petroecol.com.br') { ?>
+										<?php if ($usuario == 'fernanda@petroecol.com.br' or $usuario == 'reciclagem@petroecol.com.br') { ?>
 											<th>Editar</th>
 											<th>Excluir</th>
 										<?php } ?>
@@ -118,7 +118,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
 										<th>Ver</th>
 
-										<?php if ($usuario == 'fernanda@petroecol.com.br') { ?>
+										<?php if ($usuario == 'fernanda@petroecol.com.br' or $usuario == 'reciclagem@petroecol.com.br') { ?>
 											<th>Editar</th>
 											<th>Excluir</th>
 										<?php } ?>
@@ -157,7 +157,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 													href="<?= base_url('F_venda_reciclagem/visualizar_venda/') . $v['id'] ?>"><i
 														class="material-icons">remove_red_eye</i></a></td>
 
-											<?php if ($usuario == 'fernanda@petroecol.com.br') { ?>
+											<?php if ($usuario == 'fernanda@petroecol.com.br' or $usuario == 'reciclagem@petroecol.com.br') { ?>
 												<td align="center"><a data-toggle="modal"
 														href="<?= base_url('F_venda_reciclagem/editar_venda/') . $v['id'] ?>"
 														style="cursor: pointer;"><i class="material-icons">edit</i></a></td>
