@@ -908,11 +908,11 @@
                                 let subtotal = valor * quantidade;
                                 $(this).find('.input-subtotal').val(subtotal.toFixed(2));
 
-                                quantidadeTotal += subtotal;
+                                quantidadeTotal += quantidade;
 
                                 if (selectTipoFrete != 'Valor por Km rodado') {
 
-                                    if ($('.frete-select').val() == "Valor por Tonelada") {
+                                    if (selectTipoFrete == "Valor por Tonelada") {
                                         totalFrete += calcularFretePorTonelada(quantidade, valorTipoFrete);
                                     } else {
 
@@ -939,12 +939,16 @@
 
 
                                 if (quantidadeTotal > 14000) {
-
+                                    // Calcula a quantidade que excede 14.000
                                     let diferencaQuantidade = quantidadeTotal - 14000;
-                                    totalFrete += calcularFretePorTonelada(diferencaQuantidade, 100);
+
+                                    // Calcula o adicional baseado no excesso e adiciona ao frete total
+                                    totalFrete += diferencaQuantidade * 0.1;
                                 }
 
-                                totalFrete = totalFrete - valorAdicional;
+                                // Ajusta o valor do total de frete com o valor adicional, se necessário
+                                totalFrete -= valorAdicional;
+
 
                             }
 
