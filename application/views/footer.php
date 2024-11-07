@@ -1,104 +1,111 @@
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    
-	  
-	  <!--Div do cookie-->
-	
-<?php
-	  
-	  if(isset($_COOKIE['cookie'])){
-		  
-		  
-	  }else{ $_COOKIE['cookie'] = 'recusado'; }
-	  
-	  if($_COOKIE['cookie'] != "aceito") { ?> 
-	<div class="container-fluid cookie mt-5">
-		<div class="p-cookie">
-			<div class="row">
-				<div class=" col-md-8">
-			<p class="p-3">Usamos cookies para oferecer melhor experiência de navegação, melhorar o desempenho, analisar como você interage em nosso site e personalizar conteúdo. Para dúvidas, consulte nossa <a href="<?= site_url('site/download_politica') ?>">política de privacidade.</a></p>
-				</div>
-				
-				<div class="col-md-2 mt-4">
-					<button type="button" class="btn btn-success active aceitar-cookie">Aceitar Cookies</button>
-				</div>
-				
-				<div class="col-md-2 mt-4 ">
-					<button type="button" class="btn btn-danger recusar-cookie">Recusar Cookies</button>
-				</div>
-			</div>
-		</div>
-	</div>
-<?php } ?>
-	
-	<!-- Final Div do cookie-->
+<footer id="footer" class="footer dark-background">
 
-	  
-	  
-	  <div id="zap"><a style="color:#fff;" href="https://api.whatsapp.com/send?l=pt_br&phone=5514997144385"><img id="whats" width="85" src="<?= base_url('assets/img/zapzap1.png') ?>" /></a></div>
+    <div class="container footer-top">
+        <div class="row gy-4">
+            <div class="col-lg-5 col-md-12 footer-about">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <span class="sitename">Petroecol</span>
+                </a>
+                <p>A Petroecol é especializada na coleta e destinação de resíduos, contribuindo para a sustentabilidade
+                    e
+                    proteção do meio ambiente.</p>
+                <div class="social-links d-flex mt-4">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
 
-    <div class="container">
-      <div class="copyright">
-         Copyright &copy; <strong><span>Petroecol </span></strong>| Todos os direitos reservados
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/ -->
-        Desenvolvido por <a href="https://centrodainteligencia.com.br">Centro da inteligência</a>
-      </div>
+            <div class="col-lg-2 col-6 footer-links">
+                <h4>Links Úteis</h4>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-6 footer-links">
+                <h4>Nossos Serviços</h4>
+                <ul>
+                    <li><a href="#">Coleta de Resíduos</a></li>
+                    <li><a href="#">Reciclagem de Óleo</a></li>
+                    <li><a href="#">Consultoria Ambiental</a></li>
+                    <li><a href="#">Treinamentos Ambientais</a></li>
+                    <li><a href="#">Gestão de Resíduos</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                <h4>Contato</h4>
+                <p>Rua Exemplo, 123</p>
+                <p>Bauru, SP 17000-000</p>
+                <p>Brasil</p>
+                <p class="mt-4"><strong>Telefone:</strong> <span>(14) 1234-5678</span></p>
+                <p><strong>Email:</strong> <span>contato@petroecol.com.br</span></p>
+            </div>
+
+        </div>
     </div>
-  </footer><!-- End Footer -->
+
+    <div class="container copyright text-center mt-4">
+        <p>© <span>Direitos Autorais</span> <strong class="px-1 sitename">Petroecol</strong> <span>Todos os Direitos
+                Reservados</span></p>
+        <div class="credits">
+            Desenvolvido por <a href="https://centrodainteligencia.com.br">Centro da Inteligência</a>
+        </div>
+    </div>
+
+</footer>
 
 
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
-<!-- Botao de subir ao topo --!>
+<!-- Preloader -->
+<div id="preloader"></div>
 
-<!--  <a href="#"  class="back-to-top"><i class="icofont-simple-up"></i></a>-->
+<!-- Vendor JS Files -->
+<script src="<?= base_url("assets/site/vendor/bootstrap/js/bootstrap.bundle.min.js") ?>"></script>
+<script src="<?= base_url("assets/site/vendor/php-email-form/validate.js") ?>"></script>
+<script src="<?= base_url("assets/site/vendor/aos/aos.js") ?>"></script>
+<script src="<?= base_url("assets/site/vendor/purecounter/purecounter_vanilla.js") ?>"></script>
+<script src="<?= base_url("assets/site/vendor/glightbox/js/glightbox.min.js") ?>"></script>
+<script src="<?= base_url("assets/site//vendor/swiper/swiper-bundle.min.js") ?>"></script>
 
-  <!-- Vendor JS Files -->
-  <script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/jquery.easing/jquery.easing.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/php-email-form/validate.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/jquery-sticky/jquery.sticky.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/venobox/venobox.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/waypoints/jquery.waypoints.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/counterup/counterup.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/owl.carousel/owl.carousel.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/isotope-layout/isotope.pkgd.min.js') ?>"></script>
-  <script src="<?= base_url('assets/vendor/aos/aos.js') ?>"></script>
+<!-- Main JS File -->
+<script src="<?= base_url("assets/site/js/main.js") ?>"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!--Schema Markup -->
 
-
-<!--JavaScript do Cookie-->
-
-<script> 
-	$( ".aceitar-cookie" ).click(function() {
-		
-		var d = new Date();
-		
-    	d.setTime(d.getTime() + (365*24*60*60*1000));
-		
-		document.cookie="cookie=aceito; expires=" + d.toUTCString();
-		
-		$('.cookie').hide('slow');
-	});
-	
-	$( ".recusar-cookie" ).click(function() {
-        $('.cookie').hide('slow'); 
-	});
-</script>
-
-
-<!--Final JavaScript do Cookie-->
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Petroecol",
+    "description": "Especializada em coleta de óleo e resíduos para empresas e restaurantes.",
+    "url": "https://www.petroecol.com.br",
+    "telephone": "+55 14 99793-4737",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Endereço da empresa",
+      "addressLocality": "Cidade",
+      "addressRegion": "SP",
+      "postalCode": "535022",
+      "addressCountry": "BR"
+    },
+    "image": "https://www.petroecol.com.br/assets/img/logo-branca.png",
+    "sameAs": [
+      "https://www.facebook.com/petroecol",
+      "https://www.instagram.com/petroecol"
+    ]
+  }
+  </script>
 
 </body>
-
-
 
 </html>
