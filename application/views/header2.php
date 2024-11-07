@@ -1,78 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-	
-	<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Petroecol - Soluções em Coleta de Óleo e Resíduos</title>
+    <meta name="description"
+        content="Petroecol - Especializada em coleta de óleo e resíduos para restaurantes e empresas, oferecendo soluções sustentáveis e eficientes.">
+    <meta name="keywords"
+        content="Petroecol, coleta de óleo, coleta de resíduos, sustentabilidade, serviços ambientais, reciclagem de óleo, soluções ecológicas, coleta empresarial">
 
-  gtag('config', 'G-HMTVG2PW2W');
-</script>
-	
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HMTVG2PW2W"></script>
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" type="image/png">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" type="image/png">
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
 
-  <title>Petroecol</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!-- Vendor CSS Files -->
+    <link href="<?= base_url("assets/site/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
+    <link href="<?= base_url("assets/site/vendor/bootstrap-icons/bootstrap-icons.css") ?>" rel="stylesheet">
+    <link href="<?= base_url("assets/site/vendor/aos/aos.css") ?>" rel="stylesheet">
+    <link href="<?= base_url("assets/site/vendor/fontawesome-free/css/all.min.css") ?>" rel="stylesheet">
+    <link href="<?= base_url("assets/site/vendor/glightbox/css/glightbox.min.css") ?>" rel="stylesheet">
+    <link href="<?= base_url("assets/site/vendor/swiper/swiper-bundle.min.css") ?>" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/icofont/icofont.min.css') ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/boxicons/css/boxicons.min.cs') ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/animate.css/animate.min.css') ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/venobox/venobox.css') ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/owl.carousel/assets/owl.carousel.min.css') ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/vendor/aos/aos.css') ?>" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Mamba - v3.0.1
-  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- Main CSS File -->
+    <link href="<?= base_url("assets/site/css/main.css") ?>" rel="stylesheet">
 </head>
 
-<body>
+<body class="index-page">
 
- 
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-  <!-- ======= Header ======= -->
-  <header style="background-color: #14A524 !important" id="header">
-    <div  class="container">
+            <a href="index.html" class="logo d-flex align-items-center me-auto"
+                title="Petroecol - Soluções Sustentáveis">
 
-      <div class="float-left">
-       
-      <a href="index.html"><img src="<?= base_url('assets/img/logo_branca.png') ?>" alt="" class="img-fluid"></a>
-      </div>
+                <img src="<?= base_url("assets/site/img/logo-branca.png") ?>"
+                    alt="Logotipo da Petroecol - Coleta de Óleo e Resíduos">
+            </a>
 
-      <nav class="nav-menu float-right d-none d-lg-block">
-        <ul>
-          <li class="active"><a class="texto_menu" href="<?= site_url('') ?>">Início</a></li>
-          <li><a class="texto_menu" href="#about">Sobre</a></li>
-          <li><a class="texto_menu" href="#services">Serviços</a></li>
-          <li><a class="texto_menu" href="#portfolio">Portfolio</a></li>
-          <li><a class="texto_menu" href="#team">Equipe</a></li>
-        
-          <li><a class="texto_menu" href="#contact">Contato</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="<?= base_url('site') ?>" class="active">Início</a></li>
+                    <li><a href="<?= base_url('site') ?>">Sobre Nós</a></li>
+                    <li><a href="<?= base_url('site') ?>">Soluções</a></li>
+                    <li><a href="<?= base_url('site/trabalhe') ?>">Trabalhe Conosco</a></li>
+                    <li><a href="<?= base_url('site') ?>">Contato</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-label="Menu Mobile"></i>
+            </nav>
 
-    </div>
-  </header><!-- End Header -->
+            <a class="btn-getstarted" href="<?= base_url('site/solicitacao') ?>">Solicitar Coleta</a>
+        </div>
+    </header>

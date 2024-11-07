@@ -1,453 +1,589 @@
-<!-- ======= Hero Section ======= -->
-<section id="hero">
-  <div class="hero-container">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+<main class="main">
 
-      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-      <div class="carousel-inner" role="listbox">
-
-        <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url('assets/img/slide/slide-4.jpg');">
-          <div class="carousel-container">
-            <div class="carousel-content container">
-              <h2 class="animate__animated animate__fadeInDown">Bem Vindo ao Nosso Site</h2>
-              <p class="animate__animated animate__fadeInUp">Explore todos os nossos serviços, soluções inovadoras que a PETROECOL oferece para a gestão de resíduos e sustentabilidade ambiental. Acesse nossa mala direta para uma visão abrangente sobre como podemos contribuir para o sucesso sustentável do seu negócio.</p>
-              <!-- <a href="<?php base_url("assets/pdf/Apresentacao_petroecol.pdf") ?>" target="_blank" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visualizar</a> -->
-            </div>
-          </div>
+  <!-- Hero Section -->
+  <section id="hero" class="hero section dark-background"
+    style="background-image: url('<?= base_url("assets/site/img/capa2.jpg") ?>');">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h2 data-aos="fade-up" class="thin-font">Nós ressignificamos o que não representava valor e <span
+              class="highlight-text">transformamos em mais futuro</span></h2>
         </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item" style="background-image: url('assets/img/slide/slide-2.jpg');">
-          <div class="carousel-container">
-            <div class="carousel-content container">
-              <h2 class="animate__animated animate__fadeInDown">Conheça os nossos serviços</h2>
-              <p class="animate__animated animate__fadeInUp">A nossa empresa é especializada na coleta e destinação final de resíduos...</p>
-              <a href="#services" class="btn-get-started animate__animated animate__fadeInUp scrollto">Veja Mais</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item" style="background-image: url('assets/img/slide/slide-3.jpg');">
-          <div class="carousel-container">
-            <div class="carousel-content container">
-              <h2 class="animate__animated animate__fadeInDown">Conheça a nossa equipe</h2>
-              <p class="animate__animated animate__fadeInUp">Deseja entrar em contato? Fale com a nossa equipe</p>
-              <a href="#team" class="btn-get-started animate__animated animate__fadeInUp scrollto">Conhecer</a>
-            </div>
-          </div>
-        </div>
-
       </div>
-
-      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-
     </div>
-  </div>
-</section><!-- End Hero -->
+  </section>
+  <!-- /Hero Section -->
 
-<main id="main">
+  <!-- Featured Services Section -->
+  <section id="featured-services" class="featured-services section">
 
-  <!-- ======= About Us Section ======= -->
-  <section id="about" class="about">
-      <div class="container aos-init aos-animate" data-aos="fade-up">
-
-        <div class="row no-gutters">
-          <div class="col-lg-6 video-box">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
-            <!-- <a href="<?php base_url("assets/pdf/Apresentacao_petroecol.pdf") ?>" target="_blank" class=" play-btn mb-4"></a> -->
-          </div>
-
-          <div class="col-lg-6 d-flex flex-column justify-content-center about-content">
-
-            <div class="section-title">
-              <h2>Quem Somos</h2>
-              <p>A PETROECOL é uma empresa nacional, especializada na coleta e destino final, de resíduos sólidos, óleo de fritura vegetal/animal e derivado, recicláveis secos (metálicos e não metálicos), resíduos secos orgânicos animal/vegetal, prestação de serviços voltada a gestão de resíduos sólidos e limpeza de caixas coletoras de gorduras. Capaz de lhe dar um atendimento personalizado e diferenciado, com a finalidade de lhe oferecer soluções práticas e inteligentes, com qualidade e confiabilidade.</p>
-            </div>
-
-            <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bx-briefcase-alt"></i></div>
-              <h4 class="title"><a href="">Descubra Nossos Serviços</a></h4>
-              <p class="description">Conheça nossa ampla gama de serviços ambientais e encontre soluções sob medida para a gestão eficiente de resíduos na sua empresa. Deixe-nos ajudá-lo a alcançar suas metas de sustentabilidade com facilidade e eficácia.</p>
-            </div>
-
-            <!-- <div class="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bx-book-reader"></i></div>
-              <h4 class="title"><a href="">Veja Nossa Mala Direta</a></h4>
-              <p class="description">Explore todos os nossos serviços, soluções inovadoras que a PETROECOL oferece para a gestão de resíduos e sustentabilidade ambiental. Acesse nossa mala direta para uma visão abrangente sobre como podemos contribuir para o sucesso sustentável do seu negócio.
-            </div> -->
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  <!-- Empresas Section -->
-  <section id="empresa" class="services">
-    <div class="container-fluid">
-
-      <div class="section-title">
-        <h2>Empresas</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-          <div><img src="<?= base_url('assets/img/empresa1.png') ?>"></div>
-          <h4 class="title mt-3"><a href="<?= site_url('empresas/empresa1') ?>">Ver Mais</a></h4>
-          <p class="description">Empresa especializada na coleta e destinação final de resíduos de óleo vegetal/animal e derivados, respeitando sempre o meio ambiente</p>
-        </div>
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-          <div><img src="<?= base_url('assets/img/empresa2.png') ?>"></div>
-          <h4 class="title mt-3"><a href="<?= site_url('empresas/empresa2') ?>">Ver Mais</a></h4>
-          <p class="description">Empresa especializada na coleta, triagem e destinação final de resíduos sólidos metálicos e não metálicos(residenciais, comerciais e industrial), com a finalidade de oferecer soluções ambientais práticas e inteligentes</p>
-        </div>
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-          <div><img src="<?= base_url('assets/img/logo_coifas.png') ?>"></div>
-          <h4 class="title mt-3"><a href="#">Ver Mais</a></h4>
-          <p class="description">A Petroecol também é especializada na limpeza de coifas, dutos, e exaustores</p>
-        </div>
-        
-
-      </div>
-
-    </div>
-  </section><!-- End Empresas Section -->
-
-
-
-  <!-- End About Us Section -->
-
-  <!-- ======= About Lists Section ======= -->
-  <!--<section class="about-lists">
-      <div class="container">
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
-            <span>01</span>
-            <h4>Lorem Ipsum</h4>
-            <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="100">
-            <span>02</span>
-            <h4>Repellat Nihil</h4>
-            <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="200">
-            <span>03</span>
-            <h4> Ad ad velit qui</h4>
-            <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="300">
-            <span>04</span>
-            <h4>Repellendus molestiae</h4>
-            <p>Inventore quo sint a sint rerum. Distinctio blanditiis deserunt quod soluta quod nam mider lando casa</p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="400">
-            <span>05</span>
-            <h4>Sapiente Magnam</h4>
-            <p>Vitae dolorem in deleniti ipsum omnis tempore voluptatem. Qui possimus est repellendus est quibusdam</p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="500">
-            <span>06</span>
-            <h4>Facilis Impedit</h4>
-            <p>Quis eum numquam veniam ea voluptatibus voluptas. Excepturi aut nostrum repudiandae voluptatibus corporis sequi</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>-->
-  <!-- End About Lists Section -->
-
-  <!-- ======= Counts Section ======= -->
-  <section class="counts section-bg">
     <div class="container">
 
-      <div class="row">
+      <div class="row gy-4">
 
-        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
-          <div class="count-box">
-            <i class="icofont-water-drop" style="color: #90b84c;"></i>
-            <span data-toggle="">1.650.000</span>
-            <p>Litros de óleo recolhidos somente em 2020</p>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon flex-shrink-0"><i class="fa-solid fa-recycle"></i></div>
+          <div>
+            <h4 class="title">Gestão de Resíduos</h4>
+            <p class="description">Oferecemos soluções completas para a coleta, transporte e destinação de resíduos,
+              garantindo a sustentabilidade e conformidade ambiental para o seu negócio.</p>
+            <a href="#" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
+        <!-- End Service Item -->
 
-        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="count-box">
-            <i class="icofont-trash" style="color: #90b84c;"></i>
-            <span data-toggle="counter-up">1.100</span>
-            <p>Toneladas de Reciclavel somente em 2020</p>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon flex-shrink-0"><i class="fa-solid fa-oil-can"></i></div>
+          <div>
+            <h4 class="title">Coleta de Óleo Usado</h4>
+            <p class="description">Realizamos a coleta de óleo de cozinha usado para reciclagem, contribuindo para a
+              preservação do meio ambiente e evitando contaminações.</p>
+            <a href="#" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
           </div>
-        </div>
+        </div><!-- End Service Item -->
 
-        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
-          <div class="count-box">
-            <i class="icofont-recycle" style="color: #90b84c;"></i>
-            <span data-toggle="">Trilhões</span>
-            <p>De litros de agua são salvos da poluição devido ao nosso trabalho</p>
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon flex-shrink-0"><i class="fa-solid fa-leaf"></i></div>
+          <div>
+            <h4 class="title">Soluções Sustentáveis</h4>
+            <p class="description">Nossa equipe desenvolve estratégias personalizadas para promover a sustentabilidade
+              e minimizar o impacto ambiental em sua empresa.</p>
+            <a href="#" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
           </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="600">
-          <div class="count-box">
-            <i class="icofont-users-alt-5" style="color: #90b84c;"></i>
-            <span data-toggle="counter-up">2.000</span>
-            <p>Clientes Petroecol distribuidos em todo o Brasil</p>
-          </div>
-        </div>
+        </div><!-- End Service Item -->
 
       </div>
 
     </div>
-  </section><!-- End Counts Section -->
 
-  <!-- ======= Services Section ======= -->
-  <section id="services" class="services">
+  </section><!-- /Featured Services Section -->
+
+  <!-- About Section -->
+  <section id="about" class="about section">
+
     <div class="container">
 
-      <div class="section-title">
-        <h2>Nossos Serviços</h2>
-      </div>
+      <div class="row gy-4">
+        <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up"
+          data-aos-delay="200">
+          <img src="<?= base_url("assets/site/img/about.jpg") ?>" class="img-fluid" alt="">
+          <a href="https://youtu.be/cDeKL_TIHGA" class="glightbox pulsating-play-btn"></a>
+        </div>
 
-      <div class="row">
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-          <div class="icon"><i class="icofont-recycle"></i></div>
-          <h4 class="title"><a href="">Limpeza</a></h4>
-          <p class="description">Limpeza de coifas e caixas coletoras de gordura</p>
-        </div>
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-          <div class="icon"><i class="icofont-articulated-truck"></i></div>
-          <h4 class="title"><a href="">Coleta e Transporte</a></h4>
-          <p class="description">Recolhimento dos resíduos e transporte à unidade</p>
-        </div>
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="icofont-user-suited"></i></div>
-          <h4 class="title"><a href="">Gestão de Resíduos</a></h4>
-          <p class="description">Profissionais treinados e capacitados para atender a demanda do cliente</p>
-        </div>
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-          <div class="icon"><i class="icofont-tree-alt"></i></div>
-          <h4 class="title"><a href="">Compostagem</a></h4>
-          <p class="description">Reaproveitamento dos resíduos de matéria orgânica transformando-os em adubo</p>
-        </div>
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-          <div class="icon"><i class="icofont-earth"></i></div>
-          <h4 class="title"><a href="">Coleta Seletiva</a></h4>
-          <p class="description">Segregação dos materiais que são passíveis de reciclagem</p>
-        </div>
-        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-          <div class="icon"><i class="icofont-users-social"></i></div>
-          <h4 class="title"><a href="">Projetos Sociais</a></h4>
-          <p class="description">Clique aqui e veja alguns de nossos projetos pessoais</p>
-        </div>
-      </div>
-
-    </div>
-  </section><!-- End Services Section -->
-
-  <!-- ======= Our Portfolio Section ======= -->
-  <section id="portfolio" class="portfolio section-bg">
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-      <div class="section-title">
-        <h2>Galeria</h2>
-        <p>Conheça a nossa estrutura</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <ul id="portfolio-flters">
-            <li data-filter="*" class=" filter-active">Todas</li>
-            <li data-filter=".filter-app">Escritório</li>
-            <li data-filter=".filter-web">Reciclagem</li>
-            <li data-filter=".filter-card">Fachada</li>
+        <div class="col-lg-6 content order-last order-lg-first" data-aos="fade-up" data-aos-delay="100">
+          <h3>Sobre a Petroecol</h3>
+          <p>
+            Na Petroecol, nossa missão é transformar o descarte de resíduos em soluções sustentáveis. Trabalhamos para
+            promover a coleta e reciclagem de óleos usados e resíduos, com foco em minimizar os impactos ambientais e
+            gerar valor para nossos clientes e a sociedade.
+          </p>
+          <ul>
+            <li>
+              <i class="fa-solid fa-leaf"></i>
+              <div>
+                <h5>Soluções Sustentáveis</h5>
+                <p>Desenvolvemos projetos de coleta de resíduos focados em preservar o meio ambiente e gerar economia
+                  circular.</p>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-recycle"></i> <!-- Ícone de Reciclagem para Coleta Especializada -->
+              <div>
+                <h5>Coleta Especializada</h5>
+                <p>Oferecemos um serviço de coleta de resíduos ágil e seguro, garantindo a destinação correta e o
+                  reuso responsável dos materiais.</p>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-hand-holding-water"></i>
+              <!-- Ícone de Mão com Gota d'água para Responsabilidade Ambiental -->
+              <div>
+                <h5>Responsabilidade Ambiental</h5>
+                <p>Com nossa expertise, estamos comprometidos em cuidar do planeta, proporcionando uma destinação
+                  adequada e responsável dos resíduos recicláveis.</p>
+              </div>
+            </li>
           </ul>
         </div>
+
       </div>
 
-      <div class="row portfolio-container">
+    </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/fachada1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Fachada</h4>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/fachada1.jpg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="icofont-eye"></i></a>
+  </section><!-- /About Section -->
 
-              </div>
+  <!-- Soluções Section -->
+  <section id="services" class="services section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <span>Soluções<br></span>
+      <h2>Nossas Soluções</h2>
+      <p>Oferecemos soluções completas e sustentáveis para a gestão de resíduos e reciclagem de óleo, sempre focadas
+        em atender às necessidades de empresas e do meio ambiente.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card">
+            <div class="card-img">
+
+              <img src="<?= base_url("assets/site/img/oleo_coleta.jpg") ?>" alt="Coleta de Óleo Usado"
+                class="img-fluid">
             </div>
+            <h3>Coleta de Óleo Usado</h3>
+            <p>Realizamos a coleta segura de óleo de cozinha usado, com serviços especializados para empresas de todos
+              os tamanhos, garantindo o descarte adequado e a preservação do meio ambiente.</p>
           </div>
-        </div>
+        </div><!-- End Card Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="card">
+            <div class="card-img">
+              <img src="<?= base_url("assets/site/img/residuos.jpg") ?>" alt="Gestão de Resíduos Industriais"
+                class="img-fluid">
+            </div>
+            <h3><a href="#" class="stretched-link">Gestão de Resíduos Industriais</a></h3>
+            <p>Oferecemos soluções completas para a gestão de resíduos industriais, garantindo conformidade com normas
+              ambientais e responsabilidade social em todas as etapas do processo.</p>
+          </div>
+        </div><!-- End Card Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="card">
+            <div class="card-img">
+              <img src="<?= base_url("assets/site/img/consultoria.jpg") ?>" alt="Consultoria Ambiental"
+                class="img-fluid">
+            </div>
+            <h3><a href="#" class="stretched-link">Consultoria Ambiental</a></h3>
+            <p>Nossa equipe especializada oferece consultoria para empresas que desejam implementar práticas
+              sustentáveis, melhorando sua gestão ambiental e atendendo aos requisitos legais.</p>
+          </div>
+        </div><!-- End Card Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="card">
+            <div class="card-img">
+              <img src="<?= base_url("assets/site/img/reversa.jpg") ?>" alt="Logística Reversa" class="img-fluid">
+            </div>
+            <h3><a href="#" class="stretched-link">Logística Reversa</a></h3>
+            <p>Implementamos processos eficientes de logística reversa para a reutilização e reciclagem de materiais,
+              reduzindo o impacto ambiental e promovendo a economia circular.</p>
+          </div>
+        </div><!-- End Card Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="card">
+            <div class="card-img">
+              <img src="<?= base_url("assets/site/img/descara.jpg") ?>" alt="Descaracterização de Documentos"
+                class="img-fluid">
+            </div>
+            <h3>Descaracterização de Documentos</h3>
+            <p>Oferecemos serviços especializados de descaracterização e destruição segura de documentos
+              confidenciais, protegendo informações sensíveis e contribuindo para a segurança de dados. Todo o
+              processo é feito de forma responsável e sustentável, garantindo a reciclagem dos materiais e a
+              conformidade com normas de descarte.</p>
+          </div>
+        </div><!-- End Card Item -->
+
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+          <div class="card">
+            <div class="card-img">
+              <img src="<?= base_url("assets/site/img/centro_industrial.jpg") ?>" alt="Montagem de Centros Industriais"
+                class="img-fluid">
+            </div>
+            <h3>Montagem de Centros Industriais</h3>
+            <p>Especialistas em desenvolver e montar centros industriais dentro de indústrias, criamos infraestruturas
+              focadas no processamento e manejo eficiente de resíduos. Nossas soluções visam garantir
+              sustentabilidade, otimização de recursos e conformidade ambiental.</p>
+          </div>
+        </div><!-- End Card Item -->
 
 
       </div>
 
     </div>
-  </section><!-- End Our Portfolio Section -->
 
-  <!-- ======= Our Team Section ======= -->
-  <section id="team" class="team">
+  </section><!-- /Soluções Section -->
+
+
+  <!-- Seção de Chamada para Ação -->
+  <section id="call-to-action" class="call-to-action section dark-background">
+    <img src="<?= base_url("assets/site/img/cta-bg.jpg") ?>" alt="Imagem de fundo representando sustentabilidade">
+
+    <div class="container">
+      <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-xl-10">
+          <div class="text-center">
+            <h3>Contribua para um Futuro Sustentável</h3>
+            <p>Ajude a preservar o meio ambiente com práticas de reciclagem e descarte adequado de resíduos. A
+              Petroecol oferece soluções eficientes e personalizadas para sua empresa contribuir ativamente com o
+              futuro do planeta.</p>
+            <a class="cta-btn" href="<?= base_url('site/solicitacao') ?>">Solicitar Coleta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /Seção de Chamada para Ação -->
+
+  <!-- Seção de Benefícios -->
+  <section id="pricing" class="pricing section">
+
+    <!-- Título da Seção -->
+    <div class="container section-title" data-aos="fade-up">
+      <span>Benefícios da Coleta</span>
+      <h2>Nossos Serviços</h2>
+      <p>Oferecemos soluções sustentáveis para empresas que geram resíduos, com benefícios exclusivos e, em casos
+        específicos, serviços adicionais personalizados.</p>
+    </div><!-- Fim do Título da Seção -->
+
     <div class="container">
 
-      <div class="section-title">
-        <h2>Nossa Equipe</h2>
+      <div class="row gy-4">
+
+        <!-- Plano Gratuito -->
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="pricing-item">
+            <h3>Coleta Gratuita</h3>
+            <h4><span>Oferecemos compensações</span></h4>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Coleta de óleo usado</span></li>
+              <li><i class="bi bi-check"></i> <span>Relatório básico de descarte</span></li>
+              <li><i class="bi bi-check"></i> <span>Compensação: brindes ou descontos</span></li>
+              <li><i class="bi bi-check"></i> <span>Consultoria ambiental básica</span></li>
+              <li><i class="bi bi-x"></i> <span>Coleta em locais remotos</span></li>
+            </ul>
+            <a href="#contato" class="buy-btn">Solicitar Coleta</a>
+          </div>
+        </div><!-- Fim do Plano Gratuito -->
+
+        <!-- Plano Intermediário -->
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="pricing-item featured">
+            <h3>Serviços Personalizados</h3>
+            <h4><span>A combinar</span></h4>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Coleta frequente de óleo</span></li>
+              <li><i class="bi bi-check"></i> <span>Relatórios detalhados e auditoria</span></li>
+              <li><i class="bi bi-check"></i> <span>Consultoria ambiental personalizada</span></li>
+              <li><i class="bi bi-check"></i> <span>Coleta em locais remotos</span></li>
+              <li><i class="bi bi-check"></i> <span>Benefícios e bonificações especiais</span></li>
+            </ul>
+            <a href="#contato" class="buy-btn">Personalizar Serviço</a>
+          </div>
+        </div><!-- Fim do Plano Intermediário -->
+
+        <!-- Plano Pago (casos especiais) -->
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="pricing-item">
+            <h3>Plano Avançado</h3>
+            <h4><sup>R$</sup>199<span> / mês</span></h4>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Coleta semanal de óleo e resíduos</span></li>
+              <li><i class="bi bi-check"></i> <span>Relatório completo e auditoria ambiental</span></li>
+              <li><i class="bi bi-check"></i> <span>Consultoria ambiental avançada</span></li>
+              <li><i class="bi bi-check"></i> <span>Suporte exclusivo e prioritário</span></li>
+              <li><i class="bi bi-check"></i> <span>Desconto em serviços adicionais</span></li>
+            </ul>
+            <a href="#contato" class="buy-btn">Assine Agora</a>
+          </div>
+        </div><!-- Fim do Plano Pago -->
 
       </div>
 
-      <div class="row">
+    </div>
 
-        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
-          <div class="member">
-            <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-            <div class="member-info container">
-              <h4>Zidane Augusto</h4>
-              <span>Óleo (atendimento)</span>
-              <div class="social">
-                <p style="color: #fff">atendimento@petroecol.com.br</br>(14) 9 9714-4385</p>
+  </section><!-- /Seção de Benefícios -->
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials section dark-background">
+
+    <img src="<?= base_url("assets/site/img/testimonials-bg.jpg") ?>" class="testimonials-bg" alt="">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="swiper init-swiper">
+        <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          }
+        }
+      </script>
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <h3>Saul Goodman</h3>
+              <h4>CEO &amp; Founder</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
               </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>Serviço impecável! Superou minhas expectativas e tornou o processo muito fácil. Recomendo a
+                  todos que buscam algo prático e eficiente.</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
             </div>
-          </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <h3>Sara Wilsson</h3>
+              <h4>Designer</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>Adorei o atendimento! Todo o processo foi claro e muito bem explicado. Me senti segura com o
+                  trabalho que foi entregue. Obrigada!</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <h3>Jena Karlis</h3>
+              <h4>Store Owner</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>Simplesmente incrível! Não poderia ter feito uma escolha melhor. A equipe é muito profissional e
+                  dedicada ao que faz. Muito satisfeita com o resultado.</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <h3>Matt Brandon</h3>
+              <h4>Freelancer</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>Resultado incrível! Todo o processo foi muito tranquilo, e a qualidade do serviço é evidente.
+                  Voltarei a contratar com certeza!</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <h3>John Larson</h3>
+              <h4>Entrepreneur</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>Um serviço completo, sem complicação. Me ajudaram em tudo que precisei e o resultado final ficou
+                  muito acima do esperado. Agradeço a dedicação!</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
         </div>
+        <div class="swiper-pagination"></div>
+      </div>
 
-        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="member">
-            <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-            <div class="member-info container">
-              <h4>Catia Pereira</h4>
-              <span>Reciclagem (atendimento)</span>
-              <div class="social">
-                <p style="color: white">reciclagem@petroecol.com.br</br>(14) 9 9167-7056</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
 
-        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="member">
-            <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-            <div class="member-info container">
-              <h4>Leandro Cantaluppi</h4>
-              <span>Administrativo / Compras</span>
-              <div class="social">
-                <p style="color:#fff ">manutencao@petroecol.com.br</br>(14) 9 9118-5386</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  </section><!-- /Testimonials Section -->
 
-        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-          <div class="member">
-            <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-            <div class="member-info container">
-              <h4>Diego Carrascosa</h4>
-              <span>Coordenador Comercial</span>
-              <div class="social">
-                <p style="color: #fff">comercial@petroecol.com.br</br>(14) 3208-7835</p>
+  <!-- Faq Section -->
+  <section id="faq" class="faq section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <span>Perguntas Frequentes</span>
+      <h2>Perguntas Frequentes</h2>
+      <p>Esclareça suas dúvidas sobre nossos serviços e soluções ambientais.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+          <div class="faq-container">
+
+            <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
+              <i class="faq-icon bi bi-question-circle"></i>
+              <h3>Quais serviços a Petroecol oferece?</h3>
+              <div class="faq-content">
+                <p>Oferecemos serviços de coleta e destinação de resíduos, reciclagem de óleo e consultoria ambiental
+                  para empresas.</p>
               </div>
-            </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+              <i class="faq-icon bi bi-question-circle"></i>
+              <h3>Como posso solicitar uma coleta?</h3>
+              <div class="faq-content">
+                <p>Você pode solicitar uma coleta preenchendo o formulário em nosso site ou entrando em contato pelo
+                  telefone disponível.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+              <i class="faq-icon bi bi-question-circle"></i>
+              <h3>A Petroecol atende empresas de todos os tamanhos?</h3>
+              <div class="faq-content">
+                <p>Sim, atendemos empresas de todos os portes, oferecendo soluções personalizadas para atender suas
+                  necessidades.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+              <i class="faq-icon bi bi-question-circle"></i>
+              <h3>Quais são os benefícios de trabalhar com a Petroecol?</h3>
+              <div class="faq-content">
+                <p>Trabalhar conosco garante a correta destinação dos resíduos, contribuindo para a sustentabilidade e
+                  a conformidade com as normas ambientais.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+              <i class="faq-icon bi bi-question-circle"></i>
+              <h3>Como posso entrar em contato com a Petroecol?</h3>
+              <div class="faq-content">
+                <p>Você pode nos contatar através do formulário no site ou pelo telefone. Estamos prontos para ajudar
+                  você!</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
           </div>
+
         </div>
 
       </div>
 
     </div>
-  </section><!-- End Our Team Section -->
 
+  </section><!-- /Faq Section -->
 
+</main>
 
-  <!-- ======= Contact Us Section ======= -->
-  <section id="contact" class="contact">
-    <div class="container">
+<main class="main">
 
-      <div class="section-title">
-        <h2>Contato</h2>
-      </div>
+  <!-- Page Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <span>Contato</span>
+    <h2>Onde Estamos</h2>
+    <p>Esclareça suas dúvidas sobre nossos serviços e soluções ambientais.</p>
+  </div><!-- End Section Title -->
 
-      <div class="row">
+  <!-- Contact Section -->
+  <section style="margin-top: -3%;" id="contact" class="contact section">
 
-        <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-up">
-          <div class="info-box">
-            <div class="icon"><i class="icofont-map"></i></div>
-            <h3 class="mt-3">Endereço</h3>
-            <p>Rua Margarida Genaro 2, 189 - Loteamento LEB, Bauru - SP.</p>
-          </div>
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
+        <iframe style="border:0; width: 100%; height: 270px;"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4391.400936525736!2d-49.05874473682522!3d-22.250953950580538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bf662f8a969aaf%3A0xafcf6abecdf4b367!2sPETROECOL%20Reciclagem%20de%20%C3%93leo%20Vegetal%2C%20Derivados%20de%20Gordura%20e%20Res%C3%ADduos%20S%C3%B3lidos!5e0!3m2!1spt-BR!2sbr!4v1730830922094!5m2!1spt-BR!2sbr"
+          frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div><!-- End Google Maps -->
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4">
+          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+            <i class="bi bi-geo-alt flex-shrink-0"></i>
+            <div>
+              <h3>Endereço</h3>
+              <p>Rua Margarida Genaro 2, 189 - Loteamento LEB, Bauru - SP</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <i class="bi bi-telephone flex-shrink-0"></i>
+            <div>
+              <h3>Telefone</h3>
+              <p>+55 (14) 3208-7835</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+            <i class="bi bi-envelope flex-shrink-0"></i>
+            <div>
+              <h3>Email</h3>
+              <p>contato@petroecol.com.br</p>
+            </div>
+          </div><!-- End Info Item -->
+
         </div>
 
-        <div class="col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-          <div class="info-box">
-            <div class="icon"><i class="icofont-mail"></i></div>
-            <h3 class="mt-3">E-mail</h3>
+        <div class="col-lg-8">
+          <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
 
-            <p>atendimento@petroecol.com.br</p>
-            <p>comercial@petroecol.com.br</p>
-          </div>
-        </div>
-
-        <div class="col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-          <div class="info-box ">
-            <div class="icon"><i class="icofont-phone"></i></div>
-            <h3 class="mt-3">Telefone</h3>
-            <p>(14) 3208-7835</br>(14) 99714-4385</br>(14) 3202-6027</p>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <form action="<?php echo site_url('email') ?>" method="post" role="form" class="php-email-form">
-            <div class="row">
-              <span style="display:none;visibility:hidden;">
-                <label for="email">
-                  Ignore este campo de texto. Ele está aqui para detectar spammers.
-                  Se você entar qualquer valor neste campo, sua mensagem não será enviada.
-                </label>
-                <input type="text" name="email" size="1" value="" /></span>
-              <div class="col-lg-6 form-group">
-                <input type="text" name="nome" required class="form-control" placeholder="Nome" data-rule="minlen:4" data-msg="Digite o seu nome" />
-                <div class="validate"></div>
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Seu Nome" required="">
               </div>
-              <div class="col-lg-6 form-group">
-                <input type="e-mail" required class="form-control" name="e-mail" placeholder="Email" data-rule="email" data-msg="Digite um endereço de email válido" />
-                <div class="validate"></div>
+
+              <div class="col-md-6">
+                <input type="email" class="form-control" name="email" placeholder="Seu Email" required="">
               </div>
+
+              <div class="col-md-12">
+                <input type="text" class="form-control" name="subject" placeholder="Assunto" required="">
+              </div>
+
+              <div class="col-md-12">
+                <textarea class="form-control" name="message" rows="6" placeholder="Mensagem" required=""></textarea>
+              </div>
+
+              <div class="col-md-12 text-center">
+                <div class="loading">Carregando</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Sua mensagem foi enviada com sucesso. Obrigado!</div>
+
+                <button type="submit">Enviar Mensagem</button>
+              </div>
+
             </div>
-            <div class="form-group">
-              <input type="text" required class="form-control" name="assunto" placeholder="Assunto" data-rule="minlen:4" data-msg="Digite o assunto" />
-              <div class="validate"></div>
-            </div>
-            <div class="form-group">
-              <textarea required class="form-control" name="mensagem" rows="5" data-rule="required" data-msg="Digite a mensagem" placeholder="Mensagem"></textarea>
-              <div class="validate"></div>
-            </div>
-            <div class="mb-3">
-              <div class="loading">Loading</div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Enviar Mensagem</button></div>
           </form>
-        </div>
-        <div class="col-lg-6"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.7472614146723!2d-49.06018110462015!3d-22.24966616589257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE1JzAwLjAiUyA0OcKwMDMnMzAuMSJX!5e0!3m2!1spt-BR!2sbr!4v1603885855351!5m2!1spt-BR!2sbr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+        </div><!-- End Contact Form -->
+
       </div>
+
 
     </div>
 
+  </section><!-- /Contact Section -->
 
-  </section><!-- End Contact Us Section -->
-
-</main><!-- End #main -->
+</main>

@@ -1,183 +1,133 @@
+<main class="main">
 
-	
-		<div class="col-lg-12 ">
-			<img class="img-fluid"  src="<?= base_url('assets/img/banner_trabalhe.jpg'); ?>">
-		</div>
-	
+  <!-- Page Title -->
+  <div class="page-title dark-background" data-aos="fade"
+    style="background-image: url(<?= base_url("assets/site/img/page-title-bg.jpg") ?>);">
+    <div class="container position-relative">
+      <h1>Trabalhe Conosco</h1>
+      <p>Junte-se à nossa equipe na Petroecol! Estamos sempre em busca de profissionais dedicados e talentosos para
+        ajudar a construir um futuro mais sustentável.</p>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="index.html">Início</a></li>
+          <li class="current">Trabalhe Conosco</li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
 
-		
-<div class="container">
-	
+  <!-- Contact Section -->
+  <section id="work-with-us" class="contact section">
 
-	<div class=" row mb-4">
-		
-			
-	<div class="row mt-5">
-		<div class="section-title mb-5">
-          <h2>Trabalhe Conosco</h2>
-		<h5 style="margin-top: -10px">Veja as vagas disponíveis em nossa empresa e envie seu currículo para nós através do formulário de contato desta página</h5>
-        </div>
-	</div>
-	
-		
-		<div align="center" class="col-md-6">
-			<img class="img-fluid mb-4"  src="<?= base_url('assets/img/trabalho/motorista.jpg') ?>">
-		</div>
-		<div class="col-md-6">
-			<h1>Motorista de Coleta</h1>
-			<p>Nossos <b>Motoristas</b> são responsáveis em realizar para a empresa a coleta de resíduos para o setor de reciclagem, coleta de óleo usado em comércios ou residência para nosso setor de reciclagem de óleo usado</p></br>
-		</div>
-		
-		
-		
-		<div class="mt-5 row">
-		<div class="col-md-6">
-			<h1>Atendimento</h1>
-			<p>Para quem quiser fazer parte do atendimento da <b>Petroecol Soluções Ambientais</b> será necessario cuidar de todo atendimento ao cliente, fazer agendamentos de coleta por telefone, ouvir reclamações, passar informações relacionadas a coleta e básicas informações do funcionamento da empresa e gerar rotas para os motoristas conforme agendado.</p>
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-			
-		</div>
-		
-		<div align="center" class="col-md-6">
-			<img class="img-fluid mb-4"  src="<?= base_url('assets/img/trabalho/atendimento.jpg') ?>">
-		</div>
-		</div>
-	
-	
-		<div class="mt-5 row">
-			
-		
-			<div align="center" class="col-md-6">
-				<img class="img-fluid mb-4"  src="<?= base_url('assets/img/trabalho/geral.jpg') ?>">
-			</div>
-			
-			<div class="col-md-6">
-			<h1>Serviços Gerais</h1>
-			<p>Para quem trabalhar nos <b>Serviços Gerais</b>, será responsável de ajudar todo o setor de reciclagem, desde a organização e limpeza, até a separação de resíduos</p>
+      <div class="row gy-4">
 
-			
-			</div>
-			
-		</div>
-	
-	
-		<div class="mt-5 row">
-			
-			
-			<div class="col-md-6">
-			<h1>Tecnologia da Informação</h1>
-			<p>Quem deseja trabalhar na área de tecnologia de informação da <b>Petroecol Soluções Ambientais</b> atuará na interface com e entre áreas a fim de assegurar o atendimento a todas as necessidades da empresa em termos de serviços e sistemas de computação. Este profissional ou estagiário será responsável por garantir que esses sistemas estejam dentro de padrões adequados de qualidade, eficiência e segurança da informação, desempenhando um papel ativo no gerenciamento de operações.</p>
-
-			
-			</div>
-			
-			<div align="center" class="col-md-6">
-				<img class="img-fluid mb-4"  src="<?= base_url('assets/img/trabalho/ti.jpg') ?>">
-			</div>
-			
-			
-		</div>
-	
-	
-		<div class="mt-5 row">
-			
-			<div align="center" class="col-md-6">
-				<img class="img-fluid mb-4"  src="<?= base_url('assets/img/trabalho/seguranca.jpg') ?>">
-			</div>
-			
-			<div class="col-md-6">
-			<h1>Segurança de trabalho</h1>
-			<p>Orientar e coordenar o sistema de <b>Segurança do Trabalho</b> da empresa, investigando riscos e causas de acidentes, analisando esquemas de prevenção, propor normas e dispositivos de segurança, sugerindo eventuais modificações nos equipamentos e instalações e verificando sua observância, para prevenir acidentes.</p>
-
-			
-			</div>
-			
-			
-			
-			
-		</div>
-	
-	
-		<div class="mt-5 row">
-			
-			
-			<div class="col-md-6">
-			<h1>Programa de estágio</h1>
-			<p>Nossos <b>Estagiários</b> participam de treinamentos voltados ao seu desenvolvimento, cultura, valores e conduta da empresa. Em sua rotina de estágio são levados a pensar em melhorias de processos e em como aplicar a teoria em suas práticas diárias.</p>
-			</div>
-			
-			
-			<div align="center" class="col-md-6">
-				<img class="img-fluid mb-4"  src="<?= base_url('assets/img/trabalho/estagio.jpg') ?>">
-			</div>
-			
-			
-		</div>
-			
-	
-	
-			
-		
-	</div>
-
-	
-
-</div>
-
-<!-- ======= Contact Us Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Envie seu curriculo</h2>
-        </div>
-
-        <div class="row">
-
-         
-
-          <div class="col-lg-12">
-            <form action="<?php echo site_url('email/trabalhe') ?>" method="post" role="form"  enctype="multipart/form-data" class="php-email-form">
-              <div class="row">
-                <div class="col-lg-6 form-group">
-                  <input type="text" name="nome" required class="form-control" placeholder="Nome" data-rule="minlen:4" data-msg="Digite o seu nome" />
-                  <div class="validate"></div>
-                </div>
-                <div class="col-lg-6 form-group">
-                  <input type="email" required class="form-control" name="email" placeholder="Email" data-rule="email" data-msg="Digite um endereço de email válido" />
-                  <div class="validate"></div>
-                </div>
-             
-             
-                <div class="col-lg-6 form-group">
-                  <input type="text" name="assunto" required class="form-control" placeholder="Assunto" data-rule="minlen:4" data-msg="Assunto da menssagem" />
-                  <div class="validate"></div>
-                </div>
-				  
-                <div class="col-lg-6 form-group">
-                  <input style="padding: 7px" type="file" required class="form-control" name="arquivo" placeholder="Email" data-rule="email" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-				
-              <div class="form-group">
-                <textarea required class="form-control" name="mensagem" rows="5" data-rule="required" data-msg="Digite a mensagem" placeholder="Mensagem"></textarea>
-                <div class="validate"></div>
-              </div>
-				
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Enviar Mensagem</button></div>
-            </form>
+        <!-- Informações de Contato -->
+        <div class="col-lg-4">
+          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+            <i class="bi bi-geo-alt flex-shrink-0"></i>
+            <div>
+              <h3>Endereço</h3>
+              <p>Avenida das Indústrias, 500, Bauru, SP - 17013-160</p>
+            </div>
           </div>
-			
+
+          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <i class="bi bi-telephone flex-shrink-0"></i>
+            <div>
+              <h3>Telefone</h3>
+              <p>+55 14 4002 8922</p>
+            </div>
+          </div>
+
+          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+            <i class="bi bi-envelope flex-shrink-0"></i>
+            <div>
+              <h3>Email</h3>
+              <p>rh@petroecol.com.br</p>
+            </div>
+          </div>
         </div>
+
+        <!-- Formulário de Trabalhe Conosco -->
+        <div class="col-lg-8">
+          <form action="forms/workwithus.php" method="post" class="php-email-form" enctype="multipart/form-data"
+            data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+
+              <!-- Nome e Email -->
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Seu Nome" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control" name="email" placeholder="Seu Email" required>
+              </div>
+
+              <!-- Telefone -->
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="phone" placeholder="Telefone" required>
+              </div>
+
+              <!-- Vagas Disponíveis por Área -->
+              <div class="col-md-6">
+                <select name="position" class="form-control" required>
+                  <option value="">Selecione a Posição Desejada</option>
+
+                  <!-- Opções de Vagas Operacionais -->
+                  <optgroup label="Operacional">
+                    <option value="motorista_coleta">Motorista de Coleta</option>
+                    <option value="servicos_gerais">Serviços Gerais</option>
+                  </optgroup>
+
+                  <!-- Opções de Vagas Administrativas -->
+                  <optgroup label="Administrativo">
+                    <option value="assistente_administrativo">Assistente Administrativo</option>
+                    <option value="analista_rh">Analista de RH</option>
+                  </optgroup>
+
+                  <!-- Opções de Vagas Comerciais -->
+                  <optgroup label="Comercial">
+                    <option value="vendedor">Vendedor</option>
+                    <option value="assistente_comercial">Assistente Comercial</option>
+                  </optgroup>
+
+                  <!-- Opções de Vagas Técnicas -->
+                  <optgroup label="Técnico">
+                    <option value="tecnico_manutencao">Técnico de Manutenção</option>
+                    <option value="engenheiro_ambiental">Engenheiro Ambiental</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- Anexar Currículo -->
+              <div class="col-md-12">
+                <label for="resume" class="form-label">Anexe seu Currículo (PDF)</label>
+                <input type="file" name="resume" class="form-control" accept=".pdf" required>
+              </div>
+
+              <!-- Mensagem -->
+              <div class="col-md-12">
+                <textarea class="form-control" name="message" rows="6"
+                  placeholder="Fale um pouco sobre você e suas qualificações" required></textarea>
+              </div>
+
+              <!-- Botão de Enviar -->
+              <div class="col-md-12 text-center">
+                <div class="loading">Enviando...</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Sua candidatura foi enviada. Obrigado!</div>
+
+                <button type="submit">Enviar Candidatura</button>
+              </div>
+            </div>
+          </form>
+        </div><!-- Fim do Formulário de Trabalhe Conosco -->
 
       </div>
-		
-		
-    </section><!-- End Contact Us Section -->
 
-       
+    </div>
+  </section><!-- Fim da Seção Trabalhe Conosco -->
+
+
+</main>
