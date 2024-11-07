@@ -255,10 +255,10 @@
               <li><i class="bi bi-check"></i> <span>Coleta de óleo usado</span></li>
               <li><i class="bi bi-check"></i> <span>Relatório básico de descarte</span></li>
               <li><i class="bi bi-check"></i> <span>Compensação: brindes ou descontos</span></li>
-              <li><i class="bi bi-check"></i> <span>Consultoria ambiental básica</span></li>
-              <li><i class="bi bi-x"></i> <span>Coleta em locais remotos</span></li>
+              <li><i class="bi bi-check"></i> <span>Consultoria ambiental</span></li>
+              <li><i class="bi bi-check"></i> <span>Coleta em locais remotos de acordo com nossa rota</span></li>
             </ul>
-            <a href="#contato" class="buy-btn">Solicitar Coleta</a>
+            <a href="<?= base_url('site/solicitacao') ?>" class="buy-btn">Solicitar Coleta</a>
           </div>
         </div><!-- Fim do Plano Gratuito -->
 
@@ -268,11 +268,11 @@
             <h3>Serviços Personalizados</h3>
             <h4><span>A combinar</span></h4>
             <ul>
-              <li><i class="bi bi-check"></i> <span>Coleta frequente de óleo</span></li>
+              <li><i class="bi bi-check"></i> <span>Coleta frequente de óleo e resíduos</span></li>
               <li><i class="bi bi-check"></i> <span>Relatórios detalhados e auditoria</span></li>
-              <li><i class="bi bi-check"></i> <span>Consultoria ambiental personalizada</span></li>
-              <li><i class="bi bi-check"></i> <span>Coleta em locais remotos</span></li>
-              <li><i class="bi bi-check"></i> <span>Benefícios e bonificações especiais</span></li>
+              <li><i class="bi bi-check"></i> <span>Consultoria ambiental</span></li>
+              <li><i class="bi bi-check"></i> <span>Coleta exclusiva</span></li>
+              <li><i class="bi bi-check"></i> <span>Coletas Industriais</span></li>
             </ul>
             <a href="#contato" class="buy-btn">Personalizar Serviço</a>
           </div>
@@ -282,10 +282,10 @@
         <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
           <div class="pricing-item">
             <h3>Plano Avançado</h3>
-            <h4><sup>R$</sup>199<span> / mês</span></h4>
+            <h3>Serviços Personalizados</h3>
             <ul>
-              <li><i class="bi bi-check"></i> <span>Coleta semanal de óleo e resíduos</span></li>
-              <li><i class="bi bi-check"></i> <span>Relatório completo e auditoria ambiental</span></li>
+              <li><i class="bi bi-check"></i> <span>Coleta prioritária</span></li>
+              <li><i class="bi bi-check"></i> <span>Relatório detalhados e auditoria ambiental</span></li>
               <li><i class="bi bi-check"></i> <span>Consultoria ambiental avançada</span></li>
               <li><i class="bi bi-check"></i> <span>Suporte exclusivo e prioritário</span></li>
               <li><i class="bi bi-check"></i> <span>Desconto em serviços adicionais</span></li>
@@ -327,8 +327,8 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <h3>Saul Goodman</h3>
-              <h4>CEO &amp; Founder</h4>
+              <h3>Guilherme Prado</h3>
+              <h4>Empresário</h4>
               <div class="stars">
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                   class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
@@ -344,7 +344,41 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <h3>Sara Wilsson</h3>
+              <h3>Danilo Oliveira</h3>
+              <h4>Empresário</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>Simplesmente incrível! Não poderia ter feito uma escolha melhor. A equipe é muito profissional e
+                  dedicada ao que faz. Muito satisfeita com o resultado.</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <h3>Victor Hugo</h3>
+              <h4>Cliente Parceiro</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                <span>Resultado incrível! Todo o processo foi muito tranquilo, e a qualidade do serviço é evidente.
+                  Voltarei a contratar com certeza!</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <h3>Gabriel Moreira</h3>
               <h4>Designer</h4>
               <div class="stars">
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -361,42 +395,8 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <h3>Jena Karlis</h3>
-              <h4>Store Owner</h4>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p>
-                <i class="bi bi-quote quote-icon-left"></i>
-                <span>Simplesmente incrível! Não poderia ter feito uma escolha melhor. A equipe é muito profissional e
-                  dedicada ao que faz. Muito satisfeita com o resultado.</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <h3>Matt Brandon</h3>
-              <h4>Freelancer</h4>
-              <div class="stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p>
-                <i class="bi bi-quote quote-icon-left"></i>
-                <span>Resultado incrível! Todo o processo foi muito tranquilo, e a qualidade do serviço é evidente.
-                  Voltarei a contratar com certeza!</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-              </p>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <h3>John Larson</h3>
-              <h4>Entrepreneur</h4>
+              <h3>Luís Felipe</h3>
+              <h4>Empreendedor</h4>
               <div class="stars">
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                   class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
@@ -440,8 +440,9 @@
               <i class="faq-icon bi bi-question-circle"></i>
               <h3>Quais serviços a Petroecol oferece?</h3>
               <div class="faq-content">
-                <p>Oferecemos serviços de coleta e destinação de resíduos, reciclagem de óleo e consultoria ambiental
-                  para empresas.</p>
+                <p>Oferecemos serviços de coleta e destinação de resíduos, oferecemos serviços adicionais e exclusivos
+                  para empresas.
+                </p>
               </div>
               <i class="faq-toggle bi bi-chevron-right"></i>
             </div><!-- End Faq item-->
