@@ -38,7 +38,7 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-            <a href="index.html" class="logo d-flex align-items-center me-auto"
+            <a href="<?= base_url('site') ?>" class="logo d-flex align-items-center me-auto"
                 title="Petroecol - Soluções Sustentáveis">
 
                 <img src="<?= base_url("assets/site/img/logo-branca.png") ?>"
