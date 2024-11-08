@@ -12,7 +12,7 @@
                 <div class="social-links d-flex mt-4">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/somospetroecol/"><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
@@ -41,10 +41,10 @@
 
             <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                 <h4>Contato</h4>
-                <p>Rua Exemplo, 123</p>
-                <p>Bauru, SP 17000-000</p>
+                <p> Rua Margarida Genaro 2, 189 - Loteamento LEB</p>
+                <p>Bauru, SP 17.023-013</p>
                 <p>Brasil</p>
-                <p class="mt-4"><strong>Telefone:</strong> <span>(14) 1234-5678</span></p>
+                <p class="mt-4"><strong>Telefone:</strong> <span>(14) 3208-7835</span></p>
                 <p><strong>Email:</strong> <span>contato@petroecol.com.br</span></p>
             </div>
 
