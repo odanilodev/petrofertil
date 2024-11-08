@@ -272,7 +272,7 @@
               <li><i class="bi bi-check"></i> <span>Coleta exclusiva</span></li>
               <li><i class="bi bi-check"></i> <span>Coletas Industriais</span></li>
             </ul>
-            <a href="#contato" class="buy-btn">Personalizar Serviço</a>
+            <a href="#contato" class="buy-btn">Entrar em contato</a>
           </div>
         </div><!-- Fim do Plano Intermediário -->
 
@@ -288,7 +288,7 @@
               <li><i class="bi bi-check"></i> <span>Suporte exclusivo e prioritário</span></li>
               <li><i class="bi bi-check"></i> <span>Desconto em serviços adicionais</span></li>
             </ul>
-            <a href="#contato" class="buy-btn">Assine Agora</a>
+            <a href="#contato" class="buy-btn">Entrar em contato</a>
           </div>
         </div><!-- Fim do Plano Pago -->
 
