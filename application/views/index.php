@@ -210,25 +210,23 @@
 
   </section><!-- /Soluções Section -->
 
-
   <!-- Seção de Chamada para Ação -->
   <section id="call-to-action" class="call-to-action section dark-background">
-    <img src="<?= base_url("assets/site/img/cta-bg.jpg") ?>" alt="Imagem de fundo representando sustentabilidade">
+    <img src="<?= base_url("assets/img/slide/slide-4.jpg") ?>" alt="Imagem de fundo representando sustentabilidade">
 
     <div class="container">
       <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
         <div class="col-xl-10">
           <div class="text-center">
-            <h3>Contribua para um Futuro Sustentável</h3>
-            <p>Ajude a preservar o meio ambiente com práticas de reciclagem e descarte adequado de resíduos. A
-              Petroecol oferece soluções eficientes e personalizadas para sua empresa contribuir ativamente com o
-              futuro do planeta.</p>
-            <a class="cta-btn" href="<?= base_url('site/solicitacao') ?>">Solicitar Coleta</a>
+            <h3>Conheça Nossos Serviços Sustentáveis</h3>
+            <p>Baixe nossa mala direta e descubra todas as soluções que a Petroecol oferece para apoiar sua empresa na
+              gestão sustentável de resíduos. Juntos, podemos contribuir para um futuro mais verde.</p>
+            <a class="cta-btn" href="<?= base_url('assets/site/docs/mala-direta-petroecol.pdf') ?>"
+              download="Mala_Direta_Petroecol.pdf">Baixar Mala Direta</a>
           </div>
         </div>
       </div>
     </div>
-
   </section><!-- /Seção de Chamada para Ação -->
 
   <!-- Seção de Benefícios -->
@@ -499,7 +497,28 @@
 
 </main>
 
-<main class="main">
+
+<!-- Seção de Chamada para Ação -->
+<section id="call-to-action" class="call-to-action section dark-background">
+  <img src="<?= base_url("assets/site/img/cta-bg.jpg") ?>" alt="Imagem de fundo representando sustentabilidade">
+
+  <div class="container">
+    <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+      <div class="col-xl-10">
+        <div class="text-center">
+          <h3>Contribua para um Futuro Sustentável</h3>
+          <p>Ajude a preservar o meio ambiente com práticas de reciclagem e descarte adequado de resíduos. A
+            Petroecol oferece soluções eficientes e personalizadas para sua empresa contribuir ativamente com o
+            futuro do planeta.</p>
+          <a class="cta-btn" href="<?= base_url('site/solicitacao') ?>">Solicitar Coleta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section><!-- /Seção de Chamada para Ação -->
+
+<main class="main mt-5">
 
   <!-- Page Title -->
   <div class="container section-title" data-aos="fade-up">
