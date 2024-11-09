@@ -221,7 +221,7 @@
             <h3>Conheça Nossos Serviços Sustentáveis</h3>
             <p>Baixe nossa mala direta e descubra todas as soluções que a Petroecol oferece para apoiar sua empresa na
               gestão sustentável de resíduos. Juntos, podemos contribuir para um futuro mais verde.</p>
-            <a class="cta-btn" href="<?= base_url('assets/site/docs/mala-direta-petroecol.pdf') ?>"
+            <a class="cta-btn" href="<?= base_url('assets/site/docs/Mala_Direta_Petroecol.pdf') ?>"
               download="Mala_Direta_Petroecol.pdf">Baixar Mala Direta</a>
           </div>
         </div>
@@ -384,8 +384,8 @@
               </div>
               <p>
                 <i class="bi bi-quote quote-icon-left"></i>
-                <span>Adorei o atendimento! Todo o processo foi claro e muito bem explicado. Me senti segura com o
-                  trabalho que foi entregue. Obrigada!</span>
+                <span>Adorei o atendimento! Todo o processo foi claro e muito bem explicado. Me senti seguro com o
+                  trabalho que foi entregue. Obrigado!</span>
                 <i class="bi bi-quote quote-icon-right"></i>
               </p>
             </div>
