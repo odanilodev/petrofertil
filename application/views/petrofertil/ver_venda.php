@@ -120,8 +120,21 @@
                                                     <td><?= $produto[$i] ?></td>
                                                     <td>R$<?= number_format("$valor_produto[$i]", 2, ",", "."); ?></td>
                                                     <td><?= $quantidade[$i] ?></td>
-                                                    <td>R$<?php $total_produto = $quantidade[$i] * $valor_produto[$i];
-                                                    echo number_format("$total_produto", 2, ",", "."); ?>
+                                                    <td>R$
+                                                        <?php
+                                                        // Substituir a vírgula por ponto no valor do produto
+                                                        $valor_produto_corrigido = str_replace(',', '.', $valor_produto[$i]);
+
+                                                        // Garantir que a quantidade seja um número sem a vírgula como separador de milhar
+                                                        $quantidade_corrigida = str_replace('.', '', $quantidade[$i]); // Remove o ponto da quantidade
+                                                        $quantidade_corrigida = (float) $quantidade_corrigida; // Converte para float
+                                                    
+                                                        // Realizar o cálculo do total do produto
+                                                        $total_produto = $quantidade_corrigida * $valor_produto_corrigido;
+
+                                                        // Exibir o valor formatado corretamente
+                                                        echo number_format($total_produto, 2, ',', '.');
+                                                        ?>
                                                     </td>
 
                                                 </tr>
