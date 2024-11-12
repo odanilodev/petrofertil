@@ -739,12 +739,16 @@
                             // Convertendo a string formatada para um número flutuante
                             const toneladas = quantidadeFormatada / 1000;
 
-                            // Calculando o frete total
-                            const totalFrete = toneladas * valorPorTonelada;
+                            // Garantindo que o valor de toneladas não seja inferior a 14
+                            const toneladasCorrigidas = Math.max(toneladas, 14);
 
-                            // Retornando o valor sem arredondar (ajustar arredondamento se necessário)
+                            // Calculando o frete total com o valor corrigido de toneladas
+                            const totalFrete = toneladasCorrigidas * valorPorTonelada;
+
+                            // Retornando o valor total do frete, arredondado
                             return Math.round(totalFrete);
                         }
+
 
 
                         $(document).ready(function () {
