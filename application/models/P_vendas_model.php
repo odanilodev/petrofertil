@@ -19,24 +19,31 @@ class P_vendas_model extends CI_Model
 
        public function recebe_vendas()
        {
-
               $this->db->from('p_vendas as v');
               $this->db->join('p_clientes_petrofertil as c', 'v.cliente = c.id', 'left');
 
               $this->db->select('v.*, c.nome_fantasia');
 
-              $query = $this->db->get();
+              // Adicionando a ordenação por data_venda (ordem crescente, você pode mudar para 'desc' se necessário)
+              $this->db->order_by('v.data_venda', 'desc'); // 'asc' para crescente, 'desc' para decrescente
 
+              $query = $this->db->get();
               return $query->result_array();
        }
 
+
        public function recebe_vendas_filtrada($data_inicial, $data_final)
        {
-
               $this->db->select('v.*, c.nome_fantasia');
               $this->db->from('p_vendas as v');
               $this->db->join('p_clientes_petrofertil as c', 'v.cliente = c.id', 'left');
+
+              // Filtrando pela data
               $this->db->where('v.data_venda BETWEEN "' . date('Y-m-d', strtotime($data_inicial)) . '" and "' . date('Y-m-d', strtotime($data_final)) . '"');
+
+              // Adicionando a ordenação por data_venda (ordem crescente, você pode mudar para 'desc' se necessário)
+              $this->db->order_by('v.data_venda', 'desc'); // 'asc' para crescente, 'desc' para decrescente
+
               $query = $this->db->get();
               return $query->result_array();
        }
