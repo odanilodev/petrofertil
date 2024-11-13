@@ -332,6 +332,8 @@
 												<option value="70" <?= $cliente['valor_por_tonelada'] == 70 ? 'selected' : '' ?>>R$70,00 por tonelada</option>
 												<option value="100" <?= $cliente['valor_por_tonelada'] == 100 ? 'selected' : '' ?>>R$100,00 por tonelada</option>
 												<option value="120" <?= $cliente['valor_por_tonelada'] == 120 ? 'selected' : '' ?>>R$120,00 por tonelada</option>
+												<option value="130" <?= $cliente['valor_por_tonelada'] == 130 ? 'selected' : '' ?>>R$130,00 por tonelada</option>
+
 											</select>
 										</div>
 									</div>
@@ -415,7 +417,7 @@
 				<select name="produto[]" class="form-control" onchange="loadMateriaPrimaOptions(this)">
 					<option value="" disabled selected>Selecione o produto</option>
 					<?php foreach ($produtos as $produto): ?>
-																																																																																																	<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
+																																																																																																														<option value="<?= $produto['nome'] ?>"><?= $produto['nome'] ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
