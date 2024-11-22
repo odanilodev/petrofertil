@@ -63,8 +63,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
 <body class="theme-red">
 
-    <input type="hidden" class="base-url" value="<?= base_url()?>">
-    <input type="hidden" class="segment-3" value="<?= $this->uri->segment(3)?>">
+    <input type="hidden" class="base-url" value="<?= base_url() ?>">
+    <input type="hidden" class="segment-3" value="<?= $this->uri->segment(3) ?>">
 
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -312,6 +312,13 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             <a href="<?= site_url('P_clientes') ?>">
                                 <i class="material-icons">perm_identity</i>
                                 <span>Clientes e Destinações</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= site_url('P_controle_qualidade/inicio') ?>">
+                                <i class="material-icons">perm_identity</i>
+                                <span>Controle de Produção e Qualidade</span>
                             </a>
                         </li>
 
