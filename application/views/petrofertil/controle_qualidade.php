@@ -68,6 +68,128 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
         </div>
 
+        <!-- Widgets -->
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-3  col-sm-6 col-xs-12">
+                <div class="info-box bg-cyan hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">eco</i> <!-- Ícone relacionado a "orgânico" -->
+                    </div>
+                    <div class="content">
+                        <div class="text">Orgânico</div>
+                        <div class="number"><?= $total_organico ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-red hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">science</i> <!-- Ícone relacionado a "mineral" -->
+                    </div>
+                    <div class="content">
+                        <div class="text">Mineral</div>
+                        <div class="number"><?= $total_mineral ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-green hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">grass</i> <!-- Ícone relacionado a "palha" -->
+                    </div>
+                    <div class="content">
+                        <div class="text">Palha</div>
+                        <div class="number"><?= $total_palha ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-purple hover-expand-effect"> <!-- Alterei a cor de gray para purple -->
+                    <div class="icon">
+                        <i class="material-icons">category</i> <!-- Ícone relacionado a "outros" -->
+                    </div>
+                    <div class="content">
+                        <div class="text">Outros</div>
+                        <div class="number"><?= $total_outro ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box bg-gray hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">calendar_today</i> <!-- Ícone relacionado a "dias" -->
+                    </div>
+                    <div class="content">
+                        <div class="text">N° de Dias</div>
+                        <div class="number"><?= $numero_de_dias ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box bg-gray hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">calendar_view_day</i> <!-- Ícone relacionado a "total diário" -->
+                    </div>
+                    <div class="content">
+                        <div class="text">Total Diário</div>
+                        <div class="number"><?= $total_diario ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="container-fluid">
+                <form class="col-md-12" enctype="multipart/form-data"
+                    action="<?= site_url('P_controle_qualidade/inicio/') ?>" method="post">
+
+                    <div class="col-md-2 col-sm-12">
+
+                        <div class="form-group ">
+                            <label>De</label>
+                            <input type="date" value="<?= $data_inicial ?>" name="data_inicial" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2 col-sm-12">
+
+                        <div class="form-group  ">
+                            <label>Até</label>
+                            <input type="date" value="<?= $data_final ?>" name="data_final" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2" style="margin-top: -4px">
+                        <p>
+                            <b>Produto</b>
+                        </p>
+                        <select name="id_produto" class="form-control ">
+                            <option value="">Selecione</option>
+
+                            <?php foreach ($produtos as $produto) { ?>
+                                <option value="<?= $produto['id'] ?>"><?= $produto['nome'] ?></option>
+                            <?php } ?>
+                        </select>
+
+                    </div>
+
+                    <button type="submit" style="margin-top: 27px"
+                        class="btn btn-primary ml-2 col-sm-6 col-md-3 col-xs-6 ">Filtrar</button>
+
+                    <a href="<?= site_url('P_controle_qualidade/inicio/') ?>"><span style="margin-top: 27px"
+                            class="btn btn-success col-md-3 col-sm-6 col-xs-6">Mês Atual</span></a>
+                </form>
+            </div>
+        </div>
+
         <div id="like_button_container"></div>
         <!-- Exportable Table -->
         <div class="row clearfix">
@@ -149,8 +271,10 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                                         <li><a class="dropdown-item"
                                                                 href="<?= base_url('P_controle_qualidade/formulario_controle/' . $p['id']) ?>">Editar</a>
                                                         </li>
-                                                        <li><a class="dropdown-item text-danger" href="#"
-                                                                onclick="deletarRegistro(<?= $p['id'] ?>)">Deletar</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="<?= base_url('P_controle_qualidade/deleta_controle/' . $p['id']) ?>">Deletar
+                                                                </>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </td>

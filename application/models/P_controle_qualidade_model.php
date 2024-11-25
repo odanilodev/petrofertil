@@ -20,7 +20,7 @@ class P_controle_qualidade_model extends CI_Model
 
     }
 
-    public function recebe_controle_producao($data_inicio = null, $data_fim = null)
+    public function recebe_controle_producao($data_inicio = null, $data_fim = null, $id_produto = null)
     {
         $this->db->select('
             p_controle_producao.*, 
@@ -42,63 +42,20 @@ class P_controle_qualidade_model extends CI_Model
             $this->db->where('YEAR(p_controle_producao.data)', date('Y'));
         }
 
+        // Filtra pelo ID do produto, se fornecido
+        if (!empty($id_produto)) {
+            $this->db->where('p_controle_producao.id_produto', $id_produto);
+        }
+
         $query = $this->db->get();
 
         return $query->result_array();
     }
 
-
-    public function recebe_controle_producao_id($id)
+    public function deleta_controle($id)
     {
-        $this->db->select('
-        p_controle_producao.*, 
-        p_funcionarios.nome AS funcionario, 
-        p_produtos.nome AS produto
-    ');
-        $this->db->from('p_controle_producao');
-        $this->db->join('p_funcionarios', 'p_funcionarios.id = p_controle_producao.id_funcionario', 'left'); // Ajustei aqui também o campo do funcionário para garantir que está correto
-        $this->db->join('p_produtos', 'p_produtos.id = p_controle_producao.id_produto', 'left');
-        $this->db->where('p_controle_producao.id', $id); // Adiciona o filtro WHERE pelo ID
-        $query = $this->db->get();
-
-        return $query->row_array();
-    }
-
-
-
-    public function recebe_motoristas_nome()
-    {
-
-        $this->db->select('nome');
-        $query = $this->db->get('motoristas_petrofertil');
-        return $query->result_array();
-
-    }
-
-    public function recebe_motorista($id)
-    {
-
         $this->db->where('id', $id);
-        $query = $this->db->get('motoristas_petrofertil');
-        return $query->row_array();
-    }
-
-    public function recebe_motoristas_transportador($nome_transportador)
-    {
-
-        $this->db->where('transportador', $nome_transportador);
-        $this->db->order_by('nome', 'ASC'); // Ordena por nome em ordem crescente
-        $query = $this->db->get('motoristas_petrofertil');
-        return $query->result_array();
-    }
-
-    public function deleta_motorista($id)
-    {
-
-        $this->db->where('id', $id);
-        $this->db->delete('motoristas_petrofertil');
-        redirect('P_motoristas');
-
+        $this->db->delete('p_controle_producao');
     }
 
 }

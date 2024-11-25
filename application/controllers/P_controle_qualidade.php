@@ -6,27 +6,60 @@ class P_controle_qualidade extends CI_Controller
 
 	public function inicio()
 	{
-
 		$this->load->model('P_controle_qualidade_model');
+		$this->load->model('P_produtos_model');
 
-		$data['producao'] = $this->P_controle_qualidade_model->recebe_controle_producao();
 
+		// Recebe as datas via POST (ou define como null se não existirem)
+		$data_inicial = $this->input->post('data_inicial') ?: null;
+		$data_final = $this->input->post('data_final') ?: null;
+
+		$id_produto = $this->input->post('id_produto') ?: null;
+
+		// Chama o modelo com as datas (ou null)
+		$producao = $this->P_controle_qualidade_model->recebe_controle_producao($data_inicial, $data_final, $id_produto);
+
+		// Inicializa variáveis para os totais
+		$total_organico = 0;
+		$total_mineral = 0;
+		$total_palha = 0;
+		$total_outro = 0;
+
+		// Array para guardar datas únicas
+		$datas_unicas = [];
+
+		// Processa os dados de produção
+		foreach ($producao as $registro) {
+			// Soma os valores de cada campo, garantindo que sejam numéricos
+			$total_organico += is_numeric($registro['organico']) ? $registro['organico'] : 0;
+			$total_mineral += is_numeric($registro['mineral']) ? $registro['mineral'] : 0;
+			$total_palha += is_numeric($registro['palha']) ? $registro['palha'] : 0;
+			$total_outro += is_numeric($registro['outro']) ? $registro['outro'] : 0;
+
+			// Adiciona a data ao array de datas únicas
+			$datas_unicas[$registro['data']] = true;
+		}
+
+		// Calcula o número de dias únicos
+		$numero_de_dias = count($datas_unicas);
+
+		// Calcula o total geral (diário)
+		$total_diario = $total_organico + $total_mineral + $total_palha + $total_outro;
+
+		// Prepara os dados para a view
+		$data['producao'] = $producao;
+		$data['total_organico'] = $total_organico;
+		$data['total_mineral'] = $total_mineral;
+		$data['total_palha'] = $total_palha;
+		$data['total_outro'] = $total_outro;
+		$data['total_diario'] = $total_diario; // Soma de tudo
+		$data['numero_de_dias'] = $numero_de_dias;
+
+		$data['produtos'] = $this->P_produtos_model->recebe_produtos();
+
+		// Carrega as views
 		$this->load->view('petrofertil/header', $data);
 		$this->load->view('petrofertil/controle_qualidade');
-		$this->load->view('petrofertil/footer');
-	}
-
-	public function filtra_destinacao_gera()
-	{
-		$this->load->model('Destinacao_model');
-
-		$data_inicial = $this->input->post('data_inicial');
-		$data_final = $this->input->post('data_final');
-
-		$data['destinacoes'] = $this->Destinacao_model->recebe_filtro_destinacoes_geral($data_inicial, $data_final);
-
-		$this->load->view('petrofertil/header', $data);
-		$this->load->view('petrofertil/destinacao_geral');
 		$this->load->view('petrofertil/footer');
 	}
 
@@ -72,199 +105,19 @@ class P_controle_qualidade extends CI_Controller
 
 		}
 
-
-
 		redirect('P_controle_qualidade/inicio/');
 	}
 
-
-	public function gera_destinacao()
+	public function deleta_controle()
 	{
 
-		$this->load->model('Clientesp_model');
-		$this->load->model('Destinacao_model');
-		$this->load->model('Certificado_model');
-
-		$id = $this->input->post('id');
-
-		$data_final = $this->input->post('data_final');
-		$data_inicial = $this->input->post('data_inicial');
-
-		$data['destinacao'] = $this->Destinacao_model->gera_destinacao($data_inicial, $data_final, $id);
-
-		$contador = count($data['destinacao']);
-
-		if ($contador == 0) {
-			redirect('P_destinacao/inicio/' . $id . '/erro');
-		}
-
-
-		$dados['id_cliente'] = $id;
-		$data['cliente'] = $this->Clientesp_model->recebe_cliente($id);
-		$conteudo = $data['destinacao'];
-		$dados['conteudo'] = json_encode($conteudo);
-		$numero = $this->Certificado_model->localiza_numero();
-
-
-		if ($numero['id'] == "") {
-
-			$numero['id'] = 0;
-		}
-
-		$dados['numero'] = $numero['id'] . '/' . date("Y");
-
-
-		$dados['data_cadastro'] = date('Y/m/d');
-		$data['numero'] = $dados['numero'];
-
-
-		$this->Certificado_model->inserir_certificado($dados);
-
-		$this->load->view('admin/cert', $data);
-		$html = $this->output->get_output();
-		// Load pdf library
-		$this->load->library('pdf');
-		$this->pdf->loadHtml($html);
-		$this->pdf->render();
-		// Output the generated PDF (1 = download and 0 = preview)
-		$this->pdf->stream("certificado.pdf", array("Attachment" => 1));
-	}
-
-
-	public function ver_certificado()
-	{
-
-		$this->load->model('Certificado_model');
-
-		$this->load->model('Clientesp_model');
-
+		$this->load->model('P_controle_qualidade_model');
 
 		$id = $this->uri->segment(3);
 
+		$this->P_controle_qualidade_model->deleta_controle($id);
 
+		redirect('P_controle_qualidade/inicio/');
 
-		$data['certificado'] = $this->Certificado_model->recebe_certificado($id);
-
-		$id_cliente = $data['certificado']['id_cliente'];
-
-
-		$data['cliente'] = $this->Clientesp_model->recebe_cliente($id_cliente);
-
-
-		$this->load->view('admin/rever_certificado', $data);
-		$html = $this->output->get_output();
-		// Load pdf library
-		$this->load->library('pdf');
-		$this->pdf->loadHtml($html);
-		$this->pdf->render();
-		// Output the generated PDF (1 = download and 0 = preview)
-		$this->pdf->stream("certificado.pdf", array("Attachment" => 1));
-	}
-
-	public function criar_certificado()
-	{
-
-		$this->load->model('Certificado_model');
-
-		$this->load->model('Clientesp_model');
-
-
-		$id = 581;
-
-
-
-		$data['certificado'] = $this->Certificado_model->recebe_certificado($id);
-
-		$id_cliente = $data['certificado']['id_cliente'];
-
-
-		$data['cliente'] = $this->Clientesp_model->recebe_cliente($id_cliente);
-
-
-		$this->load->view('admin/rever', $data);
-		$html = $this->output->get_output();
-		// Load pdf library
-		$this->load->library('pdf');
-		$this->pdf->loadHtml($html);
-
-		$this->pdf->render();
-		// Output the generated PDF (1 = download and 0 = preview)
-		$this->pdf->stream("certificado.pdf", array("Attachment" => 1));
-	}
-
-
-	public function edita_destinacao()
-	{
-
-		$this->load->model('Destinacao_model');
-
-		$id = $this->uri->segment(3);
-
-		$data['destinacao'] = $this->Destinacao_model->recebe_destinacao($id);
-
-
-		$this->load->view('petrofertil/header', $data);
-		$this->load->view('petrofertil/edita_destinacao');
-		$this->load->view('petrofertil/footer');
-
-
-	}
-
-
-	public function atualiza_destinacao()
-	{
-
-		$this->load->model('Destinacao_model');
-
-		$id = $this->input->post('id');
-
-		$dados['id_cliente'] = $this->input->post('id_cliente');
-		$dados['quantidade'] = $this->input->post('quantidade');
-		$dados['balanca'] = $this->input->post('balanca');
-		$dados['nota'] = $this->input->post('nota');
-		$dados['valor_frete'] = $this->input->post('valor_frete');
-		$dados['plastico'] = $this->input->post('plastico');
-		$dados['rafia'] = $this->input->post('rafia');
-		$dados['valor_produto'] = $this->input->post('valor_produto');
-		$dados['mtr'] = $this->input->post('mtr');
-		$dados['data'] = $this->input->post('data');
-		$dados['observacao'] = $this->input->post('observacao');
-		$dados['custo'] = $this->input->post('custo');
-
-		$this->Destinacao_model->atualiza_destinacao($id, $dados);
-
-		redirect('P_destinacao/inicio/' . $dados['id_cliente']);
-
-	}
-
-
-	public function deleta_destinacao()
-	{
-
-		$this->load->model('Destinacao_model');
-
-		$id = $this->uri->segment(3);
-
-		$cliente = $this->uri->segment(4);
-
-		$this->Destinacao_model->deleta_destinacao($id);
-
-		redirect('P_destinacao/inicio/' . $cliente);
-
-	}
-
-	public function deleta_certificado()
-	{
-
-		$this->load->model('Destinacao_model');
-
-		$id = $this->uri->segment(3);
-
-
-		$cliente = $this->uri->segment(4);
-
-		$this->Destinacao_model->deleta_certificado($id);
-
-		redirect('P_destinacao/inicio/' . $cliente);
 	}
 }
