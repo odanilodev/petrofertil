@@ -52,6 +52,22 @@ class P_controle_qualidade_model extends CI_Model
         return $query->result_array();
     }
 
+    public function recebe_controle_producao_id($id)
+    {
+        $this->db->select('
+        p_controle_producao.*, 
+        p_funcionarios.nome AS funcionario, 
+        p_produtos.nome AS produto
+    ');
+        $this->db->from('p_controle_producao');
+        $this->db->join('p_funcionarios', 'p_funcionarios.id = p_controle_producao.id_funcionario', 'left'); // Ajustei aqui também o campo do funcionário para garantir que está correto
+        $this->db->join('p_produtos', 'p_produtos.id = p_controle_producao.id_produto', 'left');
+        $this->db->where('p_controle_producao.id', $id); // Adiciona o filtro WHERE pelo ID
+        $query = $this->db->get();
+
+        return $query->row_array();
+    }
+
     public function deleta_controle($id)
     {
         $this->db->where('id', $id);
