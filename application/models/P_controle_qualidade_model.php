@@ -28,7 +28,7 @@ class P_controle_qualidade_model extends CI_Model
             p_produtos.nome AS produto
         ');
         $this->db->from('p_controle_producao');
-        $this->db->join('p_funcionarios', 'p_funcionarios.id = p_controle_producao.id_produto', 'left');
+        $this->db->join('p_funcionarios', 'p_funcionarios.id = p_controle_producao.id_funcionario', 'left');
         $this->db->join('p_produtos', 'p_produtos.id = p_controle_producao.id_produto', 'left');
 
         // Verifica se as datas foram fornecidas

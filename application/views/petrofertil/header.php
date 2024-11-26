@@ -299,6 +299,20 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
                     <?php if ($usuario == 'alaide@petrofertil.com.br' or $usuario == 'adrielly@petrofertil.com.br') { ?>
 
+                        <?php if ($usuario == 'adrielly@petrofertil.com.br') { ?>
+
+                            <li class="header">QUALIDADE</li>
+
+                            <li>
+                                <a href="<?= site_url('P_controle_qualidade/inicio') ?>">
+                                    <i class="material-icons">perm_identity</i>
+                                    <span>Controle de Produção e Qualidade</span>
+                                </a>
+                            </li>
+
+                        <?php } ?>
+
+
                         <li class="header">DESTINAÇÃO DE MATERIAL</li>
 
                         <li>
@@ -315,12 +329,6 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             </a>
                         </li>
 
-                        <li>
-                            <a href="<?= site_url('P_controle_qualidade/inicio') ?>">
-                                <i class="material-icons">perm_identity</i>
-                                <span>Controle de Produção e Qualidade</span>
-                            </a>
-                        </li>
 
                         <li class="header">CADASTRO PETROFERTIL</li>
 
