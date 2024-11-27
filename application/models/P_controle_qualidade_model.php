@@ -20,6 +20,12 @@ class P_controle_qualidade_model extends CI_Model
 
     }
 
+    public function buscar_por_id($id)
+    {
+        return $this->db->get_where('p_controle_producao', ['id' => $id])->row_array();
+    }
+
+
     public function recebe_controle_producao($data_inicio = null, $data_fim = null, $id_produto = null)
     {
         $this->db->select('
