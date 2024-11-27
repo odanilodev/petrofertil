@@ -83,11 +83,9 @@ class P_controle_qualidade extends CI_Controller
 
 	public function cadastra_controle()
 	{
-
 		$this->load->model('P_controle_qualidade_model');
 
 		$id = $this->input->post('id');
-
 		$dados['data'] = $this->input->post('data');
 		$dados['id_funcionario'] = $this->input->post('id_funcionario');
 		$dados['id_produto'] = $this->input->post('id_produto');
@@ -98,15 +96,54 @@ class P_controle_qualidade extends CI_Controller
 		$dados['outro'] = $this->input->post('outro');
 		$dados['obs'] = $this->input->post('obs');
 
+		// Configuração para upload do arquivo
+		$config['upload_path'] = './uploads/documentos_controle/';
+		$config['allowed_types'] = 'pdf|doc|docx|jpg|jpeg|png'; // Tipos permitidos
+		$config['max_size'] = 12048; // Tamanho máximo em KB (12MB)
+		$config['encrypt_name'] = true; // Renomear o arquivo para um nome único
+
+		// Criar o diretório se não existir
+		if (!is_dir($config['upload_path'])) {
+			mkdir($config['upload_path'], 0755, true);
+		}
+
+		$this->load->library('upload', $config);
+
+		if (!empty($_FILES['arquivo']['name'])) {
+			if ($this->upload->do_upload('arquivo')) {
+				$uploadData = $this->upload->data();
+				$dados['arquivo'] = $uploadData['file_name']; // Nome do arquivo salvo
+
+				// Se for edição, excluir o arquivo anterior
+				if ($id) {
+					$controle_atual = $this->P_controle_qualidade_model->buscar_por_id($id); // Função que busca o registro pelo ID
+					if (!empty($controle_atual['arquivo']) && file_exists($config['upload_path'] . $controle_atual['arquivo'])) {
+						unlink($config['upload_path'] . $controle_atual['arquivo']); // Remove o arquivo antigo
+					}
+				}
+			} else {
+				// Retorna mensagem de erro em caso de falha no upload
+				$this->session->set_flashdata('error', $this->upload->display_errors());
+				redirect('P_controle_qualidade/inicio/');
+				return;
+			}
+		} elseif ($id) {
+			// Caso seja edição e nenhum arquivo novo seja enviado, mantém o arquivo anterior
+			$controle_atual = $this->P_controle_qualidade_model->buscar_por_id($id);
+			$dados['arquivo'] = isset($controle_atual['arquivo']) ? $controle_atual['arquivo'] : null;
+		}
+
+		// Salvar ou atualizar no banco
 		if ($id) {
 			$this->P_controle_qualidade_model->edita_controle_producao($dados, $id);
 		} else {
 			$this->P_controle_qualidade_model->inserir_controle_producao($dados);
-
 		}
 
+		// Redirecionar após o salvamento
 		redirect('P_controle_qualidade/inicio/');
 	}
+
 
 	public function deleta_controle()
 	{

@@ -10,33 +10,26 @@
                     href="<?= site_url('P_Destinacao/formulario_destinacao/') . (isset($producao['id']) ? $producao['id'] : '') ?>">
                     <span type="button" class="btn bg-green waves-effect">VOLTAR</span>
                 </a>
-
             </div>
-
         </div>
 
         <!-- Input -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
                 <div class="card">
-
                     <form method="post" enctype="multipart/form-data"
                         action="<?= site_url('P_controle_qualidade/cadastra_controle/') ?>">
 
                         <div class="header">
-                            <h2>
-                                Cadastro de destinação
-                            </h2>
+                            <h2>Cadastro de destinação</h2>
                         </div>
 
                         <input type="hidden" value="<?= isset($producao['id']) ? $producao['id'] : '' ?>"
                             name="id_cliente" class="form-control" readonly>
 
-
                         <div class="body">
                             <div class="row clearfix">
-
+                                <!-- Campos já existentes -->
                                 <div class="col-sm-4">
                                     <label>Data</label>
                                     <div class="form-line">
@@ -125,7 +118,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="col-sm-4">
                                     <label>Observação</label>
                                     <div class="form-group">
@@ -136,22 +128,31 @@
                                     </div>
                                 </div>
 
+                                <!-- Nova seção para anexar arquivos -->
+                                <div class="col-sm-12">
+                                    <label>Anexar Arquivos</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" name="arquivo" class="form-control"
+                                                accept=".pdf,.doc,.docx,.jpg,.png">
+                                        </div>
+                                    </div>
+                                    <p class="text-muted">
+                                        *Você pode anexar vários arquivos ao mesmo tempo.
+                                    </p>
+                                </div>
 
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-
                                 </div>
-
                             </div>
                         </div>
 
                     </form>
                 </div>
-
             </div>
         </div>
         <!-- #END# Input -->
-
     </div>
 </section>
 

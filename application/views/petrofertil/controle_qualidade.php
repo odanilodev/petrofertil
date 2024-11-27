@@ -259,7 +259,6 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                             <td style='background-color: #fcf9d9'>
                                                 <?= $totalDiario ?>
                                             </td>
-
                                             <!-- Botão para exibir ações -->
                                             <td align="center">
                                                 <div class="dropdown">
@@ -272,12 +271,17 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                                                 href="<?= base_url('P_controle_qualidade/formulario_controle/' . $p['id']) ?>">Editar</a>
                                                         </li>
                                                         <li><a class="dropdown-item"
-                                                                href="<?= base_url('P_controle_qualidade/deleta_controle/' . $p['id']) ?>">Deletar
-                                                                </>
+                                                                href="<?= base_url('P_controle_qualidade/deleta_controle/' . $p['id']) ?>">Deletar</a>
                                                         </li>
+                                                        <?php if (!empty($p['arquivo']) && file_exists('./uploads/documentos_controle/' . $p['arquivo'])): ?>
+                                                            <li><a class="dropdown-item"
+                                                                    href="<?= base_url('uploads/documentos_controle/' . $p['arquivo']) ?>"
+                                                                    download>Download do Arquivo</a></li>
+                                                        <?php endif; ?>
                                                     </ul>
                                                 </div>
                                             </td>
+
                                         </tr>
 
                                     <?php } ?>
