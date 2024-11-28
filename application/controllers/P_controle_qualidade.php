@@ -134,7 +134,7 @@ class P_controle_qualidade extends CI_Controller
 		}
 
 		// Salvar ou atualizar no banco
-		if ($id) {
+		if ($id > 0 and $id != '') {
 			$this->P_controle_qualidade_model->edita_controle_producao($dados, $id);
 		} else {
 			$this->P_controle_qualidade_model->inserir_controle_producao($dados);

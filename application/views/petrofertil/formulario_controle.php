@@ -24,8 +24,8 @@
                             <h2>Cadastro de destinação</h2>
                         </div>
 
-                        <input type="hidden" value="<?= isset($producao['id']) ? $producao['id'] : '' ?>"
-                            name="id_cliente" class="form-control" readonly>
+                        <input type="hidden" value="<?= isset($producao['id']) ? $producao['id'] : '' ?>" name="id"
+                            class="form-control" readonly>
 
                         <div class="body">
                             <div class="row clearfix">
