@@ -15,6 +15,8 @@ class P_contas_receber extends CI_Controller
 
 		$data['contas'] = $this->P_contas_receber_model->recebe_contas_vinculo();
 
+		$data['clientes'] = $this->P_contas_receber_model->obtem_clientes_com_contas();
+
 		$bancos = $this->P_contas_model->recebe_contas();
 
 		$data['bancos'] = $bancos;
@@ -61,6 +63,7 @@ class P_contas_receber extends CI_Controller
 		$data_inicial = $this->input->post('data_inicial');
 		$data_final = $this->input->post('data_final');
 		$status = $this->input->post('status');
+		$cliente_id = $this->input->post('cliente_id');
 
 		$data['data_inicial'] = $data_inicial;
 		$data['data_final'] = $data_final;
@@ -74,7 +77,7 @@ class P_contas_receber extends CI_Controller
 
 		} else {
 
-			$data['contas'] = $this->P_contas_receber_model->recebe_contas_filtrada_data_status($data_inicial, $data_final, $status);
+			$data['contas'] = $this->P_contas_receber_model->recebe_contas_filtrada_data_status_cliente($data_inicial, $data_final, $status, $cliente_id);
 
 		}
 

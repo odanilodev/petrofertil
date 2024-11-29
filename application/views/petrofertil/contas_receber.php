@@ -32,7 +32,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
         <!-- Widgets -->
         <div class="row clearfix">
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="info-box bg-blue-grey hover-zoom-effect">
                     <div class="icon">
                         <i class="material-icons">monetization_on</i>
@@ -44,7 +44,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="info-box bg-blue-grey hover-zoom-effect">
                     <div class="icon">
                         <i class="material-icons">monetization_on</i>
@@ -68,11 +68,27 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                 </div>
             </div>
 
-            <div class=" col-lg-8 col-md-7 col-sm-7 col-xs-12">
+            <div class=" col-lg-12 col-md-12 col-sm-7 col-xs-12">
                 <form class="" enctype="multipart/form-data"
                     action="<?= site_url('P_contas_receber/filtra_contas_receber/') ?>" method="post">
 
                     <div class="col-md-3">
+
+                        <div class="form-group ">
+                            <label>Cliente:</label>
+                            <select name="cliente_id" class="form-control show-tick">
+                                <option>Selecione</option>
+
+                                <?php foreach ($clientes as $cliente) { ?>
+                                    <option value="<?= $cliente['id'] ?>"><?= $cliente['nome_fantasia'] ?></option>
+                                <?php } ?>
+
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2">
 
                         <div class="form-group ">
                             <label>Status:</label>
@@ -87,7 +103,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
                     </div>
 
-                    <div class="col-md-3">
+
+                    <div class="col-md-2">
 
                         <div class="form-group ">
                             <label>De:</label>
@@ -96,7 +113,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
 
                         <div class="form-group  ">
                             <label>Até:</label>
