@@ -25,7 +25,7 @@ class P_contas_receber_model extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->update('p_contas_receber', $dados);
 	}
-	
+
 	public function atualiza_conta_vinculo($codigo_venda, $dados)
 	{
 		$this->db->where('codigo_venda', $codigo_venda);
@@ -50,12 +50,29 @@ class P_contas_receber_model extends CI_Model
 		return $query->result_array();
 	}
 
-	public function recebe_contas_filtrada_data($data_final, $data_inicial)
+	public function obtem_clientes_com_contas()
+	{
+		$this->db->select('p_clientes_petrofertil.id, p_clientes_petrofertil.nome_fantasia');
+		$this->db->from('p_contas_receber');
+		$this->db->join('p_clientes_petrofertil', 'p_contas_receber.cliente = p_clientes_petrofertil.id', 'left');
+		$this->db->group_by('p_clientes_petrofertil.id, p_clientes_petrofertil.nome_fantasia');
+		$this->db->order_by('p_clientes_petrofertil.nome_fantasia', 'ASC');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+
+	public function recebe_contas_filtrada_data($data_final, $data_inicial, $cliente_id)
 	{
 		$this->db->select('p_contas_receber.*, p_clientes_petrofertil.nome_fantasia, p_contas_bancarias.descricao');
 		$this->db->from('p_contas_receber');
 		$this->db->join('p_clientes_petrofertil', 'p_contas_receber.cliente = p_clientes_petrofertil.id', 'left');
 		$this->db->join('p_contas_bancarias', 'p_contas_receber.conta = p_contas_bancarias.id', 'left');
+
+		if (!empty($cliente_id)) {
+			$this->db->where('p_clientes_petrofertil.id', $cliente_id);
+		}
+
 		$this->db->where('vencimento BETWEEN "' . date('Y-m-d', strtotime($data_final)) . '" and "' . date('Y-m-d', strtotime($data_inicial)) . '"');
 		$this->db->order_by('vencimento', 'DESC');
 		$query = $this->db->get();
@@ -77,7 +94,7 @@ class P_contas_receber_model extends CI_Model
 		return $query->result_array();
 	}
 
-	public function recebe_contas_filtrada_data_status($data_final, $data_inicial, $status)
+	public function recebe_contas_filtrada_data_status_cliente($data_final, $data_inicial, $status, $cliente_id)
 	{
 		$this->db->select('p_contas_receber.*, p_clientes_petrofertil.nome_fantasia, p_contas_bancarias.descricao');
 		$this->db->from('p_contas_receber');
@@ -85,11 +102,16 @@ class P_contas_receber_model extends CI_Model
 		$this->db->join('p_contas_bancarias', 'p_contas_receber.conta = p_contas_bancarias.id', 'left');
 		$this->db->where('vencimento BETWEEN "' . date('Y-m-d', strtotime($data_final)) . '" and "' . date('Y-m-d', strtotime($data_inicial)) . '"');
 		$this->db->where('status', $status);
+
+		if (!empty($cliente_id)) {
+			$this->db->where('p_clientes_petrofertil.id', $cliente_id);
+		}
+
 		$this->db->order_by('vencimento', 'DESC');
 		$query = $this->db->get();
-
 		return $query->result_array();
 	}
+
 
 	public function recebe_contas_dia($data_atual)
 	{
