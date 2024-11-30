@@ -69,6 +69,9 @@ class P_contas_receber extends CI_Controller
 		$data['data_final'] = $data_final;
 		$data['status'] = $status;
 
+		$data['clientes'] = $this->P_contas_receber_model->obtem_clientes_com_contas();
+
+
 		$bancos = $this->P_contas_model->recebe_contas();
 
 		if ($status == 2) {
