@@ -360,6 +360,13 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                             </a>
                         </li>
 
+                        <li>
+                            <a href="<?= site_url('P_residuos') ?>">
+                                <i class="material-icons">recycling</i>
+                                <span>Resíduos</span>
+                            </a>
+                        </li>
+
                         <li class="header">COMERCIAL</li>
 
                         <li>
@@ -472,8 +479,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
                         <li>
                             <a href="<?= site_url('P_prestadores_servico') ?>">
-                                <i class="material-icons">directions_bus</i>
-                                <span>Prestadores de serviço</span>
+                                <i class="material-icons">work</i>
+                                <span>Prestadores de Serviço</span>
                             </a>
                         </li>
 
