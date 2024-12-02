@@ -310,6 +310,15 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                 </a>
                             </li>
 
+                            <li class="header">INTERNO</li>
+
+                            <li>
+                                <a href="<?= site_url('P_funcionarios/inicio/') ?>">
+                                    <i class="material-icons">person</i>
+                                    <span>Funcionários</span>
+                                </a>
+                            </li>
+
                         <?php } ?>
 
 

@@ -23,7 +23,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
             </div>
 
             <div class="col-md-9" style="margin-bottom: 12px; margin-top: -8px" align="right">
-                <a style="margin-left: 5px" href="<?= base_url('P_funcionarios/formulario_funcionario') ?>"><span type="button" class="btn btn-success  waves-effect">Cadastro De Funcionário</span></a>
+                <a style="margin-left: 5px" href="<?= base_url('P_funcionarios/formulario_funcionario') ?>"><span
+                        type="button" class="btn btn-success  waves-effect">Cadastro De Funcionário</span></a>
             </div>
 
         </div>
@@ -37,7 +38,9 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                         <div style="background-color: #348fa9;" class="profile-header">&nbsp;</div>
                         <div class="profile-body">
                             <div class="image-area">
-                                <img class="" style="max-width: 180px;" src="<?= base_url('uploads/funcionarios_petrofertil/foto_perfil/').$f['foto_perfil'] ?>" alt="AdminBSB - Profile Image">
+                                <img class="" style="max-width: 140px;"
+                                    src="<?= base_url('uploads/funcionarios_petrofertil/foto_perfil/') . $f['foto_perfil'] ?>"
+                                    alt="AdminBSB - Profile Image">
                             </div>
                             <div class="content-area">
                                 <h3><?= $f['nome'] ?></h3>
@@ -60,7 +63,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                     <span><?= $f['cpf'] ?></span>
                                 </li>
                             </ul>
-                            <a href="<?= base_url('p_funcionarios/ver_funcionario/').$f['id'] ?>"><button class="btn btn-primary btn-lg waves-effect btn-block">VER FUNCIONÁRIO</button></a>
+                            <a href="<?= base_url('p_funcionarios/ver_funcionario/') . $f['id'] ?>"><button
+                                    class="btn btn-primary btn-lg waves-effect btn-block">VER FUNCIONÁRIO</button></a>
                         </div>
                     </div>
                 </div>
