@@ -76,7 +76,7 @@ class P_contas_receber extends CI_Controller
 
 		if ($status == 2) {
 
-			$data['contas'] = $this->P_contas_receber_model->recebe_contas_filtrada_data($data_inicial, $data_final);
+			$data['contas'] = $this->P_contas_receber_model->recebe_contas_filtrada_data($data_inicial, $data_final, $cliente_id);
 
 		} else {
 
