@@ -88,7 +88,8 @@
 	<div class="header">
 
 		<div class="title-header">
-			<img style="max-width: 250px; padding-top: 30px;" class="img-fluid" src="<?= base_url('assets/img/logopetro.png') ?>"><br> 
+			<img style="max-width: 250px; padding-top: 30px;" class="img-fluid"
+				src="<?= base_url('assets/img/logopetro.png') ?>"><br>
 			<p>CDR - CERTIFICADO DE DESTINAÇÃO DE RESIDUOS N° <?= $numero ?></p>
 		</div>
 
@@ -192,7 +193,7 @@
 
 				<tr>
 					<td>Contato</td>
-					<td><?=$cliente['contato']; ?></td>
+					<td><?= $cliente['contato']; ?></td>
 				</tr>
 
 				<tr>
@@ -226,6 +227,11 @@
 					<td>IIA</td>
 				</tr>
 
+				<tr>
+					<td>Embalagem:</td>
+					<td>Material triado e beneficiado (Reciclado).</td>
+				</tr>
+
 
 
 
@@ -237,15 +243,20 @@
 				<h3>Referência</h3>
 			</div>
 			<table>
-					<?php for ($count = 0; $count <= $contador; $count++) {
+				<?php for ($count = 0; $count <= $contador; $count++) {
 
-						$destinacao[$count]['data'] = implode('/', array_reverse(explode('-', $destinacao[$count]['data'])))
+					$destinacao[$count]['data'] = implode('/', array_reverse(explode('-', $destinacao[$count]['data'])))
 
-					?>
+						?>
 
-						<tr><td>Coleta do dia <?= $destinacao[$count]['data'] ?> – Quantidade: <?= $destinacao[$count]['quantidade'] ?> Kg – Nota Fiscal N° <?= $destinacao[$count]['nota'] ?> <?= $destinacao[$count]['mtr'] > 0 ? '- MTR N°' : '' ?><?= $destinacao[$count]['mtr'] ?></td></tr>
+					<tr>
+						<td>Coleta do dia <?= $destinacao[$count]['data'] ?> – Quantidade:
+							<?= $destinacao[$count]['quantidade'] ?> Kg – Nota Fiscal N° <?= $destinacao[$count]['nota'] ?>
+							<?= $destinacao[$count]['mtr'] > 0 ? '- MTR N°' : '' ?> 	<?= $destinacao[$count]['mtr'] ?>
+						</td>
+					</tr>
 
-					<?php } ?>
+				<?php } ?>
 			</table>
 		</div>
 
@@ -258,8 +269,10 @@
 			<table>
 
 				<tr>
-					<td>Material triado e beneficiado: (Matéria prima orgânico/mineral - Fertilizante orgânico - Misto classe A.)</td>
+					<td>Material triado e beneficiado: (Matéria prima orgânico/mineral - Fertilizante orgânico - Misto
+						classe A.) | Embalagem(Reciclagem)</td>
 				</tr>
+
 
 			</table>
 
@@ -276,21 +289,26 @@
 
 					$destinacao[$count]['data'] = implode('/', array_reverse(explode('-', $destinacao[$count]['data'])))
 
-				?>
+						?>
 
 					<?php if ($destinacao[$count]['observacao'] != '') { ?>
-						<tr><td>Coleta do dia <?= $destinacao[$count]['data'] ?> – <?= $destinacao[$count]['observacao'] ?></td></tr>
+						<tr>
+							<td>Coleta do dia <?= $destinacao[$count]['data'] ?> – <?= $destinacao[$count]['observacao'] ?></td>
+						</tr>
 
 
-				<?php }
+					<?php }
 				} ?>
 
 			</table>
 
 		</div></br></br>
-		<div style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 13px; margin-top:20px;">Santa Cruz do Rio Pardo, <?= $data_atual; ?>. </div>
+		<div
+			style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 13px; margin-top:20px;">
+			Santa Cruz do Rio Pardo, <?= $data_atual; ?>. </div>
 
-		<div><img style="max-height: 100px; margin-left: 34%" src="<?= base_url('assets/img/certificado/certificado_crea.jpg'); ?>"></div>
+		<div><img style="max-height: 100px; margin-left: 34%"
+				src="<?= base_url('assets/img/certificado/certificado_crea.jpg'); ?>"></div>
 
 
 	</div>
