@@ -1,28 +1,30 @@
 <section class="content">
 	<div class="container-fluid">
-	<div class="row">
-            <div class="block-header col-md-5">
-                <h2>FORMULARIO DE DESTINAÇÃO</h2>
-            </div>
-
-            
-            <div class="col-md-7" style="margin-bottom: 12px; margin-top: -8px" align="right"> 
-                <a href="<?= site_url('P_Destinacao/formulario_destinacao/').$cliente['id'] ?>"><span type="button" class="btn bg-green waves-effect">VOLTAR</span></a>
-            </div>
-
-         
+		<div class="row">
+			<div class="block-header col-md-5">
+				<h2>FORMULARIO DE DESTINAÇÃO</h2>
+			</div>
 
 
-        </div>
+			<div class="col-md-7" style="margin-bottom: 12px; margin-top: -8px" align="right">
+				<a href="<?= site_url('P_Destinacao/formulario_destinacao/') . $cliente['id'] ?>"><span type="button"
+						class="btn bg-green waves-effect">VOLTAR</span></a>
+			</div>
 
-		
+
+
+
+		</div>
+
+
 		<!-- Input -->
 		<div class="row clearfix">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 				<div class="card">
 
-					<form method="post" enctype="multipart/form-data" action="<?= site_url('P_destinacao/cadastra_destinacao/').$cliente['id'] ?>">
+					<form method="post" enctype="multipart/form-data"
+						action="<?= site_url('P_destinacao/cadastra_destinacao/') . $cliente['id'] ?>">
 
 						<div class="header">
 							<h2>
@@ -30,7 +32,8 @@
 							</h2>
 						</div>
 
-						<input type="hidden" value="<?= $cliente['id'] ?>" name="id_cliente" class="form-control" readonly>
+						<input type="hidden" value="<?= $cliente['id'] ?>" name="id_cliente" class="form-control"
+							readonly>
 
 
 						<div class="body">
@@ -39,7 +42,8 @@
 									<label>Cliente</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" value="<?= $cliente['nome'] ?>" name="cliente" class="form-control" readonly>
+											<input type="text" value="<?= $cliente['nome'] ?>" name="cliente"
+												class="form-control" readonly>
 										</div>
 									</div>
 								</div>
@@ -48,7 +52,8 @@
 									<label>Quantidade (NF)</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='quantidade' value="" class="form-control" placeholder="Digite o CNPJ">
+											<input type="text" name='quantidade' value="" class="form-control"
+												placeholder="Digite o CNPJ">
 										</div>
 									</div>
 								</div>
@@ -58,16 +63,18 @@
 									<label>Quantidade (Balança)</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='balanca' value="" class="form-control" placeholder="Digite a quantidade de balança">
+											<input type="text" name='balanca' value="" class="form-control"
+												placeholder="Digite a quantidade de balança">
 										</div>
 									</div>
 								</div>
 
 								<div class="col-sm-6">
-									<label>Quantidade de Plástico</label>
+									<label>Quantidade de Embalagens</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='plastico' value="" class="form-control" placeholder="Digite de plástico">
+											<input type="text" name='plastico' value="" class="form-control"
+												placeholder="Digite a quantidade">
 										</div>
 									</div>
 								</div>
@@ -76,7 +83,8 @@
 									<label>Quantidade de Ráfia</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='rafia' value="" class="form-control" placeholder="Digite a quantidade de ráfia">
+											<input type="text" name='rafia' value="" class="form-control"
+												placeholder="Digite a quantidade de ráfia">
 										</div>
 									</div>
 								</div>
@@ -85,7 +93,8 @@
 									<label>Nota</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='nota' value="" class="form-control" placeholder="Numero Nota">
+											<input type="text" name='nota' value="" class="form-control"
+												placeholder="Numero Nota">
 										</div>
 									</div>
 								</div>
@@ -94,7 +103,8 @@
 									<label>N° MTR</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='mtr' value="" class="form-control" placeholder="Numero MTR">
+											<input type="text" name='mtr' value="" class="form-control"
+												placeholder="Numero MTR">
 										</div>
 									</div>
 								</div>
@@ -112,7 +122,8 @@
 									<label>Valor do frete</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='valor_frete' value="" class="form-control" placeholder="Digite o valor do frete">
+											<input type="text" name='valor_frete' value="" class="form-control"
+												placeholder="Digite o valor do frete">
 										</div>
 									</div>
 								</div>
@@ -121,7 +132,8 @@
 									<label>Valor Agenciador</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='valor_agenciador' value="" class="form-control" placeholder="Digite o valor do agenciador">
+											<input type="text" name='valor_agenciador' value="" class="form-control"
+												placeholder="Digite o valor do agenciador">
 										</div>
 									</div>
 								</div>
@@ -130,7 +142,8 @@
 									<label>Valor do produto</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='valor_produto' value="" class="form-control" placeholder="Digite o valor do produto">
+											<input type="text" name='valor_produto' value="" class="form-control"
+												placeholder="Digite o valor do produto">
 										</div>
 									</div>
 								</div>
@@ -139,7 +152,8 @@
 									<label>Valor Manifesto</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='valor_manifesto' value="" class="form-control" placeholder="Digite o valor de manifesto">
+											<input type="text" name='valor_manifesto' value="" class="form-control"
+												placeholder="Digite o valor de manifesto">
 										</div>
 									</div>
 								</div>
@@ -148,7 +162,8 @@
 									<label>Observação</label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" name='observacao' value="" class="form-control" placeholder="Digite uma observação">
+											<input type="text" name='observacao' value="" class="form-control"
+												placeholder="Digite uma observação">
 										</div>
 									</div>
 								</div>
@@ -159,18 +174,18 @@
 									<select name="custo" class="form-control show-tick">
 										<option>Selecione</option>
 										<option value="SIM">SIM</option>
-									  <option value="NÃO">NÃO</option>
-                                    </select>
+										<option value="NÃO">NÃO</option>
+									</select>
 								</div>
 
-								
 
-								
+
+
 								<div class="col-sm-12">
-								<button type="submit" class="btn btn-primary">Cadastrar</button>
+									<button type="submit" class="btn btn-primary">Cadastrar</button>
 
 								</div>
-								
+
 
 							</div>
 						</div>
@@ -179,10 +194,10 @@
 					</form>
 				</div>
 
-		
-	</div>
-	</div>
-	<!-- #END# Input -->
+
+			</div>
+		</div>
+		<!-- #END# Input -->
 
 	</div>
 </section>
