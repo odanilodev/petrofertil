@@ -305,8 +305,15 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
                             <li>
                                 <a href="<?= site_url('P_controle_qualidade/inicio') ?>">
-                                    <i class="material-icons">perm_identity</i>
-                                    <span>Controle de Produção e Qualidade</span>
+                                    <i class="material-icons">precision_manufacturing</i>
+                                    <span>Controle de Produção</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="<?= site_url('P_controle_recebimento/inicio') ?>">
+                                    <i class="material-icons">inventory</i>
+                                    <span>Controle de Recebimento</span>
                                 </a>
                             </li>
 
