@@ -64,6 +64,10 @@ $nome_usuario = $this->session->userdata('nome_usuario');
             <div class="col-md-9" style="margin-bottom: 12px; margin-top: -8px" align="right">
                 <a href="<?= base_url('P_controle_recebimento/formulario_recebimento') ?>"><span type="button"
                         class="btn bg-green waves-effect">NOVO</span></a>
+
+                <a href="<?= base_url('P_controle_recebimento/formulario_relatorio') ?>"><span type="button"
+                        class="btn bg-primary waves-effect">Gerar Relatório</span></a>
+
             </div>
 
         </div>
@@ -147,48 +151,36 @@ $nome_usuario = $this->session->userdata('nome_usuario');
         <div class="row">
             <div class="container-fluid">
                 <form class="col-md-12" enctype="multipart/form-data"
-                    action="<?= site_url('P_controle_qualidade/inicio/') ?>" method="post">
+                    action="<?= site_url('P_controle_recebimento/inicio/') ?>" method="post">
 
                     <div class="col-md-2 col-sm-12">
-
-                        <div class="form-group ">
+                        <div class="form-group">
                             <label>De</label>
-                            <input type="date" value="<?= $data_inicial ?>" name="data_inicial" class="form-control">
+                            <input type="date" value="<?= isset($data_inicial) ? $data_inicial : '' ?>"
+                                name="data_inicial" class="form-control">
                         </div>
-
                     </div>
 
                     <div class="col-md-2 col-sm-12">
-
-                        <div class="form-group  ">
+                        <div class="form-group">
                             <label>Até</label>
-                            <input type="date" value="<?= $data_final ?>" name="data_final" class="form-control">
+                            <input type="date" value="<?= isset($data_final) ? $data_final : '' ?>" name="data_final"
+                                class="form-control">
                         </div>
-
-                    </div>
-
-                    <div class="col-md-2" style="margin-top: -4px">
-                        <p>
-                            <b>Produto</b>
-                        </p>
-                        <select name="id_produto" class="form-control ">
-                            <option value="">Selecione</option>
-
-                            <?php foreach ($produtos as $produto) { ?>
-                                <option value="<?= $produto['id'] ?>"><?= $produto['nome'] ?></option>
-                            <?php } ?>
-                        </select>
-
                     </div>
 
                     <button type="submit" style="margin-top: 27px"
-                        class="btn btn-primary ml-2 col-sm-6 col-md-3 col-xs-6 ">Filtrar</button>
+                        class="btn btn-primary ml-2 col-sm-6 col-md-3 col-xs-6">Filtrar</button>
 
-                    <a href="<?= site_url('P_controle_qualidade/inicio/') ?>"><span style="margin-top: 27px"
-                            class="btn btn-success col-md-3 col-sm-6 col-xs-6">Mês Atual</span></a>
+                    <a href="<?= site_url('P_controle_recebimento/inicio/') ?>">
+                        <span style="margin-top: 27px" class="btn btn-success col-md-3 col-sm-6 col-xs-6">Mês
+                            Atual</span>
+                    </a>
                 </form>
             </div>
         </div>
+
+
 
         <div id="like_button_container"></div>
         <!-- Exportable Table -->
@@ -197,9 +189,8 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                 <div style="margin-top: 15px" class="card">
                     <div class="header">
                         <h2>
-                            Tabela de Controle
+                            Tabela de Controle de Recebimento
                         </h2>
-
                     </div>
                     <div class="body">
                         <div class="table-responsive">
@@ -208,58 +199,63 @@ $nome_usuario = $this->session->userdata('nome_usuario');
 
                                 <thead>
                                     <tr>
-                                        <th>Data</th>
-                                        <th>Responsável</th>
-                                        <th>Produto</th>
-                                        <th>N° Lote</th>
+                                        <th>Data de Recebimento</th>
+                                        <th>Periodo</th>
+                                        <th>Empresa</th>
+                                        <th>N° NF</th>
+                                        <th>Quantidade</th>
+                                        <th>Placa</th>
                                         <th>Orgânico</th>
                                         <th>Mineral</th>
+                                        <th>Molhado</th>
+                                        <th>Latinha</th>
                                         <th>Palha</th>
                                         <th>Outro</th>
-                                        <th>OBS</th>
-                                        <th>Total Diário</th>
-                                        <th>...</th>
+                                        <th>Área de Descarregamento</th>
+                                        <th>Observação</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
+
                                 <tfoot>
                                     <tr>
-                                        <th>Data</th>
-                                        <th>Responsável</th>
-                                        <th>Produto</th>
-                                        <th>N° Lote</th>
+                                        <th>Data de Recebimento</th>
+                                        <th>Periodo</th>
+                                        <th>Empresa</th>
+                                        <th>N° NF</th>
+                                        <th>Quantidade</th>
+                                        <th>Placa</th>
                                         <th>Orgânico</th>
                                         <th>Mineral</th>
+                                        <th>Molhado</th>
+                                        <th>Latinha</th>
                                         <th>Palha</th>
                                         <th>Outro</th>
-                                        <th>OBS</th>
-                                        <th>Total Diário</th>
-                                        <th>...</th>
+                                        <th>Área de Descarregamento</th>
+                                        <th>Observação</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </tfoot>
+
                                 <tbody>
-
-                                    <?php foreach ($producao as $p) {
-                                        // Formatar a data para o formato brasileiro
-                                        $dataFormatada = date("d/m/Y", strtotime($p['data']));
-
-                                        // Calcular o total somando os valores das colunas Orgânico, Mineral, Palha e Outro
-                                        $totalDiario = $p['organico'] + $p['mineral'] + $p['palha'] + $p['outro'];
-                                        ?>
-
+                                    <?php foreach ($recebimentos as $r): ?>
+                                        <?php $dataFormatada = date("d/m/Y", strtotime($r['data_recebimento'])); ?>
                                         <tr>
                                             <td style='background-color: #eaf2fd'><?= $dataFormatada ?></td>
-                                            <td style='background-color: #eaf2fd'><?= $p['funcionario'] ?></td>
-                                            <td style='background-color: #eaf2fd'><?= $p['produto'] ?></td>
-                                            <td style='background-color: #eaf2fd'><?= $p['lote'] ?></td>
-                                            <td style='background-color: #fcecec'><?= $p['organico'] ?></td>
-                                            <td style='background-color: #fcecec'><?= $p['mineral'] ?></td>
-                                            <td style='background-color: #fcecec'><?= $p['palha'] ?></td>
-                                            <td style='background-color: #fcecec'><?= $p['outro'] ?></td>
-                                            <td style='background-color: #fcecec'><?= $p['obs'] ?></td>
-                                            <td style='background-color: #fcf9d9'>
-                                                <?= $totalDiario ?>
+                                            <td style='background-color: #eaf2fd'><?= $r['periodo'] ?></td>
+                                            <td style='background-color: #C6E0B4 '><?= $r['nome_empresa'] ?></td>
+                                            <td style='background-color: #eaf2fd'><?= $r['numero_nota'] ?></td>
+                                            <td style='background-color:rgb(223, 255, 234)'><?= $r['quantidade_total'] ?>
                                             </td>
-                                            <!-- Botão para exibir ações -->
+                                            <td style='background-color: #fcecec'><?= $r['placa'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['organico'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['mineral'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['molhado'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['latinha'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['palha'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['outro'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['area_descarregamento'] ?></td>
+                                            <td style='background-color: #fcecec'><?= $r['obs'] ?></td>
                                             <td align="center">
                                                 <div class="dropdown">
                                                     <button class="btn btn-primary dropdown-toggle" type="button"
@@ -268,27 +264,20 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item"
-                                                                href="<?= base_url('P_controle_qualidade/formulario_controle/' . $p['id']) ?>">Editar</a>
+                                                                href="<?= base_url('P_controle_recebimento/formulario_recebimento/' . $r['id']) ?>">Editar</a>
                                                         </li>
                                                         <li><a class="dropdown-item"
-                                                                href="<?= base_url('P_controle_qualidade/deleta_controle/' . $p['id']) ?>">Deletar</a>
+                                                                href="<?= base_url('P_controle_recebimento/deleta_recebimento/' . $r['id']) ?>">Deletar</a>
                                                         </li>
-                                                        <?php if (!empty($p['arquivo']) && file_exists('./uploads/documentos_controle/' . $p['arquivo'])): ?>
-                                                            <li><a class="dropdown-item"
-                                                                    href="<?= base_url('uploads/documentos_controle/' . $p['arquivo']) ?>"
-                                                                    download>Download do Arquivo</a></li>
-                                                        <?php endif; ?>
+
                                                     </ul>
                                                 </div>
                                             </td>
-
                                         </tr>
-
-                                    <?php } ?>
-
-
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

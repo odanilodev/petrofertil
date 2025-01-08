@@ -7,7 +7,7 @@
 
             <div class="col-md-7" style="margin-bottom: 12px; margin-top: -8px" align="right">
                 <a
-                    href="<?= site_url('P_Destinacao/formulario_destinacao/') . (isset($producao['id']) ? $producao['id'] : '') ?>">
+                    href="<?= site_url('P_controle_recebimento/cadastra_controle/') . (isset($producao['id']) ? $producao['id'] : '') ?>">
                     <span type="button" class="btn bg-green waves-effect">VOLTAR</span>
                 </a>
             </div>
@@ -18,7 +18,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <form method="post" enctype="multipart/form-data"
-                        action="<?= site_url('P_controle_qualidade/cadastra_controle/') ?>">
+                        action="<?= site_url('P_controle_recebimento/cadastra_controle/') ?>">
 
                         <div class="header">
                             <h2>Cadastro de destinação</h2>
@@ -33,18 +33,34 @@
                                 <div class="col-sm-4">
                                     <label>Data</label>
                                     <div class="form-line">
-                                        <input type="date" name="data"
-                                            value="<?= isset($producao['data']) && $producao['data'] ? $producao['data'] : date('Y-m-d') ?>"
+                                        <input type="date" name="data_recebimento"
+                                            value="<?= isset($recebimento['data_recebimento']) && $recebimento['data_recebimento'] ? $recebimento['data_recebimento'] : date('Y-m-d') ?>"
                                             class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4">
+                                    <label>Periodo</label>
+                                    <select name="periodo" class="form-control show-tick">
+                                        <option>Selecione</option>
+                                        <option <?= $recebimento['periodo'] == 'Manhã' ? 'selected' : '' ?> value="Manhã">
+                                            Manhã</option>
+                                        <option <?= $recebimento['periodo'] == 'Tarde' ? 'selected' : '' ?> value="Tarde">
+                                            Tarde</option>
+                                        <option <?= $recebimento['periodo'] == 'Noite' ? 'selected' : '' ?> value="Noite">
+                                            Noite</option>
+
+                                    </select>
+                                </div>
+
+
+                                <div class="col-sm-4">
                                     <label>Cliente/Empresa</label>
-                                    <select name="id_funcionario" class="form-control show-tick">
+                                    <select name="empresa" class="form-control show-tick">
                                         <option>Selecione</option>
                                         <?php foreach ($clientes as $cliente) { ?>
-                                            <option value="<?= $cliente['id'] ?>">
+                                            <option <?= $recebimento['empresa'] == $cliente['id'] ? 'selected' : '' ?>
+                                                value="<?= $cliente['id'] ?>">
                                                 <?= $cliente['nome'] ?>
                                             </option>
                                         <?php } ?>
@@ -52,35 +68,23 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <label>CNPJ</label>
+                                    <label>Placa</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="lote"
-                                                value="<?= isset($producao['lote']) ? $producao['lote'] : '' ?>"
-                                                class="form-control" placeholder="Digite o número do lote">
+                                            <input type="text" name="placa"
+                                                value="<?= isset($recebimento['placa']) ? $recebimento['placa'] : '' ?>"
+                                                class="form-control" placeholder="Digite a placa">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <label>Produto</label>
-                                    <select name="id_produto" class="form-control show-tick">
-                                        <option>Selecione</option>
-                                        <?php foreach ($produtos as $p) { ?>
-                                            <option value="<?= $p['id'] ?>" <?= isset($producao['id_produto']) && $producao['id_produto'] == $p['id'] ? 'selected' : '' ?>>
-                                                <?= $p['nome'] ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <label>N° do Lote</label>
+                                    <label>N° Nota</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="lote"
-                                                value="<?= isset($producao['lote']) ? $producao['lote'] : '' ?>"
-                                                class="form-control" placeholder="Digite o número do lote">
+                                            <input type="text" name="numero_nota"
+                                                value="<?= isset($recebimento['numero_nota']) ? $recebimento['numero_nota'] : '' ?>"
+                                                class="form-control" placeholder="Digite o número de nota">
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +94,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="number" name="organico"
-                                                value="<?= isset($producao['organico']) ? $producao['organico'] : '' ?>"
+                                                value="<?= isset($recebimento['organico']) ? $recebimento['organico'] : '' ?>"
                                                 class="form-control" placeholder="Digite a quantidade">
                                         </div>
                                     </div>
@@ -101,7 +105,29 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="number" name="mineral"
-                                                value="<?= isset($producao['mineral']) ? $producao['mineral'] : '' ?>"
+                                                value="<?= isset($recebimento['mineral']) ? $recebimento['mineral'] : '' ?>"
+                                                class="form-control" placeholder="Digite a quantidade">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label>Molhado</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" name="molhado"
+                                                value="<?= isset($recebimento['molhado']) ? $recebimento['molhado'] : '' ?>"
+                                                class="form-control" placeholder="Digite a quantidade">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label>Latiha</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" name="latinha"
+                                                value="<?= isset($recebimento['latinha']) ? $recebimento['latinha'] : '' ?>"
                                                 class="form-control" placeholder="Digite a quantidade">
                                         </div>
                                     </div>
@@ -112,8 +138,19 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="number" name="palha"
-                                                value="<?= isset($producao['palha']) ? $producao['palha'] : '' ?>"
+                                                value="<?= isset($recebimento['palha']) ? $recebimento['palha'] : '' ?>"
                                                 class="form-control" placeholder="Digite a quantidade">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label>Area descarregamento</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" name="area_descarregamento"
+                                                value="<?= isset($recebimento['area_descarregamento']) ? $recebimento['area_descarregamento'] : '' ?>"
+                                                class="form-control" placeholder="Digite o codigo de area">
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +160,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="number" name="outro"
-                                                value="<?= isset($producao['outro']) ? $producao['outro'] : '' ?>"
+                                                value="<?= isset($recebimento['outro']) ? $recebimento['outro'] : '' ?>"
                                                 class="form-control" placeholder="Digite a quantidade">
                                         </div>
                                     </div>
@@ -133,24 +170,11 @@
                                     <label>Observação</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name='obs' value="" class="form-control"
-                                                placeholder="Digite uma Observação">
+                                            <input type="text" name='obs'
+                                                value="<?= isset($recebimento['obs']) ? $recebimento['obs'] : '' ?>"
+                                                class="form-control" placeholder="Digite uma Observação">
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Nova seção para anexar arquivos -->
-                                <div class="col-sm-12">
-                                    <label>Anexar Arquivos</label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="file" name="arquivo" class="form-control"
-                                                accept=".pdf,.doc,.docx,.jpg,.png">
-                                        </div>
-                                    </div>
-                                    <p class="text-muted">
-                                        *Você pode anexar vários arquivos ao mesmo tempo.
-                                    </p>
                                 </div>
 
                                 <div class="col-sm-12">
