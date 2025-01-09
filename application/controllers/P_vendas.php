@@ -152,6 +152,36 @@ class P_vendas extends CI_Controller
 		$this->load->view('petrofertil/footer');
 	}
 
+	public function gera_detalhe_venda()
+	{
+		$this->load->model('P_controle_recebimento_model');
+
+
+		$this->load->model('P_vendas_model');
+		$this->load->model('Clientes_petrofertil_model');
+
+		$id_venda = $this->uri->segment(3);
+
+		$data['venda'] = $this->P_vendas_model->recebe_venda($id_venda);
+
+		$data['cliente'] = $this->Clientes_petrofertil_model->recebe_cliente($data['venda']['cliente']);
+
+		$data['produto'] = json_decode($data['venda']['produto']);
+		$data['valor_produto'] = json_decode($data['venda']['valor_produto']);
+		$data['comissao'] = json_decode($data['venda']['comissao']);
+		$data['quantidade'] = json_decode($data['venda']['quantidade']);
+
+		$this->load->view('petrofertil/detalhes_venda', $data);
+
+		// Gera o PDF
+		$html = $this->output->get_output();
+		$this->load->library('pdf');
+		$this->pdf->loadHtml($html);
+		$this->pdf->render();
+		$this->pdf->stream("certificado.pdf", array("Attachment" => 0));
+	}
+
+
 	public function ver_venda_codigo()
 	{
 		$this->load->model('P_vendas_model');
