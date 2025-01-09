@@ -142,7 +142,7 @@
                                                 <div class="col-sm-4">
                                                     <label>Subtotal</label>
                                                     <input required disable type="text" name="subtotal_produto[]"
-                                                        class="form-control input-subtotal valor form-line"
+                                                        class="form-control input-subtotal form-line"
                                                         placeholder="Subtotal">
                                                 </div>
 
@@ -685,7 +685,7 @@
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <label>Subtotal</label>
-                                                        <input value="${subtotal.toFixed(2)}" disable required type="text" name="subtotal_produto[]" class="form-control valor input-subtotal form-line" placeholder="Subtotal">
+                                                        <input value="${subtotal}" required type="text" name="subtotal_produto[]" class="form-control input-subtotal form-line" placeholder="Subtotal">
                                                     </div>
                                                     
                                                     <div class="col-sm-2" style="float: right"></br>
@@ -829,7 +829,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Valor</label>
-                                            <input type="text" required name="valor_produto[]" class="form-control input-valor form-line input-somar" placeholder="Digite o valor do produto">
+                                            <input type="text" required name="valor_produto[]" class="form-control valor input-valor form-line input-somar" placeholder="Digite o valor do produto">
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Comissão</label>
@@ -910,7 +910,7 @@
                                 let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
 
                                 let subtotal = valor * quantidade;
-                                $(this).find('.input-subtotal').val(subtotal.toFixed(2));
+                                $(this).find('.input-subtotal').val(subtotal);
 
                                 quantidadeTotal += quantidade;
 
