@@ -112,6 +112,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                         <th>Valor Total da Venda</th>
                                         <th>Vendedor</th>
 
+                                        <th>Ticket</th>
                                         <th>Ver</th>
                                         <th>Editar</th>
                                         <th>Excluir</th>
@@ -126,6 +127,7 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                         <th>Valor Total da Venda</th>
                                         <th>Vendedor</th>
 
+                                        <th>Ticket</th>
                                         <th>Ver</th>
                                         <th>Editar</th>
                                         <th>Excluir</th>
@@ -146,6 +148,13 @@ $nome_usuario = $this->session->userdata('nome_usuario');
                                                 echo number_format("$total_venda", 2, ",", "."); ?>
                                             </td>
                                             <td><?= $v['vendedor'] ?></td>
+
+                                            <td align="center">
+                                                <a href="<?= site_url('P_vendas/gera_detalhe_venda/') . $v['id'] ?>"
+                                                    target="_blank">
+                                                    <i class="material-icons">description</i>
+                                                </a>
+                                            </td>
 
 
                                             <td align="center"><a
