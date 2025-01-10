@@ -912,7 +912,7 @@
                                 let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
 
                                 let subtotal = valor * quantidade;
-                                $(this).find('.input-subtotal').val(subtotal);
+                                $(this).find('.input-subtotal').val(subtotal.toFixed(2));
 
                                 quantidadeTotal += quantidade;
 
