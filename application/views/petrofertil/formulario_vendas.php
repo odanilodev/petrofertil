@@ -142,7 +142,7 @@
                                                 <div class="col-sm-4">
                                                     <label>Subtotal</label>
                                                     <input required disable type="text" name="subtotal_produto[]"
-                                                        class="form-control input-subtotal valor form-line"
+                                                        class="form-control input-subtotal form-line"
                                                         placeholder="Subtotal">
                                                 </div>
 
@@ -597,11 +597,12 @@
                                     id_cliente: id_cliente
                                 },
                                 success: function (data) {
+
                                     $('.produto-select').html(data.option_produto);
                                     $('.materia-select').html(data.materia_prima);
                                     $('.vendedor-select').html(data.vendedor);
                                     $('.frete-select').html(data.option_frete);
-                                    $('#valor-tipo-frete').val(data.valor_tipo_frete);
+                                    $('#valor-tipo-frete').val(data.valor_tipo_frete && data.valor_tipo_frete != '0.00' ? data.valor_tipo_frete : data.valor_por_tonelada);
 
                                 }
                             });
@@ -685,7 +686,7 @@
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <label>Subtotal</label>
-                                                        <input value="${subtotal.toFixed(2)}" disable required type="text" name="subtotal_produto[]" class="form-control valor input-subtotal form-line" placeholder="Subtotal">
+                                                        <input value="${subtotal}" required type="text" name="subtotal_produto[]" class="form-control input-subtotal form-line" placeholder="Subtotal">
                                                     </div>
                                                     
                                                     <div class="col-sm-2" style="float: right"></br>
@@ -733,6 +734,7 @@
 
                     <script>
                         function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
+
                             // Substituindo o ponto por nada (para remover o separador de milhar) e a vírgula por ponto (separador decimal)
                             const quantidadeFormatada = quantidadeRecebida.toString().replace(/\./g, '').replace(',', '.');
 
@@ -829,7 +831,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Valor</label>
-                                            <input type="text" required name="valor_produto[]" class="form-control input-valor form-line input-somar" placeholder="Digite o valor do produto">
+                                            <input type="text" required name="valor_produto[]" class="form-control valor input-valor form-line input-somar" placeholder="Digite o valor do produto">
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Comissão</label>
@@ -910,14 +912,14 @@
                                 let quantidade = parseFloat(quantidade_.val().replace('.', '')) || 0;
 
                                 let subtotal = valor * quantidade;
-                                $(this).find('.input-subtotal').val(subtotal.toFixed(2));
+                                $(this).find('.input-subtotal').val(subtotal);
 
                                 quantidadeTotal += quantidade;
 
                                 if (selectTipoFrete != 'Valor por Km rodado') {
 
                                     if (selectTipoFrete == "Valor por Tonelada") {
-                                        totalFrete += calcularFretePorTonelada(quantidade, valorTipoFrete);
+                                        totalFrete = calcularFretePorTonelada(quantidadeTotal, valorTipoFrete);
                                     } else {
 
                                         totalFrete += valorTipoFrete * quantidade;
@@ -948,6 +950,7 @@
 
                                     // Calcula o adicional baseado no excesso e adiciona ao frete total
                                     totalFrete += diferencaQuantidade * 0.1;
+
                                 }
 
                                 // Ajusta o valor do total de frete com o valor adicional, se necessário
