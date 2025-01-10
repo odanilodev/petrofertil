@@ -733,6 +733,7 @@
 
                     <script>
                         function calcularFretePorTonelada(quantidadeRecebida, valorPorTonelada) {
+
                             // Substituindo o ponto por nada (para remover o separador de milhar) e a vírgula por ponto (separador decimal)
                             const quantidadeFormatada = quantidadeRecebida.toString().replace(/\./g, '').replace(',', '.');
 
@@ -917,7 +918,7 @@
                                 if (selectTipoFrete != 'Valor por Km rodado') {
 
                                     if (selectTipoFrete == "Valor por Tonelada") {
-                                        totalFrete += calcularFretePorTonelada(quantidade, valorTipoFrete);
+                                        totalFrete = calcularFretePorTonelada(quantidadeTotal, valorTipoFrete);
                                     } else {
 
                                         totalFrete += valorTipoFrete * quantidade;
@@ -948,6 +949,7 @@
 
                                     // Calcula o adicional baseado no excesso e adiciona ao frete total
                                     totalFrete += diferencaQuantidade * 0.1;
+
                                 }
 
                                 // Ajusta o valor do total de frete com o valor adicional, se necessário
