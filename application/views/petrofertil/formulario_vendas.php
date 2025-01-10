@@ -597,11 +597,12 @@
                                     id_cliente: id_cliente
                                 },
                                 success: function (data) {
+
                                     $('.produto-select').html(data.option_produto);
                                     $('.materia-select').html(data.materia_prima);
                                     $('.vendedor-select').html(data.vendedor);
                                     $('.frete-select').html(data.option_frete);
-                                    $('#valor-tipo-frete').val(data.valor_tipo_frete);
+                                    $('#valor-tipo-frete').val(data.valor_tipo_frete && data.valor_tipo_frete != '0.00' ? data.valor_tipo_frete : data.valor_por_tonelada);
 
                                 }
                             });
